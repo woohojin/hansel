@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adoptBoard">
+	
+	<select id="boardCount" resultType="int">
+		select nvl(count(*), 0) from adoptBoard where postDisable = 0
+	</select>
+	
+	<select id="boardList" parameterType="map" resultType="adoptBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from adoptBoard 
+					where postDisable = 0
+					order by adoptId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
+	<insert id="insertBoard" parameterType="adoptBoard">
+		insert into adoptBoard values (adoptId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content},  to_char(sysdate, 'yyyy/mm/dd'), #{petDetail}, #{petName}, #{petGender}, 0, #{petImg}, #{vaccin}, #{neuter}, 0)
+	</insert>
+	
+	<select id="boardOne" parameterType="int" resultType="adoptBoard">
+		select * from adoptBoard where adoptId = #{value}
+	</select>
+	
+	<update id="readCountUp" parameterType="int">
+		update adoptBoard set readcnt = readcnt + 1 where adoptId = #{value}
+	</update>
+	
+	<insert id="insertReply" parameterType="adoptBoard">
+		insert into adoptBoard values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="adoptBoard">
+		update adoptBoard set petName = #{petName}, petGender = #{petGender}, petDetail = #{petDetail}, neuter = #{neuter}, vaccin = #{vaccin}, tel = #{tel}, content = #{content}, petImg = #{petImg} where adoptId = #{adoptId}
+	</update>
+	
+	<update id="boardDisable" parameterType="int">
+		update adoptBoard set postDisable = 1 where adoptId = #{adoptId}
+	</update>
+	
+	<delete id="boardDelete" parameterType="int">
+		delete from adoptBoard where num = #{num}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

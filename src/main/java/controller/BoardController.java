@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import model.AdoptBoard;
 import model.PetBoard;
+import service.AdoptBoardMybatisDAO;
 import service.BoardMybatisDAO;
 
 @Controller
@@ -43,7 +45,6 @@ public class BoardController {
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
 	public String petBoard() throws Exception {
-		HttpSession session = request.getSession();
 		
 		if(request.getParameter("boardid") != null) {
 			session.setAttribute("boardid", request.getParameter("boardid"));
@@ -168,7 +169,6 @@ public class BoardController {
 	
 	@RequestMapping("petBoardInfo")
 	public String petBoardInfo(int postId) throws Exception {
-		HttpSession session = request.getSession();
 		
 		String boardid = (String) session.getAttribute("boardid");
 		
@@ -198,7 +198,6 @@ public class BoardController {
 	
 	@RequestMapping("petBoardUpdate")
 	public String petBoardUpdate(int postId) throws Exception {
-		HttpSession session = request.getSession();
 		
 		String boardid = (String) session.getAttribute("boardid");
 		
@@ -265,21 +264,159 @@ public class BoardController {
 		return "alert";
 	}
 	
-	
+	@Autowired
+	AdoptBoardMybatisDAO ab;
 	
 //	유기, 실종동물 입양
 	@RequestMapping("adoptBoard")
-	public String adopt() throws Exception {
+	public String adoptBoard() throws Exception {
+		
+		if(request.getParameter("boardid") != null) {
+			session.setAttribute("boardid", request.getParameter("boardid"));
+			session.setAttribute("pageNum", "1");
+		}
+		
+		int limit = 8; // 한 page당 게시물 개수
+		
+		if(request.getParameter("pageNum") != null) {
+			session.setAttribute("pageNum", request.getParameter("pageNum"));
+		}
+		String pageNum = (String) session.getAttribute("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int pageInt = Integer.parseInt(pageNum);
+		int boardCount = ab.boardCount();
+		List<AdoptBoard> list = ab.boardList(pageInt, limit);
+		
+//		pagination 개수
+		int bottomLine = 3;
+		
+		int start = (pageInt-1)/bottomLine*bottomLine+1;
+		int end = start + bottomLine - 1;
+		int maxPage = (boardCount/limit) + (boardCount%limit==0? 0 : 1);
+		if(end > maxPage) {
+			end = maxPage;
+		}
+		
+		int boardNum = boardCount - (pageInt-1)*limit;
+		
+		request.setAttribute("list", list);
+		request.setAttribute("boardCount", boardCount);
+		request.setAttribute("boardNum", boardNum);
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+		request.setAttribute("bottomLine", bottomLine);
+		request.setAttribute("maxPage", maxPage);
+		request.setAttribute("pageInt", pageInt);
 		
 		return "board/adoptBoard";
+		
 	}
 	
-//	입양, 찾은 후기
-	@RequestMapping("review")
-	public String review() throws Exception {
+	@RequestMapping("adoptBoardInfo")
+	public String adoptBoardInfo(int adoptId) throws Exception {
 		
-		return "board/review";
+		AdoptBoard pb = ab.boardOne(adoptId);
+		ab.readCountUp(adoptId);
+		
+		request.setAttribute("pb", pb);
+		
+		return "board/adoptBoardInfo";
 	}
+	
+	@RequestMapping("adoptBoardForm")
+	public String adoptBoardForm() throws Exception {
+		return "board/adoptBoardForm";
+	}
+	
+	@RequestMapping("adoptBoardPro")
+	public String adoptBoardPro(AdoptBoard adoptBoard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/adoptBoardForm";
+		
+		String userId = (String) session.getAttribute("userId");
+		
+		adoptBoard.setUserId(userId);
+		
+		int num = ab.insertBoard(adoptBoard);
+		if(num>0) {
+			msg = "게시물을 등록하였습니다.";
+			url = "/board/adoptBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	@RequestMapping("adoptBoardUpdate")
+	public String adoptBoardUpdate(int adoptId) throws Exception {
+		
+		AdoptBoard pb = ab.boardOne(adoptId);
+		
+		request.setAttribute("pb", pb);
+		
+		return "board/adoptBoardUpdate";
+	}
+	
+	@RequestMapping("adoptBoardUpdatePro")
+	public String adoptBoardUpdatePro(AdoptBoard adoptboard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/adoptBoardUpdate";
+		
+		System.out.println(adoptboard.getAdoptId());
+		
+		int num = ab.boardUpdate(adoptboard);
+		if(num>0) {
+			msg = "게시물을 수정하였습니다.";
+			url = "/board/adoptBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	@RequestMapping("adoptBoardDelete")
+	public String adoptBoardDelete(int adoptId) throws Exception {
+		
+		String msg = "게시물 삭제 실패";
+		String url = "/board/petBoardInfo";
+		
+		int num = ab.boardDisable(adoptId);
+		if(num>0) {
+			msg = "게시물을 삭제하였습니다.";
+			url = "/board/adoptBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("pictureimgForm")
 	public String pictureimgForm() throws Exception {
