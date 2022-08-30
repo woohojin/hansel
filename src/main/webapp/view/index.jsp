@@ -34,7 +34,7 @@
 
     <div class="mainText">
       <h1>주인님의 냄새가 나요!</h1>
-      <h1>절 찾으러 오셨나봐요!</h1>
+      <h1>절 찾으러 오셨나봐요!!</h1>
       <div class="btn">
         About us
       </div>
