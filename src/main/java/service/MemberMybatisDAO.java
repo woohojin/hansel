@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import model.Member;
-import mybatis.MybatisConnection;
 
 @Component
 public class MemberMybatisDAO {
