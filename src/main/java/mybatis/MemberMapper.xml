@@ -4,7 +4,7 @@
 <mapper namespace="member">
 
 	<insert id="insertUser" parameterType="member">
-		insert into hanuser values (#{userId}, #{pwd}, #{address}, #{email}, #{tel}, #{petName}, #{login}, #{userType}, #{userReport})
+		insert into hanuser values (#{userId}, #{pwd}, #{tel}, #{email}, #{address}, #{petName}, #{login}, #{userType}, #{userReportCnt}, #{userReportText})
 	</insert>
 	
 	<select id="selectOne" resultType="member" parameterType="String">

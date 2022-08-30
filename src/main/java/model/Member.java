@@ -9,7 +9,8 @@ public class Member {
 	String petName;
 	int login;
 	int userType;
-	int userReport;
+	int userReportCnt;
+	String userReportText;
 	
 	public String getUserId() {
 		return userId;
@@ -59,11 +60,17 @@ public class Member {
 	public void setUserType(int userType) {
 		this.userType = userType;
 	}
-	public int getUserReport() {
-		return userReport;
+	public int getUserReportCnt() {
+		return userReportCnt;
 	}
-	public void setUserReport(int userReport) {
-		this.userReport = userReport;
+	public void setUserReportCnt(int userReportCnt) {
+		this.userReportCnt = userReportCnt;
+	}
+	public String getUserReportText() {
+		return userReportText;
+	}
+	public void setUserReportText(String userReportText) {
+		this.userReportText = userReportText;
 	}
 	
 }
