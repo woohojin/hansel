@@ -101,7 +101,7 @@
           </div>
           
           	<a href="${ pageContext.request.contextPath }/board/petBoardUpdate?postId=${pb.postId}">
-				수정
+				수정 
 			</a>
 			<a href="javascript:confirmDisable()">
 				삭제
