@@ -1,0 +1,158 @@
+@charset "UTF-8";
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  background: #F2EFE9;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+  transition: 0.2s linear;
+  border: none;
+  outline: none;
+}
+.btn.white {
+  background-color: #fff;
+}
+.btn:hover {
+  background-color: #ffedc8;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.module {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #F2EFE9;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.493);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.searchBox {
+  width: 250px;
+  height: 40px;
+  border: 1px solid #000;
+  background: #fff;
+  margin-right: 90px;
+  border-radius: 20px;
+  padding: 0px 13px;
+  overflow: hidden;
+}
+.searchBox input {
+  width: 230px;
+  height: 100%;
+  outline: none;
+  border: none;
+  margin-right: 3px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.searchBox .searchIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.signInForm {
+  position: relative;
+  margin-top: 70px;
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  padding: 15px 150px;
+  overflow: hidden;
+}
+.signInForm figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.signInForm figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.signInForm .video_cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("${pageContext.request.contextPath}/images/video_cover_pattern.png");
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 20px #000000;
+}
+.signInForm .inner {
+  flex-direction: column;
+}
+.signInForm .subject {
+  width: 100%;
+  height: 40px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+.signInForm form {
+  margin-top: 40px;
+  width: 100%;
+  flex-direction: column;
+}
+.signInForm form div {
+  width: 400px;
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #fff; 
+  overflow: hidden;
+  box-shadow: 1px 1px 5px #27352c;
+}
+.signInForm form div h3 {
+  width: 77px;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2EFE9;
+  text-align: center;
+}
+.signInForm form div input {
+  height: 100%;
+  width: 323px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  border-radius: 0px 20px 20px 0;
+  font-size: 14px;
+  background: #fff;
+  box-shadow: inset 0px -1px 3px #42594A;
+}
+.signInForm form .submit > input {
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+}

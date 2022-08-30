@@ -1,0 +1,64 @@
+@charset "UTF-8";
+.petBoard {
+  height: 1050px;
+  padding: 20px 50px;
+}
+.petBoard .inner .modHead {
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+}
+.petBoard .inner .modHead h2 {
+  font-size: 30px;
+}
+.petBoard .inner .modContent {
+  width: 100%;
+  height: 880px;
+  padding-top: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.petBoard .inner .modContent .modCard {
+  width: 300px;
+  height: 400px;
+  margin-right: 35px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+  overflow: hidden;
+}
+.petBoard .inner .modContent .modCard .cardImg,
+.petBoard .inner .modContent .modCard .cardInfo {
+  width: 100%;
+  height: 50%;
+}
+.petBoard .inner .modContent .modCard .cardInfo {
+  background-color: #fff;
+  border-radius: 0 0 20px 20px;
+  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.449);
+  padding: 10px;
+}
+.petBoard .inner .modContent .modCard .cardInfo .inner .infoContent {
+  width: 100%;
+  margin-bottom: 7px;
+  justify-content: flex-start;
+  border-bottom: 1px solid #F2EFE9;
+}
+.petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .name {
+  font-weight: bold;
+  margin-bottom: 3px;
+  margin-right: 3px;
+}
+.petBoard .inner .modContent .modCard .cardInfo .inner .regDate.infoContent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 127px;
+  font-size: 14px;
+}
+.petBoard .inner .modPage {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  border: 1px solid #000;
+}

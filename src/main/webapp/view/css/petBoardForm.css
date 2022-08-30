@@ -1,0 +1,87 @@
+@charset "UTF-8";
+.form {
+  height: 655px;
+  padding: 20px;
+}
+.form > h2 {
+  padding-left: 300px;
+  height: 50px;
+  font-size: 30px;
+}
+.form form {
+  height: calc(100% - 50px);
+}
+.form form input.btn {
+  width: 100%;
+  border: none;
+  outline: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.form .inner .formImg {
+  position: relative;
+  width: 400px;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+}
+.form .inner .formImg .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form .inner .formContent {
+  width: 400px;
+  height: 100%;
+  padding: 10px;
+  padding-bottom: 0;
+}
+.form .inner .formContent .inner .conInput {
+  width: 100%;
+  justify-content: flex-start;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+  background-color: #ffedc8;
+}
+.form .inner .formContent .inner .conInput.explain {
+  height: auto;
+  padding: 10px;
+}
+.form .inner .formContent .inner .conInput.explain .name {
+  margin-bottom: 10px;
+}
+.form .inner .formContent .inner .conInput.explain textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 10px;
+  resize: none;
+}
+.form .inner .formContent .inner .conInput .name {
+  font-weight: bold;
+  width: 100px;
+}
+.form .inner .formContent .inner .conInput input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  box-shadow: inset 1px 0px 2px rgba(0, 0, 0, 0.449);
+  padding-left: 10px;
+}
+.form .inner .formContent .inner .conInput label {
+  width: 100px;
+}
+.form .inner .formContent .inner .conInput label input {
+  width: auto;
+  box-shadow: none;
+  margin-right: 3px;
+}

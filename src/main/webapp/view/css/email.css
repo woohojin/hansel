@@ -1,0 +1,104 @@
+.email {
+  position: relative;
+  margin-top: 100px;
+  width: 100%;
+  height: 650px;
+  border-radius: 20px;
+  padding: 15px 150px;
+  overflow: hidden;
+}
+.email figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.email figure video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.email .video_cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("${ pageContext.request.contextPath }/view/images/video_cover_pattern.png");
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 20px #000000;
+}
+.email .subject {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+.email form {
+  margin-top: 70px;
+  width: 100%;
+  flex-direction: column;
+}
+.email form div {
+  width: 307px;
+  height: 50px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 1px 1px 5px #27352c;
+}
+.email form div:nth-of-type(3) {
+  height: 220px;
+}
+.email form div:nth-of-type(4) {
+  justify-content: center;
+  padding: 0;
+}
+.email form div:nth-of-type(4) input {
+  width: 100%;
+  border-left: none;
+  padding-left: 0;
+  cursor: pointer;
+}
+.email form div h3 {
+  width: 57px;
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2EFE9;
+}
+.email form div input {
+  height: 100%;
+  width: 250px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  border-radius: 0px 20px 20px 0;
+  font-size: 18px;
+  background: #fff;
+  box-shadow: inset 0px -1px 3px #42594A;
+}
+.email form div textarea {
+  padding: 10px;
+  width: 250px;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  box-shadow: inset 0px -1px 3px #42594A;
+  resize: none;
+}
+.email form .submit > input {
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=email.css.map */

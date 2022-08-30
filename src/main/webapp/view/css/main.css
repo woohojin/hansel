@@ -1,0 +1,275 @@
+@charset "UTF-8";
+.mainSlide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  border-radius: 0 0 20px 20px;
+  z-index: -1;
+  overflow: hidden;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.493);
+}
+.mainSlide li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.5s linear;
+  filter: saturate(1.5);
+}
+.mainSlide li.on {
+  opacity: 1;
+}
+.mainSlide li.right {
+  transform: translateX(100%);
+}
+.mainSlide li.left {
+  transform: translateX(-100%);
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 520px;
+}
+.main .toLeft,
+.main .toRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.main .toLeft {
+  left: 50px;
+}
+.main .toRight {
+  right: 50px;
+}
+.main .mainText {
+  position: absolute;
+  top: 50%;
+  left: 150px;
+  transform: translateY(-50%);
+}
+.main .mainText h1 {
+  font-size: 35px;
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+}
+.main .mainText h1:nth-of-type(1) {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.main .mainText .btn {
+  margin-top: 15px;
+}
+
+.simIntro {
+  height: 400px;
+  background-image: url("${pageContext.request.contextPath}/view/images/introbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+}
+.simIntro .simpleContent {
+  width: 700px;
+  height: 400px;
+  border-radius: 10%;
+  flex-direction: column;
+  background: radial-gradient(circle, rgba(41, 41, 41, 0.5) 20%, rgba(101, 101, 101, 0.5) 30%, rgba(111, 111, 111, 0.5) 40%, rgba(122, 121, 121, 0.5) 50%, rgba(129, 129, 129, 0.5) 60%, rgba(101, 101, 101, 0) 70%);
+}
+.simIntro .simpleContent .logoImg {
+  width: 100px;
+  height: 77px;
+}
+.simIntro .simpleContent .logoImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.simIntro .simpleContent .intro {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 5px #42594A;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.choose {
+  height: 400px;
+  padding: 0;
+  overflow: hidden;
+}
+.choose .box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transition: 0.3s linear;
+}
+.choose .box:hover {
+  width: 55%;
+}
+.choose .box:nth-of-type(1) {
+  box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.411);
+}
+.choose .box:nth-of-type(2) {
+  box-shadow: inset 1px 0px 1px rgba(0, 0, 0, 0.411);
+}
+.choose .box .boxName {
+  height: 60px;
+}
+.choose .box .boxImg {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.411);
+}
+.choose .box .btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+}
+
+.review {
+  position: relative;
+  height: 550px;
+  background-image: url("${pageContext.request.contextPath}/view/images/reviewbg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  box-shadow: inset 0px 0px 20px #000000;
+  padding-right: 0;
+}
+.review .inner {
+  overflow: hidden;
+}
+.review .inner .toRight {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.2s linear;
+  opacity: 0;
+}
+.review .inner .toRight.showBtn {
+  opacity: 1;
+}
+.review .inner .toRight:hover {
+  transform: scale(1.1) translateY(-50%);
+}
+.review .inner .toLeft {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: 0.2s linear;
+  opacity: 0;
+}
+.review .inner .toLeft.showBtn {
+  opacity: 1;
+}
+.review .inner .toLeft:hover {
+  transform: scale(1.1) translateY(-50%);
+}
+.review h2 {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  font-size: 30px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+.review .view {
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 2300px;
+  height: calc(100% - 55px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  transition: 0.5s linear;
+}
+.review .view.active {
+  left: -999px;
+}
+.review .view .card {
+  width: 333px;
+  height: 100%;
+  padding: 30px;
+  transition: 0.2s linear;
+}
+.review .view .card .inner {
+  border-radius: 20px;
+  box-shadow: 2px 2px 6px #000000;
+}
+.review .view .card .inner .reviewImg {
+  width: 100%;
+  height: 60%;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.review .view .card .inner .reviewText {
+  width: 100%;
+  height: 40%;
+  background-color: #F2EFE9;
+  border-radius: 0 0 20px 20px;
+  box-shadow: inset -1px 0px 4px #42594A;
+}
+.review .view .card .inner .reviewText .cardText {
+  height: 100%;
+  padding: 15px 10px;
+  font-size: 13px;
+  text-shadow: 1px 1px 1px rgba(66, 89, 74, 0.231372549);
+}
+.review .view .card .inner .reviewText .cardText .box {
+  justify-content: flex-start;
+}
+.review .view .card .inner .reviewText .cardText .box div:nth-of-type(1) {
+  width: 50%;
+}
+.review .view .card .inner .reviewText .cardText div {
+  margin-bottom: 5px;
+  cursor: default;
+  letter-spacing: 1px;
+}
+.review .view .card .inner .reviewText .cardText div:nth-of-type(3) {
+  height: 95px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 0;
+  line-height: 19px;
+  box-shadow: inset 0px 0px 3px #42594A;
+  background-color: #fff;
+}
+.review .view .card .inner .reviewText .cardText div:nth-of-type(3) .name {
+  margin-bottom: 0;
+}
+.review .view .card .inner .reviewText .cardText div .name {
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: none;
+}
+.review .view a {
+  margin-left: 90px;
+}
+
+footer {
+  width: 100%;
+  height: 80px;
+  margin-top: 50px;
+}
