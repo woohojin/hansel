@@ -70,7 +70,7 @@
               <div class="infoContent center regDate">
                 <div class="name">작성일 :</div>
                 <div>
-                  ${ b.regDate }
+                  ${ b.regDate.substring(0, 10) }
                 </div>
               </div>
 
