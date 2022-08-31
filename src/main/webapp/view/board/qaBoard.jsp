@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +14,9 @@
     <div class="inner">
       <h2 class="qaName center">
         Q&A 게시판
-        <div class="btn white">
+        <a href="${ pageContext.request.contextPath }/board/QBoardForm" class="btn white">
           글쓰기
-        </div>
+        </a>
       </h2>
 
       <div class="qaContent">
@@ -22,29 +24,42 @@
         <div class="card fix">
           <ul class="center">
             <li class="subject">
-              질문
+              작성일
             </li>
             <li class="content">
-              내용
+              질문
             </li>
             <li class="userId">
               아이디
             </li>
           </ul>
         </div>
+        
+        <c:if test="${ boardCount == 0 }">
+			<p>등록된 질문이 없습니다. 생각하세요.</p>
+		</c:if>
+        
+        <c:if test="${ boardCount > 0 }">
+        
+        <c:forEach var="b" items="${ list }">
         <div class="card">
           <ul class="center">
             <li class="subject center">
-              회원가입을 어떻게 하나요?
+              ${ b.regDate }
             </li>
+            <a href="${ pageContext.request.contextPath }/board/QBoardInfo?QId=${b.QId}">
             <li class="content">
-              회원가입 버튼을 못찾겠어요ㅠㅠvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+              ${ b.subject }
             </li>
+            </a>
             <li class="userId center">
-              컴맹말기환자
+              ${ b.userId }
             </li>
           </ul>
         </div>
+        </c:forEach>
+        
+        </c:if>
         
 
       </div>

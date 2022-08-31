@@ -34,7 +34,7 @@
 	</insert>
 	
 	<update id="boardUpdate" parameterType="QBoard">
-		update QBoard set subject = #{subject}, content #{content} where QId = #{QId}
+		update QBoard set subject = #{subject}, content = #{content} where QId = #{QId}
 	</update>
 	
 	<update id="boardDisable" parameterType="int">

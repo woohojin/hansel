@@ -8,12 +8,14 @@
 		<typeAlias type="model.Member" alias="member" />
 		<typeAlias type="model.PetBoard" alias="petBoard" />
 		<typeAlias type="model.AdoptBoard" alias="adoptBoard" />
+		<typeAlias type="model.QBoard" alias="QBoard" />
 	</typeAliases>
 	
 	<mappers><!-- sql 구문 -->
 		<mapper resource="mybatis/MemberMapper.xml"/>
 		<mapper resource="mybatis/PetBoardMapper.xml"/>
 		<mapper resource="mybatis/AdoptBoardMapper.xml"/>
+		<mapper resource="mybatis/QBoardMapper.xml"/>
 	</mappers>
 	
 </configuration>

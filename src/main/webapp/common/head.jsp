@@ -41,7 +41,7 @@
         <li>의견보내기</li>
       </a>
       
-      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=4">
+      <a href="${ pageContext.request.contextPath }/board/QBoard">
         <li>Q&A</li>
       </a>
     </ul>
