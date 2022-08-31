@@ -39,7 +39,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" name="petName">
+              <input type="text" name="petName" required>
             </div>
 
             <div class="conInput center">
@@ -72,21 +72,21 @@
               <div class="name center">
                 특징
               </div>
-              <input type="text" name="petDetail">
+              <input type="text" name="petDetail" required>
             </div>
 
             <div class="conInput center">
               <div class="name center">
                 전화번호
               </div>
-              <input type="text" name="tel">
+              <input type="text" name="tel" required>
             </div>
 
             <div class="conInput explain">
               <div class="name">
                 상세설명
               </div>
-              <textarea name="content"></textarea>
+              <textarea name="content" required></textarea>
             </div>
 
 

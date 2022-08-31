@@ -43,6 +43,7 @@ public class BoardController {
 	
 	@Autowired
 	BoardMybatisDAO bd;
+	
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
@@ -455,24 +456,21 @@ public class BoardController {
 	
 	@RequestMapping("QBoardForm")
 	public String QBoardForm() throws Exception {
-		return "board/QBoardForm";
+		
+		return "board/qaBoardForm";
 	}
 	
 	@RequestMapping("QBoardPro")
 	public String QBoardPro(QBoard qBoard) throws Exception {
 		
 		String msg = "게시물 등록 실패";
-		String url = "/board/qaBoardForm";
-		
-		String userId = (String) session.getAttribute("userId");
-		
-		qBoard.setUserId(userId);
+		String url = "/board/QBoardForm";
 		
 		int num = qb.insertBoard(qBoard);
 		
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/qaBoard";
+			url = "/board/QBoard";
 		}
 		
 		request.setAttribute("msg", msg);
@@ -481,12 +479,22 @@ public class BoardController {
 		return "alert";
 	}
 	
+	@RequestMapping("QBoardInfo")
+	public String QBoardInfo(int QId) throws Exception {
+		
+		QBoard QB = qb.boardOne(QId);
+		qb.readCountUp(QId);
+		
+		request.setAttribute("pb", QB);
+		return "board/qaBoardInfo";
+	}
+	
 	@RequestMapping("QBoardUpdate")
 	public String QBoardUpdate(int QId) throws Exception {
 		
 		QBoard QB = qb.boardOne(QId);
 		
-		request.setAttribute("QB", QB);
+		request.setAttribute("pb", QB);
 		
 		return "board/qaBoardUpdate";
 	}
@@ -495,15 +503,13 @@ public class BoardController {
 	public String QBoardUpdatePro(QBoard qboard) throws Exception {
 		
 		String msg = "게시물 등록 실패";
-		String url = "/board/qaBoardUpdate";
-		
-		System.out.println(qboard.getQId());
+		String url = "/board/QBoardUpdate";
 		
 		int num = qb.boardUpdate(qboard);
 		
 		if(num>0) {
 			msg = "게시물을 수정하였습니다.";
-			url = "/board/qaBoard";
+			url = "/board/QBoard";
 		}
 		
 		request.setAttribute("msg", msg);
@@ -516,12 +522,12 @@ public class BoardController {
 	public String QBoardDelete(int QId) throws Exception {
 		
 		String msg = "게시물 삭제 실패";
-		String url = "/board/qaBoardInfo";
+		String url = "/board/QBoardInfo";
 		
 		int num = ab.boardDisable(QId);
 		if(num>0) {
 			msg = "게시물을 삭제하였습니다.";
-			url = "/board/qaBoard";
+			url = "/board/QBoard";
 		}
 		
 		request.setAttribute("msg", msg);
