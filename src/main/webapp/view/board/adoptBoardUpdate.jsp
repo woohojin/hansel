@@ -96,9 +96,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea name="content">
-              	${ pb.content }
-              </textarea>
+              <textarea name="content">${ pb.content }</textarea>
             </div>
 
 

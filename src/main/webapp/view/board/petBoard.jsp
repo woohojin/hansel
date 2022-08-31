@@ -47,50 +47,50 @@
             <img src="${ pageContext.request.contextPath }/view/board/img/${ b.petImg }" alt="">
           </div>
           <div class="cardInfo">
-            <div class="inner">
+            <div class="inner wrap">
 
-              <div class="infoContent center">
-                <div class="name">조회수 :</div> 
+              <div class="infoContent">
+                <div class="name">이름 : </div> 
                 <div>
-                  ${ b.readCnt }
+                  ${ b.petName }
                 </div>
               </div>
               <div class="infoContent">
-                <div class="name">${ bs.boardPlace }</div>
+                <div class="name">${ bs.boardPlace } :</div>
                 <div>
                   ${ b.place }
                 </div>
               </div>
 
-              <div class="infoContent center">
+              <div class="infoContent">
                 <div class="name">${ bs.boardDate } :</div>
                 <div>
                   ${ b.petDate }
                 </div>
               </div>
 
-              <div class="infoContent center">
-                <div class="name">이름 :</div>
+              <div class="infoContent">
+                <div class="name">조회수 :</div>
                 <div>
-                  ${ b.petName }
+                  ${ b.readCnt }
                 </div>
               </div>
 
-              <div class="infoContent center">
+              <div class="infoContent">
                 <div class="name">성별 :</div>
                 <div>
                   ${ b.petGender == 1 ? "남아" : "여아" }
                 </div>
               </div>
 
-              <div class="infoContent center">
+              <div class="infoContent">
                 <div class="name">특징 :</div>
                 <div>
                   ${ b.petDetail }
                 </div>
               </div>
               
-              <div class="infoContent center regDate">
+              <div class="infoContent">
                 <div class="name">작성일 :</div>
                 <div>
                   ${ b.regDate }
