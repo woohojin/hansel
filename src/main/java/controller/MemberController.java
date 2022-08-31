@@ -147,6 +147,33 @@ public class MemberController {
 		
 		session.invalidate();
 		
+		
+		String msg = userId + "님이 로그아웃 되었습니다.";
+		String url = "/member/index"; 
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	@RequestMapping("/")
+	public String Cookie() throws Exception {
+		
+		HttpSession session = request.getSession(); 
+		
+		String userId = (String)session.getAttribute("userId");
+		Member mem = md.selectOne(userId);
+		mem.setLogin(0);
+		md.updateLogin(mem);
+
+		Cookie cookie = new Cookie("userId", userId);
+		cookie.setMaxAge(0);
+		cookie.setPath("/");
+		response.addCookie(cookie);
+		
+		session.invalidate();
+		
 		String msg = userId + "님이 로그아웃 되었습니다.";
 		String url = "/member/index"; 
 		

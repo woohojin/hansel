@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <%!  public String getCookieValue(Cookie[] cookies, String cookieName) {
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals(cookieName)) {
-				return cookie.getValue();
-			}
-		}
-		return null;
-	}
-%>
- <% Cookie[] cookies = request.getCookies();
-  	 String cookieUserId = getCookieValue(cookies, "userId");
-  	
-  	 if(cookieUserId != null) {
-  		 session.setAttribute("userId", cookieUserId);
-  	 }
-  %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +16,7 @@
 	<a href="${ pageContext.request.contextPath }/member/index">
 	    <div class="logoBox">
 	      <img src="${ pageContext.request.contextPath }/view/images/logo/dogcat.png" alt="logo">
-	      <h1>헨젤 & 빵조각<%= cookieUserId %></h1>
+	      <h1>헨젤 & 빵조각</h1>
 	    </div>
 	</a>
 	

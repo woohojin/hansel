@@ -10,7 +10,22 @@
 	<%@ include file="css/main.css" %>
 </style>
 
-	
+<%!  public String getCookieValue(Cookie[] cookies, String cookieName) {
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals(cookieName)) {
+				return cookie.getValue();
+			}
+		}
+		return null;
+	}
+%>
+ <% Cookie[] cookies = request.getCookies();
+  	 String cookieUserId = getCookieValue(cookies, "userId");
+  	
+  	 if(cookieUserId != null) {
+  		 session.setAttribute("userId", cookieUserId);
+  	 }
+  %>
 
 </head>
 <body>
