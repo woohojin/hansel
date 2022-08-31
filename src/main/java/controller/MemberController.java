@@ -27,10 +27,11 @@ public class MemberController {
 	   
 
 	@ModelAttribute
-	void init(HttpServletRequest request, Model m) {
+	void init(HttpServletRequest request, Model m, HttpServletResponse response) {
       this.request = request;
       this.m = m;
       this.session = request.getSession();
+      this.response = response;
 	}
 	
 	@Autowired
@@ -57,23 +58,6 @@ public class MemberController {
 		
 		String msg = "";
 		String url = "/member/signIn";
-		Cookie[] cookies = request.getCookies();
-		if(cookies != null) {
-			for(Cookie c : cookies) {
-				String name = c.getName();
-				String value = c.getValue();
-				if(name.equals("userId")) {
-					
-					return value;
-				}
-			}
-		}
-		if(autoLogin != null) {
-			Cookie cookie = new Cookie("userId", userId);
-			cookie.setMaxAge(60*60*24*30);
-			cookie.setPath("/");
-			response.addCookie(cookie);
-		}
 		
 //		로그인할 유저를 입력한 아이디로 가져옴
 		Member mem = md.selectOne(userId);
@@ -82,8 +66,14 @@ public class MemberController {
 //			현재 입력한 비밀번호와 db에 있는 비밀번호 비교
 			if(pwd.equals(mem.getPwd())) {
 				session.setAttribute("userId", userId);
-				mem.setLogin(0);
+				mem.setLogin(1);
 				md.updateLogin(mem);
+				if(autoLogin != null) {
+					Cookie cookie = new Cookie("userId", userId);
+					cookie.setMaxAge(60*60*24*30);
+					cookie.setPath("/");
+					response.addCookie(cookie);
+				}
 				msg = mem.getUserId() + "님이 로그인 하였습니다.";
 				url = "/member/index";
 			} else {
@@ -147,8 +137,13 @@ public class MemberController {
 		
 		String userId = (String)session.getAttribute("userId");
 		Member mem = md.selectOne(userId);
-		mem.setLogin(1);
+		mem.setLogin(0);
 		md.updateLogin(mem);
+
+		Cookie cookie = new Cookie("userId", userId);
+		cookie.setMaxAge(0);
+		cookie.setPath("/");
+		response.addCookie(cookie);
 		
 		session.invalidate();
 		
