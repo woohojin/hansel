@@ -20,9 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import model.AdoptBoard;
 import model.PetBoard;
 import model.QBoard;
+import model.ReviewBoard;
 import service.AdoptBoardMybatisDAO;
 import service.BoardMybatisDAO;
 import service.QBoardMybatisDAO;
+import service.ReviewBoardMybatisDAO;
 
 @Controller
 @RequestMapping("/board/")
@@ -402,7 +404,90 @@ public class BoardController {
 		request.setAttribute("url", url);
 		
 		return "alert";
+	}@Autowired
+	ReviewBoardMybatisDAO rb;
+
+	@RequestMapping("reviewBoard")
+	public String reviewBoard() throws Exception {
+		
+		
+		int limit = 8; // 한 page당 게시물 개수
+		
+		if(request.getParameter("pageNum") != null) {
+			session.setAttribute("pageNum", request.getParameter("pageNum"));
+		}
+		String pageNum = (String) session.getAttribute("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int pageInt = Integer.parseInt(pageNum);
+		int boardCount = rb.boardCount();
+		List<ReviewBoard> list = rb.boardList(pageInt, limit);
+		
+//		pagination 개수
+		int bottomLine = 3;
+		
+		int start = (pageInt-1)/bottomLine*bottomLine+1;
+		int end = start + bottomLine - 1;
+		int maxPage = (boardCount/limit) + (boardCount%limit==0? 0 : 1);
+		if(end > maxPage) {
+			end = maxPage;
+		}
+		
+		int boardNum = boardCount - (pageInt-1)*limit;
+		
+		request.setAttribute("list", list);
+		request.setAttribute("boardCount", boardCount);
+		request.setAttribute("boardNum", boardNum);
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+		request.setAttribute("bottomLine", bottomLine);
+		request.setAttribute("maxPage", maxPage);
+		request.setAttribute("pageInt", pageInt);
+		
+		return "board/reviewBoard";
+		
 	}
+	
+	@RequestMapping("reviewBoardInfo")
+	public String reviewBoardInfo(int reviewId) throws Exception {
+		
+		ReviewBoard pb = rb.boardOne(reviewId);
+		rb.readCountUp(reviewId);
+		
+		request.setAttribute("pb", pb);
+		
+		return "board/reviewBoardInfo";
+	}
+	
+	@RequestMapping("reviewBoardForm")
+	public String reviewBoardForm() throws Exception {
+		return "board/reviewBoardForm";
+	}
+	
+	@RequestMapping("reviewBoardPro")
+	public String reviewBoardPro(ReviewBoard reviewBoard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/reviewBoardForm";
+		
+		String userId = (String) session.getAttribute("userId");
+		
+		reviewBoard.setUserId(userId);
+		
+		int num = rb.insertBoard(reviewBoard);
+		if(num>0) {
+			msg = "게시물을 등록하였습니다.";
+			url = "/board/reviewBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
 	
 	@Autowired
 	QBoardMybatisDAO qb;

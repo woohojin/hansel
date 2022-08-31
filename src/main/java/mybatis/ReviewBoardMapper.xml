@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reviewBoard">
+	
+	<select id="boardCount" resultType="int">
+		select nvl(count(*), 0) from reviewBoard where postDisable = 0
+	</select>
+	
+	<select id="boardList" parameterType="map" resultType="reviewBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from reviewBoard 
+					where postDisable = 0
+					order by reviewId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
+	<insert id="insertBoard" parameterType="reviewBoard">
+		insert into reviewBoard values (reviewId_seq.nextval, 0, 0, 0, #{userId}, #{subject},  #{content},  to_char(sysdate, 'yyyy/mm/dd'), #{petName},  0, #{petImg})
+	</insert>
+	
+	<select id="boardOne" parameterType="int" resultType="reviewBoard">
+		select * from reviewBoard where reviewId = #{value}
+	</select>
+	
+	<update id="readCountUp" parameterType="int">
+		update reviewBoard set readcnt = readcnt + 1 where reviewId = #{value}
+	</update>
+	
+	<insert id="insertReply" parameterType="reviewBoard">
+		insert into reviewBoard values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="reviewBoard">
+		update reviewBoard set subject = #{subject},  content = #{content},  petName = #{petName} , petType = #{petType}, petImg = #{petImg} where reviewId = #{reviewId}
+	</update>
+	
+	<update id="boardDisable" parameterType="int">
+		update reviewBoard set postDisable = 1 where reviewId = #{reviewId}
+	</update>
+	
+	<delete id="boardDelete" parameterType="int">
+		delete from reviewBoard where num = #{num}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
