@@ -14,7 +14,7 @@
     <div class="video_cover"></div>
     <div class="inner center">
       <h2 class="subject">
-        회원가입
+        회원가입123
       </h2>
       <form action="${ pageContext.request.contextPath }/member/signUpPro" method="post" class="form center" onsubmit="return inputCheck(this)">
   
@@ -44,7 +44,7 @@
         </div>
         <div class="">
           <h3>반려동물 이름</h3>
-          <input type="text" name="petName" placeholder="반려동물이 없으면 빈칸으로 입력해 주세요" required>
+          <input type="text" name="petName" placeholder="반려동물이 없으면 빈칸으로 입력해 주세요">
         </div>
 
         <div class="submit">
