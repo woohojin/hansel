@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/petBoard.css">
 </head>
 <body>
+<%@ include file="../../common/cookielogin.jsp" %>
  <section class="module petBoard">
     <div class="inner">
       <div class="modHead center">

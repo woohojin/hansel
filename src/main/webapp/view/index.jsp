@@ -9,12 +9,10 @@
 <style type="text/css">
 	<%@ include file="css/main.css" %>
 </style>
-
-	
-
+	<%@ include file="../common/cookielogin.jsp" %>
 </head>
 <body>
-
+	
 <ul class="mainSlide"></ul>
 
 	<section class="main">

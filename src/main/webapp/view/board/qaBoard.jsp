@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/qaBoard.css">
 </head>
 <body>
+<%@ include file="../../common/cookielogin.jsp" %>
 	<section class="module qa">
 
     <div class="inner">

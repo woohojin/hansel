@@ -14,7 +14,7 @@
     <div class="video_cover"></div>
     <div class="inner center">
       <h2 class="subject">
-        회원가입123
+        회원가입
       </h2>
       <form action="${ pageContext.request.contextPath }/member/signUpPro" method="post" class="form center" onsubmit="return inputCheck(this)">
   
