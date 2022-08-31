@@ -8,15 +8,15 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import model.AdoptBoard;
+import model.QBoard;
 
 @Component
-public class AdoptBoardMybatisDAO {
+public class QBoardMybatisDAO {
 	
 	@Autowired
 	SqlSessionTemplate session;
 	
-	private final static String NS = "adoptBoard.";
+	private final static String NS = "QBoard.";
 	private static Map map = new HashMap<>();
 	
 	public int boardCount() {
@@ -24,28 +24,29 @@ public class AdoptBoardMybatisDAO {
 		return num;
 	}
 	
-	public List<AdoptBoard> boardList(int pageInt, int limit) {
+	public List<QBoard> boardList(int pageInt, int limit) {
 		map.clear();
 		map.put("start", (pageInt - 1) * limit + 1);
 		map.put("end", (pageInt * limit));
-		List<AdoptBoard> list = session.selectList(NS+"boardList", map);
+		List<QBoard> list = session.selectList(NS+"boardList", map);
 		return list;
 	}
 	
-	public int insertBoard(AdoptBoard pb) {
-		int num = session.insert(NS+"insertBoard", pb);
+	public int insertBoard(QBoard qb) {
+		int num = session.insert(NS+"insertBoard", qb);
 		return num;
 	}
 	
-	public AdoptBoard boardOne(int num) {
-		AdoptBoard board = session.selectOne(NS+"boardOne", num);
+	public QBoard boardOne(int num) {
+		QBoard board = session.selectOne(NS+"boardOne", num);
 		
 		return board;
 	}
 	
-	public void readCountUp(int adoptId) {
-		session.update(NS+"readCountUp", adoptId);
+	public void readCountUp(int QId) {
+		session.update(NS+"readCountUp", QId);
 	}
+	
 	/*
 	public int insertReply(Board board) {
 		int num = session.insert(NS+"insertReply", board);
@@ -53,16 +54,16 @@ public class AdoptBoardMybatisDAO {
 	}
 	*/
 	
-	public int boardUpdate(AdoptBoard pb) {
-		int num = session.update(NS+"boardUpdate", pb);
+	public int boardUpdate(QBoard qb) {
+		int num = session.update(NS+"boardUpdate", qb);
 		return num;
 	}
 	
-	public int boardDisable(int adoptId) {
-		int num = session.update(NS+"boardDisable", adoptId);
+	public int boardDisable(int QId) {
+		int num = session.update(NS+"boardDisable", QId);
 		return num;
 	}
-
+	
 	/*
 	public int boardDelete(int num) {
 		int m = session.insert(NS+"boardDelete", num);
