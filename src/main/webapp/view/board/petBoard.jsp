@@ -107,7 +107,7 @@
       
 
       <div class="modPage center">
-        <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}"</c:if> ><<</a>
+        <a<c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}"</c:if> ><<</a>
         <c:forEach var="p" begin="${ start }" end="${ end }">
 		  	<a href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}" >${ p }</a>
 		</c:forEach>

@@ -5,6 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/petBoardInfo.css">
+
+<script type="text/javascript">
+		const confirmDisable = () => {
+				
+			const con = confirm("게시물을 삭제하시겠습니까??");
+			if(con) {
+				console.log(con);
+				location.href = "${ pageContext.request.contextPath }/board/adoptBoardDelete?adoptId=${pb.adoptId}";
+			} else {
+				console.log(con);
+				return;
+			}
+			
+		}
+		
+	</script>
+
 </head>
 <body>
 
@@ -12,7 +29,7 @@
     <div class="inner center">
 
       <div class="petImg">
-        <img src="${ pageContext.request.contextPath }/view/images/dog/profile1.jpg" alt="pet">
+        <img src="${ pageContext.request.contextPath }/view/board/img/${ pb.petImg }" alt="pet">
       </div>
 
       <div class="petInfo">
@@ -22,65 +39,75 @@
             <div class="infoContent center read">
               <div class="name">조회수 :</div> 
               <div>
-                123
+                ${ pb.readCnt }
               </div>
             </div>
             
             <div class="infoContent center">
               <div class="name">이름 :</div>
               <div>
-                웃음이
+                ${ pb.petName }
               </div>
             </div>
             
             <div class="infoContent center">
               <div class="name">성별 :</div>
               <div>
-                수컷
+                 ${ pb.petGender == 1 ? "남아" : "여아" }
             </div>
           </div>
           
           <div class="infoContent center">
             <div class="name">특징 :</div>
             <div>
-              인간 같이 행동함
+              ${ pb.petDetail }
             </div>
           </div>
 
           <div class="infoContent center">
             <div class="name">중성화 :</div>
             <div>
-              완료
+              ${ pb.neuter == 0 ? "미완료" : "완료" }
             </div>
           </div>
 
           <div class="infoContent center">
             <div class="name">예방접종 :</div>
             <div>
-              완료
+              ${ pb.vaccin == 0 ? "미완료" : "완료" }
             </div>
           </div>
           
           <div class="infoContent center">
             <div class="name">보호자 전화번호 :</div>
             <div>
-              010-7777-7777
+              ${ pb.tel }
             </div>
           </div>
           
           <div class="infoContent">
             <div class="name">상세설명</div>
             <div>
-              건강하게 자랐수다
+              ${ pb.content }
             </div>
           </div>
           
           <div class="infoContent center regDate">
             <div class="name">작성일 :</div>
             <div>
-              2022.02.03
+              ${ pb.regDate }
             </div>
           </div>
+          
+          <a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+				수정 
+			</a>
+			<a href="javascript:confirmDisable()">
+				삭제
+			</a>
+			<a href="${ pageContext.request.contextPath }/board/adoptBoard">
+				목록
+			</a>
           
           <input type="submit" class="btn" value="신고">
         </form>

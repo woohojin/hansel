@@ -1,6 +1,8 @@
 package controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import service.MemberMybatisDAO;
 public class MemberController {
 	
 	HttpServletRequest request;
+	HttpServletResponse response;
 	Model m;
 	HttpSession session;
 
@@ -48,12 +51,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping("signInPro")
-	public String signInPro(String userId, String pwd) throws Exception {
-		
-		HttpSession session = request.getSession(); 
-		
+	public String signInPro(String userId, String pwd, String autoLogin) throws Exception {
+
 		String msg = "";
 		String url = "/member/signIn";
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for(Cookie c : cookies) {
+				String name = c.getName();
+				String value = c.getValue();
+				if(name.equals("userId")) {
+					
+					return value;
+				}
+			}
+		}
+		if(autoLogin != null) {
+			Cookie cookie = new Cookie("userId", userId);
+			cookie.setMaxAge(60*60*24*30);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+		}
 		
 //		로그인할 유저를 입력한 아이디로 가져옴
 		Member mem = md.selectOne(userId);
@@ -96,22 +114,10 @@ public class MemberController {
 		mem = md.selectOne(userId);
 		
 //		아이디 유효성 확인
-		if(mem == null) {
+		if(mem.getUserId() == null) {
 	//		비밀번호 확인 false 면 회원가입 페이지
 			if(pwd.equals(pwdOk)) {
-				
-	//			member 의 setter에 각각 정보 입력
-				mem = new Member();
-				mem.setUserId(request.getParameter("userId"));
-				mem.setPwd(request.getParameter("pwd"));
-				mem.setAddress(request.getParameter("address"));
-				mem.setEmail(request.getParameter("email"));
-				mem.setTel(request.getParameter("tel"));
-				mem.setPetName(request.getParameter("petName"));
-				mem.setLogin(1);
-				mem.setUserType(0);
-				mem.setUserReport(0);
-				
+	
 				int num = md.insertUser(mem);
 				
 				if(num > 0) {

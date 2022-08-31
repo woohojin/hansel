@@ -25,13 +25,23 @@
           <h3>비밀번호</h3>
           <input type="password" name="pwd" required>
         </div>
-
+         <div class="autologin">
+          <h3>자동 로그인</h3>
+          <input id="autologin" type="checkbox" name="autoLogin" value = "0">
+        </div>
         <div class="submit">
           <input type="submit" value="로그인">
         </div>
-  
       </form>
     </div>
   </section>
+  <script type="text/javascript">
+  	window.onload = function autoLoginActive() {
+  		const isActive = document.getElementById("autologin");
+  		isActive.addEventListener("click", function() {
+  			isActive.value = (isActive.value == 1) ? "0" : "1";
+  		})
+  	}
+  </script>
 </body>
 </html>

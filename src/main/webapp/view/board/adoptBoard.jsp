@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +22,24 @@
               </svg>
             </div>
           </div>
-          <div class="btn white">
+          <a href="${ pageContext.request.contextPath }/board/adoptBoardForm" class="btn white">
             글쓰기
-          </div>
+          </a>
         </div>
       </div>
 
       <div class="modContent center">
+        <c:if test="${ boardCount == 0 }">
+        	<p>등록된 게시물이 없습니다. 작성부터 하고 좀 조회하세여</p>
+        </c:if>
         
-        <a href="${ pageContext.request.contextPath }/board/adoptBoardInfo?postid=${b.postId}">
+        <c:if test="${ boardCount > 0 }">
+        
+        <c:forEach var="b" items="${ list }">
+        <a href="${ pageContext.request.contextPath }/board/adoptBoardInfo?adoptId=${b.adoptId}">
         <div class="modCard">
           <div class="cardImg">
-            <img src="${ pageContext.request.contextPath }/view/images/dog/profile1.jpg" alt="">
+            <img src="${ pageContext.request.contextPath }/view/board/img/${ b.petImg }" alt="">
           </div>
           <div class="cardInfo">
             <div class="inner">
@@ -39,49 +47,49 @@
               <div class="infoContent center">
                 <div class="name">조회수 :</div> 
                 <div>
-                  123
+                  ${ b.readCnt }
                 </div>
               </div>
 
               <div class="infoContent center">
                 <div class="name">이름 :</div>
                 <div>
-                  웃음이
+                 ${ b.petName }
                 </div>
               </div>
 
               <div class="infoContent center">
                 <div class="name">성별 :</div>
                 <div>
-                  남아
+                  ${ b.petGender == 1 ? "남아" : "여아" }
                 </div>
               </div>
 
               <div class="infoContent center">
                 <div class="name">특징 :</div>
                 <div>
-                  인간 같이 행동함
+                  ${ b.petDetail }
                 </div>
               </div>
 
               <div class="infoContent center">
                 <div class="name">중성화 :</div>
                 <div>
-                  완료
+                  ${ b.neuter == 0 ? "미완료" : "완료" }
                 </div>
               </div>
 
               <div class="infoContent center">
                 <div class="name">접종 :</div>
                 <div>
-                  완료
+                  ${ b.vaccin == 0 ? "미완료" : "완료" }
                 </div>
               </div>
 
               <div class="infoContent center regDate">
                 <div class="name">작성일 :</div>
                 <div>
-                  2022.02.03
+                  ${ b.regDate }
                 </div>
               </div>
 
@@ -89,11 +97,17 @@
           </div>
         </div>
         </a>
+        </c:forEach>
         
+        </c:if>
       </div>
 
       <div class="modPage center">
-        12345
+        <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/adoptBoard?pageNum=${start-3}"</c:if> ><<</a>
+        <c:forEach var="p" begin="${ start }" end="${ end }">
+		  	<a href="${ pageContext.request.contextPath }/board/adoptBoard?pageNum=${p}" >${ p }</a>
+		</c:forEach>
+		<a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?pageNum=${end + 3}"</c:if>>>></a>
       </div>
     </div>
   </section>

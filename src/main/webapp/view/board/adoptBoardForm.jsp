@@ -18,17 +18,17 @@
 
 	<section class="module form">
 	
-	<h2>${ bs.boardName } 게시물 작성</h2>
+	<h2>입양공고 게시물 작성</h2>
 	
-    <form action="${ pageContext.request.contextPath }/board/petBoardUpdatePro" name="f" method="post">
-	  <input type="hidden" name="postId" value="${ pb.postId }" />
+    <form action="${ pageContext.request.contextPath }/board/adoptBoardPro" name="f" method="post">
+
       <div class="inner center">
         
         <div class="formImg">
         	<input type="hidden" name="petImg" value="">
-          <img src="${ pageContext.request.contextPath }/view/board/img/${pb.petImg}" id="pic" alt="">
+          <img src="${ pageContext.request.contextPath }/view/images/video_cover_pattern.png" id="pic" alt="">
           <a href="javascript:win_upload()" class="btn white">
-            사진 넣기 ${ pb.postId }
+            사진 넣기
           </a>
         </div>
         
@@ -39,7 +39,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" name="petName" value="${ pb.petName }">
+              <input type="text" name="petName">
             </div>
 
             <div class="conInput center">
@@ -47,52 +47,63 @@
                 성별
               </div>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 1 ? "checked" : "" } value="1"> 수컷
+                <input type="radio" name="petGender" value="1"> 수컷
               </label>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2"> 암컷
+                <input type="radio" name="petGender" value="2"> 암컷
               </label>
-            </div>
-
-            <div class="conInput center">
-              <div class="name center">
-                ${ bs.boardPlace }
-              </div>
-              <input type="text" name="place" value="${ pb.place }">
-            </div>
-
-            <div class="conInput center">
-              <div class="name center">
-                ${ bs.boardDate }
-              </div>
-              <input type="text" name="petDate" value="${ pb.petDate }">
             </div>
 
             <div class="conInput center">
               <div class="name center">
                 특징
               </div>
-              <input type="text" name="petDetail" value="${ pb.petDetail }">
+              <input type="text" name="petDetail">
             </div>
 
             <div class="conInput center">
               <div class="name center">
-                전화번호
+                중성화
               </div>
-              <input type="text" name="tel" value="${ pb.tel }">
+              <label class="center">
+                <input type="radio" name="neuter" value="0"> 미완료
+              </label>
+              <label class="center">
+                <input type="radio" name="neuter" value="1"> 완료
+              </label>
             </div>
 
+            <div class="conInput center">
+              <div class="name center">
+                예방접종
+              </div>
+              <label class="center">
+                <input type="radio" name="vaccin" value="0"> 미완료
+              </label>
+              <label class="center">
+                <input type="radio" name="vaccin" value="1"> 완료
+              </label>
+            </div>
+            
+            <div class="conInput center">
+              <div class="name center">
+                전화번호
+              </div>
+              <input type="text" name="tel">
+            </div>
+            
             <div class="conInput explain">
               <div class="name">
                 상세설명
               </div>
               <textarea name="content">
-              	${ pb.content }
+              
               </textarea>
+              
             </div>
 
 
-            <input type="submit" value="수정완료" class="btn white">
+            <input type="submit" value="작성완료" class="btn white">
           </div>
         </div>
         

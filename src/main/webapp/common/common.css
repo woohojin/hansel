@@ -131,7 +131,7 @@ img {
   box-shadow: 1px 1px 5px #27352c;
 }
 .signInForm form div h3 {
-  width: 77px;
+  width: 110px;
   height: 100%;
   font-size: 18px;
   display: flex;
@@ -156,3 +156,4 @@ img {
   font-weight: bold;
   cursor: pointer;
 }
+
