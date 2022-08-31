@@ -449,7 +449,7 @@ public class BoardController {
 		request.setAttribute("maxPage", maxPage);
 		request.setAttribute("pageInt", pageInt);
 		
-		return "board/QBoard";
+		return "board/qaBoard";
 		
 	}
 	
@@ -462,7 +462,7 @@ public class BoardController {
 	public String QBoardPro(QBoard qBoard) throws Exception {
 		
 		String msg = "게시물 등록 실패";
-		String url = "/board/QBoardForm";
+		String url = "/board/qaBoardForm";
 		
 		String userId = (String) session.getAttribute("userId");
 		
@@ -472,7 +472,7 @@ public class BoardController {
 		
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/QBoard";
+			url = "/board/qaBoard";
 		}
 		
 		request.setAttribute("msg", msg);
@@ -488,14 +488,14 @@ public class BoardController {
 		
 		request.setAttribute("QB", QB);
 		
-		return "board/QBoardUpdate";
+		return "board/qaBoardUpdate";
 	}
 	
 	@RequestMapping("QBoardUpdatePro")
 	public String QBoardUpdatePro(QBoard qboard) throws Exception {
 		
 		String msg = "게시물 등록 실패";
-		String url = "/board/QBoardUpdate";
+		String url = "/board/qaBoardUpdate";
 		
 		System.out.println(qboard.getQId());
 		
@@ -503,7 +503,7 @@ public class BoardController {
 		
 		if(num>0) {
 			msg = "게시물을 수정하였습니다.";
-			url = "/board/QBoard";
+			url = "/board/qaBoard";
 		}
 		
 		request.setAttribute("msg", msg);
@@ -516,12 +516,12 @@ public class BoardController {
 	public String QBoardDelete(int QId) throws Exception {
 		
 		String msg = "게시물 삭제 실패";
-		String url = "/board/QBoardInfo";
+		String url = "/board/qaBoardInfo";
 		
 		int num = ab.boardDisable(QId);
 		if(num>0) {
 			msg = "게시물을 삭제하였습니다.";
-			url = "/board/QBoard";
+			url = "/board/qaBoard";
 		}
 		
 		request.setAttribute("msg", msg);
