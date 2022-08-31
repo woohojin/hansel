@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/view/board/reviewBoardForm">
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/petBoardForm.css">
 
 <script type="text/javascript">
 		function win_upload() {
@@ -21,7 +21,7 @@
 	<h2>후기 게시물 작성</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/reviewBoardPro" name="f" method="post">
-
+		<input type="hidden" name="userId" value="${ sessionScope.userId }">
       <div class="inner center">
         
         <div class="formImg">
@@ -32,21 +32,21 @@
           </a>
         </div>
         
-        <div class="formContent">
+        <div class="formContent" style="height: 65%;">
           <div class="inner">
-
-            <div class="conInput center">
-              <div class="name center">
-                이름
-              </div>
-              <input type="text" name="petName">
-            </div>
 
            <div class="conInput center">
               <div class="name center">
                 제목
               </div>
               <input type="text" name="subject">
+            </div>
+            
+            <div class="conInput center">
+              <div class="name center" style="width: 200px;">
+                반려동물 이름
+              </div>
+              <input type="text" name="petName">
             </div>
 
            <div class="conInput explain">
