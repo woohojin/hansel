@@ -50,20 +50,22 @@
                   ${ b.subject }
                 </div>
               </div>
-
-              <div class="infoContent center">
-                <div class="name">내용 :</div>
-                <div>
-                 ${ b.content }
-                </div>
-              </div>
-
+              
               <div class="infoContent center">
                 <div class="name">이름 :</div>
                 <div>
                   ${ b.petName }
                 </div>
               </div>
+
+              <div class="infoContent center" style="flex-wrap: wrap;">
+                <div class="name" >내용 :</div>
+                <div>
+                 ${ b.content }
+                </div>
+              </div>
+
+              
 
               <div class="infoContent center regDate">
                 <div class="name">작성일 :</div>

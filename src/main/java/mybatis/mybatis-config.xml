@@ -9,6 +9,7 @@
 		<typeAlias type="model.PetBoard" alias="petBoard" />
 		<typeAlias type="model.AdoptBoard" alias="adoptBoard" />
 		<typeAlias type="model.QBoard" alias="QBoard" />
+		<typeAlias type="model.ReviewBoard" alias="reviewBoard" />
 	</typeAliases>
 	
 	<mappers><!-- sql 구문 -->
@@ -16,6 +17,7 @@
 		<mapper resource="mybatis/PetBoardMapper.xml"/>
 		<mapper resource="mybatis/AdoptBoardMapper.xml"/>
 		<mapper resource="mybatis/QBoardMapper.xml"/>
+		<mapper resource="mybatis/ReviewBoardMapper.xml"/>
 	</mappers>
 	
 </configuration>

@@ -404,7 +404,9 @@ public class BoardController {
 		request.setAttribute("url", url);
 		
 		return "alert";
-	}@Autowired
+	}
+	
+	@Autowired
 	ReviewBoardMybatisDAO rb;
 
 	@RequestMapping("reviewBoard")
@@ -454,7 +456,6 @@ public class BoardController {
 	public String reviewBoardInfo(int reviewId) throws Exception {
 		
 		ReviewBoard pb = rb.boardOne(reviewId);
-		rb.readCountUp(reviewId);
 		
 		request.setAttribute("pb", pb);
 		
@@ -463,6 +464,8 @@ public class BoardController {
 	
 	@RequestMapping("reviewBoardForm")
 	public String reviewBoardForm() throws Exception {
+		
+		
 		return "board/reviewBoardForm";
 	}
 	
@@ -472,13 +475,55 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/reviewBoardForm";
 		
-		String userId = (String) session.getAttribute("userId");
-		
-		reviewBoard.setUserId(userId);
-		
 		int num = rb.insertBoard(reviewBoard);
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
+			url = "/board/reviewBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	@RequestMapping("reviewBoardUpdate")
+	public String reviewBoardUpdate(int reviewId) throws Exception {
+		
+		ReviewBoard pb = rb.boardOne(reviewId);
+		
+		request.setAttribute("pb", pb);
+		
+		return "board/reviewBoardUpdate";
+	}
+	
+	@RequestMapping("reviewBoardUpdatePro")
+	public String reviewBoardUpdatePro(ReviewBoard reviewBoard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/reviewBoardUpdate";
+		
+		int num = rb.boardUpdate(reviewBoard);
+		if(num>0) {
+			msg = "게시물을 등록하였습니다.";
+			url = "/board/reviewBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
+	
+	@RequestMapping("reviewBoardDelete")
+	public String reviewBoardDelete(int reviewId) throws Exception {
+		
+		String msg = "게시물 삭제 실패";
+		String url = "/board/reviewBoardInfo";
+		
+		int num = rb.boardDisable(reviewId);
+		if(num>0) {
+			msg = "게시물을 삭제하였습니다.";
 			url = "/board/reviewBoard";
 		}
 		
@@ -621,12 +666,6 @@ public class BoardController {
 		return "alert";
 	}
 	
-	
-	
-	
-	
-	
-	
 	@RequestMapping("pictureimgForm")
 	public String pictureimgForm() throws Exception {
 		
@@ -651,7 +690,6 @@ public class BoardController {
 		 
 		 request.setAttribute("filename", filename);
 		 return "board/pictureimgPro";
-	 
 	 
 	 }
 	

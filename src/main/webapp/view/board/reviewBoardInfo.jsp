@@ -12,7 +12,7 @@
 			const con = confirm("게시물을 삭제하시겠습니까??");
 			if(con) {
 				console.log(con);
-				location.href = "${ pageContext.request.contextPath }/board/adoptBoardDelete?adoptId=${pb.adoptId}";
+				location.href = "${ pageContext.request.contextPath }/board/reviewBoardDelete?reviewId=${pb.reviewId}";
 			} else {
 				console.log(con);
 				return;
@@ -35,53 +35,18 @@
       <div class="petInfo">
         <div class="inner">
           <form action="" method="post">
-
-            <div class="infoContent center read">
-              <div class="name">조회수 :</div> 
-              <div>
-                ${ pb.readCnt }
-              </div>
-            </div>
             
             <div class="infoContent center">
-              <div class="name">이름 :</div>
+              <div class="name">반려동물 이름 :</div>
               <div>
                 ${ pb.petName }
               </div>
             </div>
-            
-            <div class="infoContent center">
-              <div class="name">성별 :</div>
-              <div>
-                 ${ pb.petGender == 1 ? "남아" : "여아" }
-            </div>
-          </div>
-          
-          <div class="infoContent center">
-            <div class="name">특징 :</div>
-            <div>
-              ${ pb.petDetail }
-            </div>
-          </div>
 
-          <div class="infoContent center">
-            <div class="name">중성화 :</div>
+          <div class="infoContent">
+            <div class="name">제목</div>
             <div>
-              ${ pb.neuter == 0 ? "미완료" : "완료" }
-            </div>
-          </div>
-
-          <div class="infoContent center">
-            <div class="name">예방접종 :</div>
-            <div>
-              ${ pb.vaccin == 0 ? "미완료" : "완료" }
-            </div>
-          </div>
-          
-          <div class="infoContent center">
-            <div class="name">보호자 전화번호 :</div>
-            <div>
-              ${ pb.tel }
+              ${ pb.subject }
             </div>
           </div>
           
@@ -99,13 +64,13 @@
             </div>
           </div>
           
-          <a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+          <a href="${ pageContext.request.contextPath }/board/reviewBoardUpdate?reviewId=${pb.reviewId}">
 				수정 
 			</a>
 			<a href="javascript:confirmDisable()">
 				삭제
 			</a>
-			<a href="${ pageContext.request.contextPath }/board/adoptBoard">
+			<a href="${ pageContext.request.contextPath }/board/reviewBoard">
 				목록
 			</a>
           

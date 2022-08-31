@@ -13,6 +13,7 @@ public class ReviewBoard {
 	String petName;
 	String petType;
 	String petImg;
+	
 	public int getReviewId() {
 		return reviewId;
 	}

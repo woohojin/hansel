@@ -32,7 +32,7 @@
         <li>입양공고</li>
       </a>
       
-      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=3">
+      <a href="${ pageContext.request.contextPath }/board/reviewBoard">
         <li>입양후기</li>
       </a>
       
