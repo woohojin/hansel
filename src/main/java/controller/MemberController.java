@@ -86,36 +86,22 @@ public class MemberController {
 	}
 
 	@RequestMapping("signUpPro")
-	public String signUpPro(String pwd, String pwdOk, String userId, Member mem) throws Exception {
-//		한글 인코딩
-		request.setCharacterEncoding("utf-8");
+	public String signUpPro(String pwd, String pwdOk, String userId, Member member) throws Exception {
 		
 		String msg = "비밀번호와 비밀번호확인 이 일치 하지 않습니다.";
 		String url = "/member/signUp";
 		
-		mem = md.selectOne(userId);
+		Member mem = md.selectOne(userId);
 		
 //		아이디 유효성 확인
 		if(mem == null) {
 	//		비밀번호 확인 false 면 회원가입 페이지
 			if(pwd.equals(pwdOk)) {
 				
-	//			member 의 setter에 각각 정보 입력
-				mem = new Member();
-				mem.setUserId(request.getParameter("userId"));
-				mem.setPwd(request.getParameter("pwd"));
-				mem.setAddress(request.getParameter("address"));
-				mem.setEmail(request.getParameter("email"));
-				mem.setTel(request.getParameter("tel"));
-				mem.setPetName(request.getParameter("petName"));
-				mem.setLogin(1);
-				mem.setUserType(0);
-				mem.setUserReport(0);
-				
-				int num = md.insertUser(mem);
+				int num = md.insertUser(member);
 				
 				if(num > 0) {
-					msg = mem.getUserId() + "님의 가입이 완료되었습니다.";
+					msg = userId + "님의 가입이 완료되었습니다.";
 					url = "/member/signIn";
 				} else {
 					msg = "회원가입을 실패 했습니다.";
