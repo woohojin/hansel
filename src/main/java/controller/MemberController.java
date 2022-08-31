@@ -52,7 +52,9 @@ public class MemberController {
 	
 	@RequestMapping("signInPro")
 	public String signInPro(String userId, String pwd, String autoLogin) throws Exception {
-
+		
+		HttpSession session = request.getSession(); 
+		
 		String msg = "";
 		String url = "/member/signIn";
 		Cookie[] cookies = request.getCookies();
@@ -104,24 +106,22 @@ public class MemberController {
 	}
 
 	@RequestMapping("signUpPro")
-	public String signUpPro(String pwd, String pwdOk, String userId, Member mem) throws Exception {
-//		한글 인코딩
-		request.setCharacterEncoding("utf-8");
+	public String signUpPro(String pwd, String pwdOk, String userId, Member member) throws Exception {
 		
 		String msg = "비밀번호와 비밀번호확인 이 일치 하지 않습니다.";
 		String url = "/member/signUp";
 		
-		mem = md.selectOne(userId);
+		Member mem = md.selectOne(userId);
 		
 //		아이디 유효성 확인
-		if(mem.getUserId() == null) {
+		if(mem == null) {
 	//		비밀번호 확인 false 면 회원가입 페이지
 			if(pwd.equals(pwdOk)) {
-	
-				int num = md.insertUser(mem);
+				
+				int num = md.insertUser(member);
 				
 				if(num > 0) {
-					msg = mem.getUserId() + "님의 가입이 완료되었습니다.";
+					msg = userId + "님의 가입이 완료되었습니다.";
 					url = "/member/signIn";
 				} else {
 					msg = "회원가입을 실패 했습니다.";

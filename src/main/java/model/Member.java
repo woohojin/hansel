@@ -11,7 +11,8 @@ public class Member {
 	int userType;
 	int userReportCnt;
 	String userReportText;
-	
+
+
 	public String getUserId() {
 		return userId;
 	}
@@ -65,12 +66,14 @@ public class Member {
 	}
 	public void setUserReportCnt(int userReportCnt) {
 		this.userReportCnt = userReportCnt;
+
 	}
 	public String getUserReportText() {
 		return userReportText;
 	}
 	public void setUserReportText(String userReportText) {
 		this.userReportText = userReportText;
+
 	}
 	
 }
