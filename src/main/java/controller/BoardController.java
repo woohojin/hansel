@@ -19,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import model.AdoptBoard;
 import model.PetBoard;
+import model.QBoard;
 import service.AdoptBoardMybatisDAO;
 import service.BoardMybatisDAO;
+import service.QBoardMybatisDAO;
 
 @Controller
 @RequestMapping("/board/")
@@ -387,7 +389,7 @@ public class BoardController {
 	public String adoptBoardDelete(int adoptId) throws Exception {
 		
 		String msg = "게시물 삭제 실패";
-		String url = "/board/petBoardInfo";
+		String url = "/board/adoptBoardInfo";
 		
 		int num = ab.boardDisable(adoptId);
 		if(num>0) {
@@ -401,16 +403,132 @@ public class BoardController {
 		return "alert";
 	}
 	
+	@Autowired
+	QBoardMybatisDAO qb;
 	
+	@RequestMapping("QBoard")
+	public String QBoard() throws Exception {
+		
+		if(request.getParameter("boardid") != null) {
+			session.setAttribute("boardid", request.getParameter("boardid"));
+			session.setAttribute("pageNum", "1");
+		}
+		
+		int limit = 8; // 한 page당 게시물 개수
+		
+		if(request.getParameter("pageNum") != null) {
+			session.setAttribute("pageNum", request.getParameter("pageNum"));
+		}
+		String pageNum = (String) session.getAttribute("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		
+		int pageInt = Integer.parseInt(pageNum);
+		int boardCount = qb.boardCount();
+		List<QBoard> list = qb.boardList(pageInt, limit);
+		
+//		pagination 개수
+		int bottomLine = 3;
+		
+		int start = (pageInt-1)/bottomLine*bottomLine+1;
+		int end = start + bottomLine - 1;
+		int maxPage = (boardCount/limit) + (boardCount%limit==0? 0 : 1);
+		if(end > maxPage) {
+			end = maxPage;
+		}
+		
+		int boardNum = boardCount - (pageInt-1)*limit;
+		
+		request.setAttribute("list", list);
+		request.setAttribute("boardCount", boardCount);
+		request.setAttribute("boardNum", boardNum);
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
+		request.setAttribute("bottomLine", bottomLine);
+		request.setAttribute("maxPage", maxPage);
+		request.setAttribute("pageInt", pageInt);
+		
+		return "board/QBoard";
+		
+	}
 	
+	@RequestMapping("QBoardForm")
+	public String QBoardForm() throws Exception {
+		return "board/QBoardForm";
+	}
 	
+	@RequestMapping("QBoardPro")
+	public String QBoardPro(QBoard qBoard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/QBoardForm";
+		
+		String userId = (String) session.getAttribute("userId");
+		
+		qBoard.setUserId(userId);
+		
+		int num = qb.insertBoard(qBoard);
+		
+		if(num>0) {
+			msg = "게시물을 등록하였습니다.";
+			url = "/board/QBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
 	
+	@RequestMapping("QBoardUpdate")
+	public String QBoardUpdate(int QId) throws Exception {
+		
+		QBoard QB = qb.boardOne(QId);
+		
+		request.setAttribute("QB", QB);
+		
+		return "board/QBoardUpdate";
+	}
 	
+	@RequestMapping("QBoardUpdatePro")
+	public String QBoardUpdatePro(QBoard qboard) throws Exception {
+		
+		String msg = "게시물 등록 실패";
+		String url = "/board/QBoardUpdate";
+		
+		System.out.println(qboard.getQId());
+		
+		int num = qb.boardUpdate(qboard);
+		
+		if(num>0) {
+			msg = "게시물을 수정하였습니다.";
+			url = "/board/QBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
 	
-	
-	
-	
-	
+	@RequestMapping("QBoardDelete")
+	public String QBoardDelete(int QId) throws Exception {
+		
+		String msg = "게시물 삭제 실패";
+		String url = "/board/QBoardInfo";
+		
+		int num = ab.boardDisable(QId);
+		if(num>0) {
+			msg = "게시물을 삭제하였습니다.";
+			url = "/board/QBoard";
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+	}
 	
 	
 	

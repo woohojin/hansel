@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="QBoard">
+	
+	<select id="boardCount" resultType="int">
+		select nvl(count(*), 0) from QBoard where postDisable = 0
+	</select>
+	
+	<select id="boardList" parameterType="map" resultType="QBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from QBoard 
+					where postDisable = 0
+					order by QId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
+	<insert id="insertBoard" parameterType="QBoard">
+		insert into QBoard values (QId_seq.nextval, 0,  #{userId}, #{subject}, #{content},  to_char(sysdate, 'yy/mm/dd'), 0)
+	</insert>
+	
+	<select id="boardOne" parameterType="int" resultType="QBoard">
+		select * from QBoard where QId = #{value}
+	</select>
+	
+	<update id="readCountUp" parameterType="int">
+		update QBoard set readcnt = readcnt + 1 where QId = #{value}
+	</update>
+	
+	<insert id="insertReply" parameterType="QBoard">
+		insert into QBoard values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="QBoard">
+		update QBoard set subject = #{subject}, content #{content} where QId = #{QId}
+	</update>
+	
+	<update id="boardDisable" parameterType="int">
+		update QBoard set postDisable = #{postDisable} where QId = #{QId}
+	</update>
+	
+	<delete id="boardDelete" parameterType="int">
+		delete from QBoard where QId = #{QId}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
