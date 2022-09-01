@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.memberInfo {
+  height: 600px;
+  padding-top: 30px;
+  background: none;
+  box-shadow: none;
+}
+.memberInfo .inner {
+  border-radius: 20px;
+  padding: 30px;
+  width: 30%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+  background-color: #F2EFE9;
+}
+.memberInfo .inner .subject {
+  height: 50px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.memberInfo .inner div {
+  height: 50px;
+  margin-bottom: 30px;
+}
+.memberInfo .inner div h3 {
+  width: 111px;
+  margin-right: 10px;
+  text-align: right;
+}
+.memberInfo .inner div .address {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+.memberInfo .inner a {
+  display: inline-block;
+}
