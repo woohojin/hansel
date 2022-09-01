@@ -235,12 +235,12 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/petBoardUpdate";
 		
-		System.out.println(petboard.getPostId());
+		int postId = petboard.getPostId();
 		
 		int num = bd.boardUpdate(petboard);
 		if(num>0) {
 			msg = "게시물을 수정하였습니다.";
-			url = "/board/petBoard";
+			url = "/board/petBoardInfo?postId="+postId;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -372,12 +372,12 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/adoptBoardUpdate";
 		
-		System.out.println(adoptboard.getAdoptId());
+		int adoptId = adoptboard.getAdoptId();
 		
 		int num = ab.boardUpdate(adoptboard);
 		if(num>0) {
 			msg = "게시물을 수정하였습니다.";
-			url = "/board/adoptBoard";
+			url = "/board/adoptBoardInfo?adoptId="+adoptId;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -501,10 +501,12 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/reviewBoardUpdate";
 		
+		int reviewId = reviewBoard.getReviewId();
+		
 		int num = rb.boardUpdate(reviewBoard);
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/reviewBoard";
+			url = "/board/reviewBoardInfo?reviewId="+reviewId;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -633,11 +635,12 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/QBoardUpdate";
 		
+		int QId = qboard.getQId();
 		int num = qb.boardUpdate(qboard);
 		
 		if(num>0) {
 			msg = "게시물을 수정하였습니다.";
-			url = "/board/QBoard";
+			url = "/board/QBoardInfo?QId="+QId;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -652,7 +655,7 @@ public class BoardController {
 		String msg = "게시물 삭제 실패";
 		String url = "/board/QBoardInfo";
 		
-		int num = ab.boardDisable(QId);
+		int num = qb.boardDisable(QId);
 		if(num>0) {
 			msg = "게시물을 삭제하였습니다.";
 			url = "/board/QBoard";
@@ -672,7 +675,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("pictureimgPro") public String
-	 pictureimgPro(@RequestParam("picture") MultipartFile multipartFile) throws Exception {
+	pictureimgPro(@RequestParam("picture") MultipartFile multipartFile) throws Exception {
 	  
 		String path = request.getServletContext().getRealPath("/")+"view/board/img/";
 		 String filename = null;

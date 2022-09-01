@@ -52,9 +52,7 @@
           
           <div class="infoContent">
             <div class="name">상세설명</div>
-            <div>
-              ${ pb.content }
-            </div>
+            <textarea readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
           </div>
           
           <div class="infoContent center regDate">
