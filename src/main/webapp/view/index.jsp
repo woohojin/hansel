@@ -48,9 +48,8 @@
         </div>
         <div class="intro">
           헨젤과 그레텔은 집으로 돌아가기 위해 빵조각을 던졌어요. <br>
-          그 빵조각은 단순한 빵조각이 아닌 돌아가기 위한 희망이였을거에요. <br> <br>
-          헨젤 & 빵조각에서도 
-          반려동물과 그 가족들의 희망이 되어 드릴게요.
+          그 빵조각은 단순한 빵조각이 아닌 집으로 돌아가기 위한 희망이었어요. <br> <br>
+          헨젤 & 빵조각에서도 반려동물과 그 가족들의 희망이 되어 드릴게요.
         </div>
       </div>
     </div>
@@ -59,7 +58,7 @@
   <section class="module choose center">
     <div class="box">
       <h2 class="boxName center">
-        반려동물을 잃어 버리셨나요?
+        반려동물을 잃어버리셨나요?
       </h2>
       <div class="boxImg">
         <img src="${ pageContext.request.contextPath }/view/images/find.jpg" alt="find">
@@ -70,7 +69,7 @@
     </div>
     <div class="box">
       <h2 class="boxName center">
-        반려동물을 잃어 버리셨나요?
+        반려동물을 보호중이신가요?
       </h2>
       <div class="boxImg">
         <img src="${ pageContext.request.contextPath }/view/images/protect.jpg" alt="find">

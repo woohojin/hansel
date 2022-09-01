@@ -18,7 +18,7 @@
 
 	<section class="module form">
 	
-	<h2>${ bs.boardName } 게시물 작성</h2>
+	<h2>${ bs.boardName } 게시물 수정</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/petBoardUpdatePro" name="f" method="post">
 	  <input type="hidden" name="postId" value="${ pb.postId }" />
@@ -28,7 +28,7 @@
         	<input type="hidden" name="petImg" value="">
           <img src="${ pageContext.request.contextPath }/view/board/img/${pb.petImg}" id="pic" alt="">
           <a href="javascript:win_upload()" class="btn white">
-            사진 넣기 ${ pb.postId }
+            사진 넣기
           </a>
         </div>
         

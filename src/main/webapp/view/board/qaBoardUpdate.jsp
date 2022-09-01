@@ -12,7 +12,7 @@
 
 	<section class="module form" style="height: 430px; width: 50%; margin: 100px auto;">
 	
-	<h2 style="padding-left: 150px;"> 질문 작성</h2>
+	<h2 style="padding-left: 150px;"> 질문 수정</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/QBoardUpdatePro" name="f" method="post">
 

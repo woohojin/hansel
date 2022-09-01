@@ -35,7 +35,7 @@
       <div class="modContent center">
       
       	<c:if test="${ boardCount == 0 }">
-			<p>등록된 게시물이 없습니다. 작성부터 하고 좀 조회하세여</p>
+			<p>등록된 게시물이 없습니다.</p>
 		</c:if>
 		
         <c:if test="${ boardCount > 0 }">
@@ -68,11 +68,11 @@
                   ${ b.petDate }
                 </div>
               </div>
-
-              <div class="infoContent">
-                <div class="name">조회수 :</div>
+              
+  			  <div class="infoContent">
+                <div class="name">작성일 :</div>
                 <div>
-                  ${ b.readCnt }
+                  ${ b.regDate }
                 </div>
               </div>
 
@@ -90,13 +90,12 @@
                 </div>
               </div>
               
-              <div class="infoContent">
-                <div class="name">작성일 :</div>
+ 			  <div class="infoContent">
+                <div class="name">조회수 :</div>
                 <div>
-                  ${ b.regDate }
+                  ${ b.readCnt }
                 </div>
               </div>
-
             </div>
           </div>
         </div>

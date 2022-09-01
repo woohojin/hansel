@@ -492,7 +492,7 @@ public class BoardController {
 		
 		ReviewBoard pb = rb.boardOne(reviewId);
 		
-		request.setAttribute("pb", pb);
+		request.setAttribute("rb", pb);
 		
 		return "board/reviewBoardUpdate";
 	}

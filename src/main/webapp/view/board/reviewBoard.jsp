@@ -30,7 +30,7 @@
 
       <div class="modContent center">
         <c:if test="${ boardCount == 0 }">
-        	<p>등록된 게시물이 없습니다. 작성부터 하고 좀 조회하세여</p>
+        	<p>등록된 게시물이 없습니다.</p>
         </c:if>
         
         <c:if test="${ boardCount > 0 }">

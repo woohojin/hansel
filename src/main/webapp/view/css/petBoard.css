@@ -42,7 +42,7 @@
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent {
   display: flex;
-  margin-bottom: 22px;
+ /* margin-bottom: 22px; */
   justify-content: flex-start;
   border-bottom: 1px solid #F2EFE9;
   align-items: flex-start;

@@ -1,7 +1,9 @@
 @charset "UTF-8";
+
 .form {
   height: 655px;
   padding: 20px;
+  
 }
 .form > h2 {
   padding-left: 300px;
@@ -44,7 +46,6 @@
   width: 100%;
   justify-content: flex-start;
   height: 40px;
-  font-size: 18px;
   border-radius: 20px;
   overflow: hidden;
   margin-bottom: 10px;
