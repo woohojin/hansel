@@ -63,22 +63,28 @@ public class MemberController {
 		Member mem = md.selectOne(userId);
 //		유저의 유무 확인
 		if(mem != null) {
+			
 //			현재 입력한 비밀번호와 db에 있는 비밀번호 비교
 			if(pwd.equals(mem.getPwd())) {
-				session.setAttribute("userId", userId);
-				mem.setLogin(1);
-				md.updateLogin(mem);
-				if(autoLogin != null) {
-					Cookie cookie = new Cookie("userId", userId);
-					cookie.setMaxAge(60*60*24*30);
-					cookie.setPath("/");
-					response.addCookie(cookie);
+				if(mem.getLogin() == 0) {
+					session.setAttribute("userId", userId);
+					mem.setLogin(1);
+					md.updateLogin(mem);
+					if(autoLogin != null) {
+						Cookie cookie = new Cookie("userId", userId);
+						cookie.setMaxAge(60*60*24*30);
+						cookie.setPath("/");
+						response.addCookie(cookie);
+					}
+					msg = mem.getUserId() + "님이 로그인 하였습니다.";
+					url = "/member/index";
+				} else {
+					msg = "현재 다른기기에서 로그인중입니다.";
 				}
-				msg = mem.getUserId() + "님이 로그인 하였습니다.";
-				url = "/member/index";
 			} else {
 				msg ="비밀번호가 틀립니다.";
 			}
+			
 		} else {
 			msg = "유효하지 않은 회원입니다.";
 		}
@@ -157,37 +163,36 @@ public class MemberController {
 		return "alert";
 	}
 	
-	@RequestMapping("/")
-	public String Cookie() throws Exception {
-		
-		HttpSession session = request.getSession(); 
-		
-		String userId = (String)session.getAttribute("userId");
-		Member mem = md.selectOne(userId);
-		mem.setLogin(0);
-		md.updateLogin(mem);
-
-		Cookie cookie = new Cookie("userId", userId);
-		cookie.setMaxAge(0);
-		cookie.setPath("/");
-		response.addCookie(cookie);
-		
-		session.invalidate();
-		
-		String msg = userId + "님이 로그아웃 되었습니다.";
-		String url = "/member/index"; 
-		
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		
-		return "alert";
-	}
-	
 //	이메일 페이지
 	@RequestMapping("email")
 	public String sendEmail() throws Exception {
 		
 		return "member/email";
+	}
+	
+//	내정보 페이지
+	@RequestMapping("memberInfo")
+	public String memberInfo() throws Exception {
+		
+		return "member/memberInfo";
+	}
+	
+	@RequestMapping("memberUpdate")
+	public String memberUpdate() throws Exception {
+		
+		return "member/memberUpdate";
+	}
+	
+	@RequestMapping("memberUpdatePro")
+	public String memberUpdatePro() throws Exception {
+		
+		return "member/memberUpdatePro";
+	}
+	
+	@RequestMapping("memberDelete")
+	public String memberDelete() throws Exception {
+		
+		return "member/memberDelete";
 	}
 	
 }

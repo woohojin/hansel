@@ -19,7 +19,7 @@
 	<section class="module form">
 	
 
-	<h2>후기 게시물 작성</h2>
+	<h2>후기 게시물 수정</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/reviewBoardUpdatePro" name="f" method="post">
 		<input type="hidden" name="userId" value="${ sessionScope.userId }">

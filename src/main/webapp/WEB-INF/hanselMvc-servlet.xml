@@ -11,6 +11,7 @@
 					       http://www.springframework.org/schema/mvc
 					       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
 	<!-- web 환경에서 객체 주입을 위한 설정 : @Autowired, @Controller... 기능 사용 -->
 	<mvc:annotation-driven/>
 	
@@ -39,8 +40,8 @@
          destroy-method="close">
          <property name="driverClass"><value>oracle.jdbc.OracleDriver</value></property>
          <property name="jdbcUrl"><value>jdbc:oracle:thin:@localhost:1521:xe</value></property>
-         <property name="user"><value>c##cube</value></property>
-         <property name="password"><value>1029</value></property>
+         <property name="user"><value>c##kic</value></property>
+         <property name="password"><value>root</value></property>
          <property name="maxPoolSize"><value>20</value></property><!-- 최대 연결 객체 갯수 -->
          <property name="minPoolSize"><value>3</value></property> <!-- 최소 연결 객체 갯수 -->
          <property name="initialPoolSize"><value>5</value></property> <!-- 초기 연결 객체 갯수 -->
@@ -55,5 +56,30 @@
    	<bean class="org.mybatis.spring.SqlSessionTemplate">
    		<constructor-arg ref="sqlSessionFactory"/>
    	</bean>
+   	
+   	<mvc:interceptors>
+   		<mvc:interceptor>
+   			<mvc:mapping path="/member/memberInfo" />
+   			<mvc:mapping path="/member/memberUpdateForm" />
+   			<mvc:mapping path="/member/memberDelete" />
+   			
+   			<mvc:mapping path="/board/petBoardForm" />
+   			<mvc:mapping path="/board/adoptBoardForm" />
+   			<mvc:mapping path="/board/reviewBoardForm" />
+   			<mvc:mapping path="/board/QBoardForm" />
+   			
+   			<mvc:mapping path="/board/petBoardUpdate" />
+   			<mvc:mapping path="/board/adoptBoardUpdate" />
+   			<mvc:mapping path="/board/reviewBoardUpdate" />
+   			<mvc:mapping path="/board/QBoardUpdate" />
+   			
+   			<bean class="service.LoginInterceptor"/>
+   		</mvc:interceptor>
+   		
+   		<mvc:interceptor>
+   			<mvc:mapping path="/member/memberInfo" />
+   			<bean class="service.AdminInterceptor"/>
+   		</mvc:interceptor>
+   	</mvc:interceptors>
 	   					
 </beans>

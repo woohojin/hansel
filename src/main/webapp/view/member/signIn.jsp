@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 </head>
 <body>
+
+	<c:if test="${ param.id eq 'login' }">
+		<script>alert("login 하세요")</script>
+	</c:if>
+	<c:if test="${ param.id eq 'fobidden' }">
+		<script>alert("사용권한이 없습니다.")</script>
+	</c:if>
 
 	<section class="signInForm">
     <figure>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,13 +102,15 @@
             </div>
           </div>
           
+          <c:if test="${ sessionScope.userId == pb.userId }">
           	<a href="${ pageContext.request.contextPath }/board/petBoardUpdate?postId=${pb.postId}">
 				수정 
 			</a>
 			<a href="javascript:confirmDisable()">
 				삭제
 			</a>
-			<a href="${ pageContext.request.contextPath }/board/petBoard">
+		  </c:if>
+		   <a href="${ pageContext.request.contextPath }/board/petBoard">
 				목록
 			</a>
           

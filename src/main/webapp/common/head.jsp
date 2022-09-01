@@ -57,7 +57,7 @@
     </c:if>
     
     <c:if test="${sessionScope.userId != null}">
-      <a href="${ pageContext.request.contextPath }/member/userInfo">
+      <a href="${ pageContext.request.contextPath }/member/memberInfo">
         <li>내정보</li>
       </a>
       

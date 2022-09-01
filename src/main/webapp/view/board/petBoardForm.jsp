@@ -131,7 +131,7 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("roadAddress").value = roadAddr.slice(0,6);
+                document.getElementById("roadAddress").value = roadAddr;
               
                 //document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
                 
