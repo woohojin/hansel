@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 
 	<%!  public String getCookieValue(Cookie[] cookies, String cookieName) {
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals(cookieName)) {
-				return cookie.getValue();
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals(cookieName)) {
+					return cookie.getValue();
+				}
 			}
+			return null;
 		}
-		return null;
-	}
 	%>
  <% 
  	Cookie[] cookies = request.getCookies();

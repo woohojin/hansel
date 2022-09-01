@@ -32,8 +32,8 @@
         </div>
         <div class="">
           <h3>주소</h3>
-          <div class="address">
-            <input type="text" id="roadAddress" name="address" placeholder="예)서울 관악구" value="">
+          <div class="address" style="margin-bottom: 0;">
+            <input style="border-radius: 0;" type="text" id="roadAddress" name="address" placeholder="예)서울 관악구" value="">
           	<input type="button" onclick="execDaumPostcode()" value="주소 검색">
           </div>
         </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="">
           <h3>전화번호</h3>
-          <input type="text" name="tel" required>
+          <input type="number" name="tel" oninput="maxLengthCheck(this)" maxlength="11" placeholder="예) 01012345678" required>
         </div>
         <div class="">
           <h3>반려동물 이름</h3>
@@ -75,6 +75,12 @@
 			return false;
 		}
 		return true;
+	}
+  
+  	function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	      object.value = object.value.slice(0, object.maxLength);
+	    }    
 	}
   </script>
   

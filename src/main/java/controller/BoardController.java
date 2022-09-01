@@ -34,8 +34,6 @@ public class BoardController {
 	Model m;
 	HttpSession session;
 
-	   
-
 	@ModelAttribute
 	void init(HttpServletRequest request, Model m) {
       this.request = request;

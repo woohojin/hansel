@@ -41,23 +41,22 @@
   padding: 10px;
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent {
-  display: flex;
  /* margin-bottom: 22px; */
-  justify-content: flex-start;
   border-bottom: 1px solid #F2EFE9;
-  align-items: flex-start;
   padding-right: 28px;
+}
+.petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .place {
+	display: inline-block;
+	width: 173px;
+	font-size: 15px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .name {
   font-weight: bold;
   margin-bottom: 3px;
   margin-right: 5px;
-}
-.petBoard .inner .modPage {
-  width: 100%;
-  height: 60px;
-  font-size: 20px;
-  border: 1px solid #000;
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .date {
   width: 100px;

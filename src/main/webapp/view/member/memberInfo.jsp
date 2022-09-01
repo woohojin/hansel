@@ -4,9 +4,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/memberInfo.css">
 </head>
 <body>
+<section class="module memberInfo center">
+    <div class="inner center">
+        <h2 class="subject center">
+          회원정보
+        </h2>
+          <div class="name center">
+            <h3>아이디</h3>
+            <span>test123</span>
+          </div>
+          <div class="center">
+            <h3>비밀번호</h3>
+            <input type="password" name="pwd" placeholder="8자리 이상의 비밀번호를 입력해 주세요" required>
+          </div>
+          <div class="center">
+            <h3>주소</h3>
+            <span class="address">
+              서울시 얄라뽕따이
+            </span>
+          </div>
+          <div class="center">
+            <h3>이메일</h3>
+            <span>
+              test@name.com
+            </span>
+          </div>
+          <div class="center">
+            <h3>전화번호</h3>
+            <span>
+              010-1111-1111
+            </span>            
+          </div>
+          <div class="center">
+            <h3>반려동물 이름</h3>
+            웃음이
+          </div>
+          <div class="box">
 
+            <a  href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+              회원수정
+            </a>
+            <a href="javascript:confirmDisable()">
+              회원탈퇴
+            </a>
+            <a href="${ pageContext.request.contextPath }/board/adoptBoard">
+              비밀번호 변경
+            </a>
+          </div>
+  
+      </div>
+</section>
 </body>
 </html>

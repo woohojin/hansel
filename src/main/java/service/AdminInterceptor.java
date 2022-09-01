@@ -16,7 +16,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		String auth = (String) session.getAttribute("userId");
 		
 		if(auth == null || !auth.equals("admin")) {
-			response.sendRedirect(request.getContextPath() + "/member/loginForm?id=fobidden");
+			response.sendRedirect(request.getContextPath() + "/member/signIn?id=fobidden");
 			return false;
 		} else {
 			return true;

@@ -1,7 +1,14 @@
 @charset "UTF-8";
 .qa {
+  position: relative;
   height: 600px;
   padding: 20px 300px;
+}
+.qa .modPage {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .qa .inner .qaName {
   font-size: 30px;

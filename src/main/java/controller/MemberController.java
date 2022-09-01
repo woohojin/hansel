@@ -40,7 +40,6 @@ public class MemberController {
 //	메인 페이지
 	@RequestMapping("index")
 	public String index() throws Exception {
-		
 		return "index";
 	}
 	
@@ -54,8 +53,6 @@ public class MemberController {
 	@RequestMapping("signInPro")
 	public String signInPro(String userId, String pwd, String autoLogin) throws Exception {
 		
-		HttpSession session = request.getSession(); 
-		
 		String msg = "";
 		String url = "/member/signIn";
 		
@@ -66,21 +63,17 @@ public class MemberController {
 			
 //			현재 입력한 비밀번호와 db에 있는 비밀번호 비교
 			if(pwd.equals(mem.getPwd())) {
-				if(mem.getLogin() == 0) {
-					session.setAttribute("userId", userId);
-					mem.setLogin(1);
-					md.updateLogin(mem);
-					if(autoLogin != null) {
-						Cookie cookie = new Cookie("userId", userId);
-						cookie.setMaxAge(60*60*24*30);
-						cookie.setPath("/");
-						response.addCookie(cookie);
-					}
-					msg = mem.getUserId() + "님이 로그인 하였습니다.";
-					url = "/member/index";
-				} else {
-					msg = "현재 다른기기에서 로그인중입니다.";
+//				mem.setLogin(1);
+//				md.updateLogin(mem);
+				session.setAttribute("userId", userId);
+				if(autoLogin != null) {
+					Cookie cookie = new Cookie("userId", userId);
+					cookie.setMaxAge(60*60*24*30);
+					cookie.setPath("/");
+					response.addCookie(cookie);
 				}
+				msg = mem.getUserId() + "님이 로그인 하였습니다.";
+				url = "/member/index";
 			} else {
 				msg ="비밀번호가 틀립니다.";
 			}
@@ -115,7 +108,6 @@ public class MemberController {
 			if(pwd.equals(pwdOk)) {
 				
 				int num = md.insertUser(member);
-				
 				if(num > 0) {
 					msg = userId + "님의 가입이 완료되었습니다.";
 					url = "/member/signIn";
@@ -139,12 +131,10 @@ public class MemberController {
 	@RequestMapping("logout")
 	public String logout() throws Exception {
 		
-		HttpSession session = request.getSession(); 
-		
 		String userId = (String)session.getAttribute("userId");
 		Member mem = md.selectOne(userId);
-		mem.setLogin(0);
-		md.updateLogin(mem);
+//		mem.setLogin(0);
+//		md.updateLogin(mem);
 
 		Cookie cookie = new Cookie("userId", userId);
 		cookie.setMaxAge(0);
@@ -191,6 +181,7 @@ public class MemberController {
 	
 	@RequestMapping("memberDelete")
 	public String memberDelete() throws Exception {
+		
 		
 		return "member/memberDelete";
 	}

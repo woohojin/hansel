@@ -77,9 +77,10 @@
    		</mvc:interceptor>
    		
    		<mvc:interceptor>
-   			<mvc:mapping path="/member/memberInfo" />
+   			<mvc:mapping path="/member/admin" />
    			<bean class="service.AdminInterceptor"/>
    		</mvc:interceptor>
+   		
    	</mvc:interceptors>
 	   					
 </beans>

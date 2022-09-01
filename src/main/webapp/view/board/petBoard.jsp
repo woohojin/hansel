@@ -50,51 +50,51 @@
             <div class="inner wrap">
 
               <div class="infoContent">
-                <div class="name">이름 : </div> 
-                <div>
+                <span class="name">이름 : </span> 
+                <span>
                   ${ b.petName }
-                </div>
+                </span>
               </div>
               <div class="infoContent">
-                <div class="name">${ bs.boardPlace } :</div>
-                <div>
+                <span class="name">${ bs.boardPlace } :</span>
+                <span class="place">
                   ${ b.place }
-                </div>
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">${ bs.boardDate } :</div>
-                <div>
+                <span class="name">${ bs.boardDate } :</span>
+                <span>
                   ${ b.petDate }
-                </div>
+                </span>
               </div>
               
   			  <div class="infoContent">
-                <div class="name">작성일 :</div>
-                <div>
+                <span class="name">작성일 :</span>
+                <span>
                   ${ b.regDate }
-                </div>
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">성별 :</div>
-                <div>
+                <span class="name">성별 :</span>
+                <span>
                   ${ b.petGender == 1 ? "남아" : "여아" }
-                </div>
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">특징 :</div>
-                <div>
+                <span class="name">특징 :</span>
+                <span>
                   ${ b.petDetail }
-                </div>
+                </span>
               </div>
               
  			  <div class="infoContent">
-                <div class="name">조회수 :</div>
-                <div>
+                <span class="name">조회수 :</span>
+                <span>
                   ${ b.readCnt }
-                </div>
+                </span>
               </div>
             </div>
           </div>
@@ -104,14 +104,15 @@
       </c:if>
       </div>
       
-
-      <div class="modPage center">
-        <a<c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}"</c:if> ><<</a>
-        <c:forEach var="p" begin="${ start }" end="${ end }">
-		  	<a href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}" >${ p }</a>
-		</c:forEach>
-		<a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${end + 3}"</c:if>>>></a>
-      </div>
+       <div class="modPage center">
+          <div class="inner center">
+            <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}" class="active"</c:if>>&laquo;</a>
+            <c:forEach var="p" begin="${ start }" end="${ end }">
+            <a class="active" href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}">${ p }</a>
+            </c:forEach>
+            <a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${end + 3}" class="active"</c:if>>&raquo;</a>
+          </div>
+        </div>
     </div>
   </section>
 

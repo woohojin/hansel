@@ -64,8 +64,20 @@
         
 
       </div>
+      
+      
 
     </div>
+    
+    <div class="modPage center">
+          <div class="inner center">
+            <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}" class="active"</c:if>>&laquo;</a>
+            <c:forEach var="p" begin="${ start }" end="${ end }">
+            <a class="active" href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}">${ p }</a>
+            </c:forEach>
+            <a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${end + 3}" class="active"</c:if>>&raquo;</a>
+          </div>
+        </div>
 
   </section>
 </body>
