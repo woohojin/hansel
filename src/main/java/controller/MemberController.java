@@ -164,11 +164,21 @@ public class MemberController {
 	@RequestMapping("memberInfo")
 	public String memberInfo() throws Exception {
 		
+
+		String userId = (String)session.getAttribute("userId");
+		Member mem = md.selectOne(userId);
+		
+		request.setAttribute("mem", mem);
+		
+
+		
 		return "member/memberInfo";
 	}
 	
 	@RequestMapping("memberUpdate")
 	public String memberUpdate() throws Exception {
+		
+		
 		
 		return "member/memberUpdate";
 	}

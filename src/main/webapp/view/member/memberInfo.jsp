@@ -14,7 +14,7 @@
         </h2>
           <div class="name center">
             <h3>아이디</h3>
-            <span>test123</span>
+            <span>${sessionScope.userId }</span>
           </div>
           <div class="center">
             <h3>비밀번호</h3>
@@ -23,24 +23,24 @@
           <div class="center">
             <h3>주소</h3>
             <span class="address">
-              서울시 얄라뽕따이
+              ${mem.address }
             </span>
           </div>
           <div class="center">
             <h3>이메일</h3>
             <span>
-              test@name.com
+             ${mem.email }
             </span>
           </div>
           <div class="center">
             <h3>전화번호</h3>
             <span>
-              010-1111-1111
+              ${mem.tel }
             </span>            
           </div>
           <div class="center">
             <h3>반려동물 이름</h3>
-            웃음이
+            ${mem.petName }
           </div>
           <div class="box">
 
