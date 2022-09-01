@@ -38,7 +38,7 @@
 	</update>
 	
 	<update id="boardDisable" parameterType="int">
-		update QBoard set postDisable = #{postDisable} where QId = #{QId}
+		update QBoard set postDisable = 1 where QId = #{QId}
 	</update>
 	
 	<delete id="boardDelete" parameterType="int">

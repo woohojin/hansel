@@ -18,7 +18,7 @@
           </div>
           <div class="center">
             <h3>비밀번호</h3>
-            <input type="password" name="pwd" placeholder="8자리 이상의 비밀번호를 입력해 주세요" required>
+            <input type="password" name="pwd" required>
           </div>
           <div class="center">
             <h3>주소</h3>
@@ -44,7 +44,7 @@
           </div>
           <div class="box">
 
-            <a  href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+            <a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
               회원수정
             </a>
             <a href="javascript:confirmDisable()">

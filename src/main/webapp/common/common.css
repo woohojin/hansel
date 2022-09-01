@@ -152,7 +152,6 @@ img {
   box-shadow: inset 0px -1px 3px #42594A;
 }
 .signInForm form .submit {
-	justify-content: space-between;
 	background: none;
 	box-shadow: none;
 }

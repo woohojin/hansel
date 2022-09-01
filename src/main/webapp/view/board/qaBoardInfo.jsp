@@ -50,7 +50,7 @@
           <div class="infoContent">
             <div class="name">내용</div>
             <div>
-              ${ pb.content }
+              <textarea readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
             </div>
           </div>
           
