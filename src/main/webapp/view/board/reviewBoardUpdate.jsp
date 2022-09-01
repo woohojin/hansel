@@ -18,46 +18,42 @@
 
 	<section class="module form">
 	
-	<h2>후기 게시물 작성</h2>
+	<h2>${ bs.boardName } 게시물 작성</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/reviewBoardUpdatePro" name="f" method="post">
-		<input type="hidden" name="userId" value="${ sessionScope.userId }">
-		<input type="hidden" name="reviewId" value="${ pb.reviewId }">
+	  <input type="hidden" name="reviewId" value="${ rb.reviewId }" />
       <div class="inner center">
         
         <div class="formImg">
         	<input type="hidden" name="petImg" value="">
           <img src="${ pageContext.request.contextPath }/view/board/img/${pb.petImg}" id="pic" alt="">
           <a href="javascript:win_upload()" class="btn white">
-            사진 넣기
+            사진 넣기 ${ rb.reviewId }
           </a>
         </div>
         
-        <div class="formContent" style="height: 65%;">
+        <div class="formContent">
           <div class="inner">
-
-           <div class="conInput center">
-              <div class="name center">
-                제목
-              </div>
-              <input type="text" name="subject" value="${ pb.subject }">
-            </div>
-            
+			
             <div class="conInput center">
-              <div class="name center" style="width: 200px;">
-                반려동물 이름
+              <div class="name center">
+                이름
               </div>
-              <input type="text" name="petName" value="${ pb.petName }">
+              <input type="text" name="petName" value="${ rb.petName }">
             </div>
-
-           <div class="conInput explain">
-              <div class="name">
-                상세설명
+			
+			<div class="conInput center">
+              <div class="name center">
+               	질문
               </div>
-              <textarea name="content">
-              	${ pb.content }
-              </textarea>
-              
+              <input type="text" name="subject" value="${ rb.subject }">
+            </div>
+			
+            <div class="conInput explain">
+              <div class="name">
+                내용
+              </div>
+              <textarea name="content">${ rb.content }</textarea>
             </div>
 
             <input type="submit" value="수정완료" class="btn white">

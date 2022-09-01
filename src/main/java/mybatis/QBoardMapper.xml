@@ -18,7 +18,7 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="QBoard">
-		insert into QBoard values (QId_seq.nextval, 0,  #{userId}, #{subject}, #{content},  to_char(sysdate, 'yy/mm/dd'), 0)
+		insert into QBoard values (QId_seq.nextval, 0,  #{userId}, #{subject}, #{content},  to_char(sysdate, 'yyyy-mm-dd'), 0)
 	</insert>
 	
 	<select id="boardOne" parameterType="int" resultType="QBoard">

@@ -179,9 +179,26 @@ img {
 	width: 20px;
 	height: 20px;
 }
-
-
-
+.form .inner .formContent .inner .conInput .address{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+.form .inner .formContent .inner .conInput .address input[type="text"]{
+	width: 230%;
+	background-color: white;
+}
+.form .inner .formContent .inner .conInput .address input[type="button"]{
+	background-color: #ffedc8;
+	cursor: pointer;
+	font-weight: 700;
+	padding-right: 10px;
+}
+.form .inner .formContent .inner .conInput input[type="date"]{
+	width: 99%;
+	padding-right: 17px;
+}
 
 
 

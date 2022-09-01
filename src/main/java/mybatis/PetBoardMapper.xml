@@ -18,7 +18,7 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="petBoard">
-		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy/mm/dd'), #{petName}, #{petGender}, 0, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
+		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petGender}, 0, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
 	</insert>
 	
 	<select id="boardOne" parameterType="int" resultType="petBoard">

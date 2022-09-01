@@ -17,7 +17,6 @@
 <body>
 
 	<section class="module form">
-	
 	<h2>입양공고 게시물 작성</h2>
 	
     <form action="${ pageContext.request.contextPath }/board/adoptBoardPro" name="f" method="post">
@@ -96,9 +95,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea name="content">
-              
-              </textarea>
+              <textarea name="content"></textarea>
               
             </div>
 

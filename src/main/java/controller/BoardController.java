@@ -99,8 +99,8 @@ public class BoardController {
 		case "2" :
 			boardSubject.clear();
 			boardSubject.put("boardName", "찾고있는 동물");
-			boardSubject.put("boardPlace", "잃은장소");
-			boardSubject.put("boardDate", "잃은날짜");
+			boardSubject.put("boardPlace", "실종장소");
+			boardSubject.put("boardDate", "실종날짜");
 		break;
 		}
 		
@@ -135,8 +135,8 @@ public class BoardController {
 		case "2" :
 			boardSubject.clear();
 			boardSubject.put("boardName", "찾고있는 동물");
-			boardSubject.put("boardPlace", "잃은장소");
-			boardSubject.put("boardDate", "잃은날짜");
+			boardSubject.put("boardPlace", "실종장소");
+			boardSubject.put("boardDate", "실종날짜");
 		break;
 		}
 		
@@ -191,8 +191,8 @@ public class BoardController {
 		case "2" :
 			boardSubject.clear();
 			boardSubject.put("boardName", "찾고있는 동물");
-			boardSubject.put("boardPlace", "잃은장소");
-			boardSubject.put("boardDate", "잃은날짜");
+			boardSubject.put("boardPlace", "실종장소");
+			boardSubject.put("boardDate", "실종날짜");
 		break;
 		}
 		
@@ -219,8 +219,8 @@ public class BoardController {
 		case "2" :
 			boardSubject.clear();
 			boardSubject.put("boardName", "찾고있는 동물");
-			boardSubject.put("boardPlace", "잃은장소");
-			boardSubject.put("boardDate", "잃은날짜");
+			boardSubject.put("boardPlace", "실종장소");
+			boardSubject.put("boardDate", "실종날짜");
 		break;
 		}
 		
@@ -492,7 +492,7 @@ public class BoardController {
 		
 		ReviewBoard pb = rb.boardOne(reviewId);
 		
-		request.setAttribute("pb", pb);
+		request.setAttribute("rb", pb);
 		
 		return "board/reviewBoardUpdate";
 	}

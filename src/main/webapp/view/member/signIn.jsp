@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
+
 	<section class="signInForm">
     <figure>
       <video src="${ pageContext.request.contextPath }/view/video/cat2.mp4" muted loop autoplay></video>

@@ -37,7 +37,7 @@
         </div>
         
         <c:if test="${ boardCount == 0 }">
-			<p>등록된 질문이 없습니다. 생각하세요.</p>
+			<p>등록된 질문이 없습니다.</p>
 		</c:if>
         
         <c:if test="${ boardCount > 0 }">
