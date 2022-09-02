@@ -75,15 +75,15 @@ public class BoardController {
 		int pageInt = Integer.parseInt(pageNum);
 		int boardCount = 0;
 		
+		List<PetBoard> list = null;
+		
 		if(petType == 0) {
-			List<PetBoard> list = bd.dogBoardList(pageInt, limit, boardid);
+			list = bd.dogBoardList(pageInt, limit, boardid);
 			request.setAttribute("petType", 0);
-			request.setAttribute("list", list);
 			boardCount = bd.dogboardCount(boardid);
 		} else if(petType == 1) {
-			List<PetBoard> list = bd.catBoardList(pageInt, limit, boardid);
+			list = bd.catBoardList(pageInt, limit, boardid);
 			request.setAttribute("petType", 1);
-			request.setAttribute("list", list);
 			boardCount = bd.catboardCount(boardid);
 		}
 		
@@ -116,6 +116,7 @@ public class BoardController {
 		break;
 		}
 		
+		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
 		request.setAttribute("start", start);
@@ -152,7 +153,6 @@ public class BoardController {
 		}
 		
 		request.setAttribute("bs", boardSubject);
-		
 		
 		return "board/petBoardForm";
 	}
@@ -247,7 +247,6 @@ public class BoardController {
 		
 		request.setAttribute("pb", pb);
 		request.setAttribute("bs", boardSubject);
-		
 		
 		return "board/petBoardUpdate";
 	}
