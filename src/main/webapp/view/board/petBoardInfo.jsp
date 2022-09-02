@@ -92,7 +92,7 @@
           
           <div class="infoContent">
             <div class="name">상세설명</div>
-            <textarea class="scrollbar"readonly style="width: 100%; height: 175px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
+            <textarea readonly style="width: 100%; height: 175px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
           </div>
           
           <div class="infoContent center regDate">
@@ -117,7 +117,7 @@
 					삭제
 				</a>
 		  	</c:if>
-		   <a href="${ pageContext.request.contextPath }/board/petBoard" class="btn">
+		   <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=${sessionScope.boardid}&petType=${pb.petType}" class="btn">
 				목록
 			</a>
           	<input type="submit" value="신고" class="btn">
@@ -129,30 +129,41 @@
       <div class="petComment">
         <div class="inner">
           <div class="commentName">
-            덧글
+            덧글 ${ commCount }
           </div>
 
-          <div class="commentCon scrollbar">
+          <div class="commentCon">
 
+            
+            <c:if test="${ commCount == 0 }">
             <div class="comment center">
-              <form action="" method="post">
+				<p>등록된 덧글이 없습니다.</p>
+				</div>
+			</c:if>
+			<c:if test="${ commCount > 0 }">
+			
+			<c:forEach var="b" items="${ commlist }">
+			<div class="comment center">
+              <form style="width: 100%;" action="" method="post">
 
                 <div class="userId">
-                  웃음이주인
+                  ${ b.userId }
                 </div>
-                <div class="commentContent">
-                  웃음이니?
-                </div>
-                
+                <textarea style="width: 100%; outline: none; border: none; padding: 10px; resize: none;" readonly class="commentContent">${ b.content }</textarea>
                 <input type="submit" class="btn" value="유저 신고">
               </form>
-            </div>  
+              </div>
+             </c:forEach>
+              </c:if>
 
           </div>
 
-          <form action="" method="post">
+          <form action="${ pageContext.request.contextPath }/board/commentPro" method="post">
+          	<input type="hidden" name="boardType" value='${ sessionScope.boardid eq 1 ? 1 : 2 }' />
+          	<input type="hidden" name="userId" value="${ sessionScope.userId }" />
+          	<input type="hidden" name="commId" value="${ pb.postId }" />
             <div class="commentInput center">
-              <textarea name="comment"></textarea>
+              <textarea name="content"></textarea>
               <input type="submit" value="입력">
             </div>
           </form>

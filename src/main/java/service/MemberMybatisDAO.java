@@ -50,10 +50,10 @@ public class MemberMybatisDAO {
 		
 	}
 	
-	public int pwdUpdateMember(String userId,  String chgPwd) {
+	public int pwdUpdateMember(String userId,  String chgpwd) {
 		Map map = new HashMap();
 		map.put("userId", userId);
-		map.put("chgPwd", chgPwd);
+		map.put("chgpwd", chgpwd);
 		int num = session.update(NS+"pwdUpdateMember", map);
 		return num;
 		
