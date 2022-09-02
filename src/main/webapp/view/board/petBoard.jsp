@@ -135,7 +135,7 @@
   </section>
   <script>
 	function redirect(type) {
-		window.location.href = 'http://localhost:8000/hanselMvc/board/petBoard?boardid=${sessionScope.boardid}&petType=' + type.value;
+		window.location.href = '${pageContext.request.contextPath}/board/petBoard?boardid=${sessionScope.boardid}&petType=' + type.value;
 	}
   </script>
 </body>

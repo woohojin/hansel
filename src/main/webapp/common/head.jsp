@@ -20,11 +20,11 @@
 	</a>
 	
     <ul class="menu headCommon">
-      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=1">
+      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=1&petType=0">
         <li>보호중인 동물</li>
       </a>
        
-      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=2">
+      <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=2&petType=0">
         <li>찾고있는 동물</li>
       </a>
 

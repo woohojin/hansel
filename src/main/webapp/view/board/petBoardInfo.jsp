@@ -71,7 +71,7 @@
           
           <div class="infoContent center">
             <div class="name">${ bs.boardPlace } :</div>
-            <div>
+            <div style="font-size: 16px">
               ${ pb.place }
             </div>
           </div>

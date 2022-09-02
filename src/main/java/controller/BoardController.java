@@ -158,6 +158,7 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/petBoardForm";
 		
+		int petType = Integer.parseInt(petboard.getPetType());
 		String boardid = (String) session.getAttribute("boardid");
 		if(boardid == null) boardid = "1";
 		
@@ -169,7 +170,7 @@ public class BoardController {
 		int num = bd.insertBoard(petboard);
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/petBoard";
+			url = "/board/petBoard?petType="+petType;
 		}
 		
 		request.setAttribute("msg", msg);
