@@ -64,6 +64,7 @@
 	height: 25px;
 	margin-right: 5px;
 	font-size: 13px;
+	user-select: none;
 }
 .petBoardInfo > .inner .petComment {
   padding: 10px;
