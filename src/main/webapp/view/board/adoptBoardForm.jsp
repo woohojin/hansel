@@ -38,7 +38,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" name="petName">
+              <input type="text" maxlength="10" name="petName">
             </div>
 
             <div class="conInput center">
@@ -88,7 +88,7 @@
               <div class="name center">
                 전화번호
               </div>
-              <input type="text" name="tel">
+              <input type="number" name="tel" oninput="maxLengthCheck(this)" maxlength="11" placeholder="예) 01012345678" required>
             </div>
             
             <div class="conInput explain">
@@ -107,6 +107,15 @@
       </div>
     </form>
   </section>
+  
+  <script>
+  
+  function maxLengthCheck(object){
+	    if (object.value.length > object.maxLength){
+	      object.value = object.value.slice(0, object.maxLength);
+	    }    
+	}
+  </script>
 
 </body>
 </html>
