@@ -45,14 +45,14 @@
           </div>
           <div class="cardInfo">
             <div class="inner wrap">
-
-              <div class="infoContent center">
-                <div class="name">조회수 :</div> 
-                <div>
-                  ${ b.readCnt }
-                </div>
+				
+			  <div class="infoContent">
+                <span class="name">이름 : </span> 
+                <span>
+                  ${ b.petName }
+                </span>
               </div>
-
+			  
 			  <div class="infoContent">
                 <span class="name">종류 :</span>
                 <span>

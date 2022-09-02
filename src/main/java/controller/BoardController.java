@@ -43,7 +43,6 @@ public class BoardController {
 	
 	@Autowired
 	BoardMybatisDAO bd;
-	
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")

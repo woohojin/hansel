@@ -32,7 +32,7 @@
               <div class="name">
                 내용
               </div>
-              <textarea name="content">${ pb.content }</textarea>
+              <textarea class="scrollbar" name="content">${ pb.content }</textarea>
             </div>
            	<input type="hidden" name="userId" value="${ sessionScope.userId }"/>
 			<input type="hidden" name="QId" value="${ pb.QId }"/>

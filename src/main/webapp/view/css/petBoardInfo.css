@@ -78,7 +78,7 @@
   width: 100%;
   height: 400px;
   border-bottom: 1px solid #000;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .petBoardInfo > .inner .petComment .inner .commentCon .comment {
   position: relative;
