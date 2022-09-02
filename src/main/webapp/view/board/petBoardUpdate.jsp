@@ -39,7 +39,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" name="petName" value="${ pb.petName }">
+              <input type="text" maxlength="10" name="petName" value="${ pb.petName }">
             </div>
             
             <div class="conInput center">
@@ -78,8 +78,8 @@
                 ${ bs.boardPlace }
               </div>
               <div class="address">
-	              <input type="text" id="roadAddress" name="place" placeholder="예)서울 관악구" value="${ pb.place }">
-	              <input type="button" onclick="execDaumPostcode()" value="주소 검색">
+	              <input type="text" id="roadAddress" style="width: 70%;" name="place" readonly value="${ pb.place }">
+	              <input type="button" onclick="execDaumPostcode()" class="center" style="width: 30%; padding: 0px;" value="주소 검색">
               </div>
             </div>
 
@@ -94,7 +94,7 @@
               <div class="name center">
                 전화번호
               </div>
-              <input type="text" name="tel" value="${ pb.tel }">
+              <input type="number" name="tel" value="${ pb.tel }" oninput="maxLengthCheck(this)" maxlength="11" placeholder="예) 01012345678" required>
             </div>
 
             <div class="conInput explain">
@@ -115,6 +115,13 @@
   
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }    
+}
+
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
         new daum.Postcode({

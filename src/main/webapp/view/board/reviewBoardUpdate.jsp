@@ -27,7 +27,7 @@
       <div class="inner center">
         
         <div class="formImg">
-        	<input type="hidden" name="petImg" value="">
+        	<input type="hidden" name="petImg" value="${pb.petImg}">
           <img src="${ pageContext.request.contextPath }/view/board/img/${pb.petImg}" id="pic" alt="">
           <a href="javascript:win_upload()" class="btn white">
             사진 넣기

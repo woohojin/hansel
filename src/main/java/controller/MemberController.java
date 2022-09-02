@@ -176,9 +176,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping("memberUpdate")
-	public String memberUpdate() throws Exception {
+	public String memberUpdate(String userId) throws Exception {
 		
-		
+		Member mem = md.selectOne(userId);
+		request.setAttribute("mem", mem);
 		
 		return "member/memberUpdate";
 	}

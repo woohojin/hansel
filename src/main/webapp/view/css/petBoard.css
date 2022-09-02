@@ -44,6 +44,7 @@
   margin-bottom: 2px;
   border-bottom: 1px solid #F2EFE9;
   padding-right: 28px;
+  justify-content: flex-start;
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .place {
 	display: inline-block;

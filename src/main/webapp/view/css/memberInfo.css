@@ -25,7 +25,7 @@
   margin-bottom: 30px;
 }
 .memberInfo .inner div h3 {
-  width: 111px;
+  width: 122px;
   margin-right: 10px;
   text-align: right;
 }
@@ -33,6 +33,22 @@
   font-size: 13px;
   margin-bottom: 0;
 }
-.memberInfo .inner a {
-  display: inline-block;
+.box {
+	width: 100%;
 }
+.box >.btn {
+	width: 115px;
+	margin-left: 4px;
+}
+input {
+	outline: none;
+	border: none;
+	height: 30px;
+	padding-left: 7px;
+	border-radius: 20px;
+}
+.btn {
+	width: 70px;
+	padding-left: 0;
+}
+
