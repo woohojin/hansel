@@ -46,24 +46,11 @@
           <div class="cardInfo">
             <div class="inner wrap">
 
-<<<<<<< HEAD
-              <div class="infoContent">
-                <span class="name">이름 :</span>
-                <span>
-=======
               <div class="infoContent center">
                 <div class="name">조회수 :</div> 
                 <div>
                   ${ b.readCnt }
                 </div>
-              </div>
-
-              <div class="infoContent center">
-                <div class="name">이름 :</div>
-                <div>
->>>>>>> branch 'master' of https://github.com/sadbc1235/hansel.git
-                 ${ b.petName }
-                </span>
               </div>
 
 			  <div class="infoContent">
@@ -73,66 +60,32 @@
                 </span>
               </div>
 
-<<<<<<< HEAD
               <div class="infoContent">
                 <span class="name">성별 :</span>
                 <span>
-=======
-              <div class="infoContent center">
-                <div class="name">성별 :</div>
-                <div>
->>>>>>> branch 'master' of https://github.com/sadbc1235/hansel.git
                   ${ b.petGender == 1 ? "남아" : "여아" }
                 </span>
               </div>
 
-<<<<<<< HEAD
               <div class="infoContent">
                 <span class="name">특징 :</span>
                 <span>
-=======
-              <div class="infoContent center">
-                <div class="name">특징 :</div>
-                <div>
->>>>>>> branch 'master' of https://github.com/sadbc1235/hansel.git
                   ${ b.petDetail }
                 </span>
               </div>
-<<<<<<< HEAD
               
               <div class="infoContent">
                 <span class="name">접종 :</span>
                 <span>
-=======
-
-              <div class="infoContent center">
-                <div class="name">중성화 :</div>
-                <div>
-                  ${ b.neuter == 0 ? "미완료" : "완료" }
-                </div>
-              </div>
-
-              <div class="infoContent center">
-                <div class="name">접종 :</div>
-                <div>
->>>>>>> branch 'master' of https://github.com/sadbc1235/hansel.git
                   ${ b.vaccin == 0 ? "미완료" : "완료" }
                 </span>
               </div>
 
-<<<<<<< HEAD
               <div class="infoContent">
                 <span class="name">중성화 :</span>
                 <span>
                   ${ b.neuter == 0 ? "미완료" : "완료" }
                 </span>
-=======
-              <div class="infoContent center">
-                <div class="name">작성일 :</div>
-                <div class="date">
-                 ${b.regDate.substring(0,10)}
-                </div>
->>>>>>> branch 'master' of https://github.com/sadbc1235/hansel.git
               </div>
 
               <div class="infoContent">
