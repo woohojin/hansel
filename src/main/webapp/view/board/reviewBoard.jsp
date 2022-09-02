@@ -12,7 +12,7 @@
  <section class="module petBoard">
     <div class="inner">
       <div class="modHead center">
-        <h2>후기</h2>
+        <h2>입양후기</h2>
         <div class="box center">
           <div class="searchBox center">
             <input type="text">
@@ -44,34 +44,39 @@
           <div class="cardInfo">
             <div class="inner">
 
-              <div class="infoContent center">
-                <div class="name">제목 :</div> 
-                <div>
+              <div class="infoContent">
+                <span class="name">제목 :</span> 
+                <span>
                   ${ b.subject }
-                </div>
+                </span>
               </div>
               
-              <div class="infoContent center">
-                <div class="name">이름 :</div>
-                <div>
+              <div class="infoContent">
+                <span class="name">이름 :</span>
+                <span>
                   ${ b.petName }
-                </div>
+                </span>
               </div>
-
-              <div class="infoContent center" style="flex-wrap: wrap;">
-                <div class="name" >내용 :</div>
-                <div>
-                 ${ b.content }
-                </div>
-              </div>
-
               
+              <div class="infoContent">
+                <span class="name">종류 :</span>
+                <span>
+                  ${ b.petType == 1 ? "고양이" : "강아지" }
+                </span>
+              </div>
 
-              <div class="infoContent center regDate">
-                <div class="name">작성일 :</div>
-                <div>
+              <div class="infoContent" style="flex-wrap: wrap;">
+                <span class="name" >내용 :</span>
+                <span>
+                 ${ b.content }
+                </span>
+              </div>
+
+              <div class="infoContent">
+                <span class="name">작성일 :</span>
+                <span>
                   ${ b.regDate.substring(0, 10) }
-                </div>
+                </span>
               </div>
 
             </div>

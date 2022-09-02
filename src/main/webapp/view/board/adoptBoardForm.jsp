@@ -40,7 +40,19 @@
               </div>
               <input type="text" name="petName">
             </div>
-
+			
+			<div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" value="1"> 고양이
+              </label>
+            </div>
+			
             <div class="conInput center">
               <div class="name center">
                 성별

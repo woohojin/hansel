@@ -55,6 +55,28 @@
                   ${ b.petName }
                 </span>
               </div>
+              
+              <div class="infoContent">
+                <span class="name">종류 :</span>
+                <span>
+                  ${ b.petType == 1 ? "고양이" : "강아지" }
+                </span>
+              </div>
+              
+              <div class="infoContent">
+                <span class="name">성별 :</span>
+                <span>
+                  ${ b.petGender == 1 ? "남아" : "여아" }
+                </span>
+              </div>
+              
+              <div class="infoContent">
+                <span class="name">특징 :</span>
+                <span>
+                  ${ b.petDetail }
+                </span>
+              </div>
+              
               <div class="infoContent">
                 <span class="name">${ bs.boardPlace } :</span>
                 <span class="place">
@@ -76,20 +98,6 @@
                 </span>
               </div>
 
-              <div class="infoContent">
-                <span class="name">성별 :</span>
-                <span>
-                  ${ b.petGender == 1 ? "남아" : "여아" }
-                </span>
-              </div>
-
-              <div class="infoContent">
-                <span class="name">특징 :</span>
-                <span>
-                  ${ b.petDetail }
-                </span>
-              </div>
-              
  			  <div class="infoContent">
                 <span class="name">조회수 :</span>
                 <span>

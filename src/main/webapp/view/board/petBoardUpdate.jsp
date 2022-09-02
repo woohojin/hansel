@@ -41,6 +41,18 @@
               </div>
               <input type="text" name="petName" value="${ pb.petName }">
             </div>
+            
+            <div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1"> 고양이
+              </label>
+            </div>
 
             <div class="conInput center">
               <div class="name center">
@@ -52,6 +64,13 @@
               <label class="center">
                 <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2"> 암컷
               </label>
+            </div>
+            
+            <div class="conInput center">
+              <div class="name center">
+                특징
+              </div>
+              <input type="text" name="petDetail" value="${ pb.petDetail }">
             </div>
 
             <div class="conInput center">
@@ -69,13 +88,6 @@
                 ${ bs.boardDate }
               </div>
               <input type="date" value="${ pb.petDate }" name="petDate">
-            </div>
-
-            <div class="conInput center">
-              <div class="name center">
-                특징
-              </div>
-              <input type="text" name="petDetail" value="${ pb.petDetail }">
             </div>
 
             <div class="conInput center">

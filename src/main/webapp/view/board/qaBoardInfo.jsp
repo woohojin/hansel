@@ -60,18 +60,19 @@
               ${ pb.regDate }
             </div>
           </div>
-          
-          	<a href="${ pageContext.request.contextPath }/board/QBoardUpdate?QId=${pb.QId}">
+          <div class="buttons" >
+          	<a href="${ pageContext.request.contextPath }/board/QBoardUpdate?QId=${pb.QId}" class="btn">
 				수정 
 			</a>
-			<a href="javascript:confirmDisable()">
+			<a href="javascript:confirmDisable()" class="btn">
 				삭제
 			</a>
-			<a href="${ pageContext.request.contextPath }/board/QBoard">
+			<a href="${ pageContext.request.contextPath }/board/QBoard" class="btn">
 				목록
 			</a>
+          	<input type="submit" class="btn" value="신고" class="btn">
+          </div>
           
-          <input type="submit" class="btn" value="신고">
         </form>
         </div>
       </div>

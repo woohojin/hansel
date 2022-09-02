@@ -18,7 +18,7 @@
 	</select>
 	
 	<insert id="insertBoard" parameterType="reviewBoard">
-		insert into reviewBoard values (reviewId_seq.nextval, 0, 0, 0, #{userId}, #{subject},  #{content},  to_char(sysdate, 'yyyy-mm-dd'), #{petName},  0, #{petImg})
+		insert into reviewBoard values (reviewId_seq.nextval, 0, 0, 0, #{userId}, #{subject},  #{content},  to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petType}, #{petImg})
 	</insert>
 	
 	<select id="boardOne" parameterType="int" resultType="reviewBoard">
@@ -34,7 +34,7 @@
 	</insert>
 	
 	<update id="boardUpdate" parameterType="reviewBoard">
-		update reviewBoard set subject = #{subject},  content = #{content},  petName = #{petName}, petImg = #{petImg} where reviewId = #{reviewId}
+		update reviewBoard set subject = #{subject},  content = #{content},  petName = #{petName}, petType = #{petType}, petImg = #{petImg} where reviewId = #{reviewId}
 	</update>
 	
 	<update id="boardDisable" parameterType="int">

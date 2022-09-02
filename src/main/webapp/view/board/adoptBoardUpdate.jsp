@@ -42,6 +42,18 @@
               <input type="text" name="petName" value="${ pb.petName }">
             </div>
 
+			<div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1"> 고양이
+              </label>
+            </div>
+
             <div class="conInput center">
               <div class="name center">
                 성별

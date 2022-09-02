@@ -44,7 +44,19 @@
               </div>
               <input type="text" name="petName" required>
             </div>
-
+			
+			<div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" value="1"> 고양이
+              </label>
+            </div>
+			
             <div class="conInput center">
               <div class="name center">
                 성별
@@ -55,6 +67,13 @@
               <label class="center">
                 <input type="radio" name="petGender" value="2"> 암컷
               </label>
+            </div>
+
+			 <div class="conInput center">
+              <div class="name center">
+                특징
+              </div>
+              <input type="text" name="petDetail" required>
             </div>
 
             <div class="conInput center">
@@ -72,13 +91,6 @@
                 ${ bs.boardDate }
               </div>
               <input type="date" name="petDate">
-            </div>
-
-            <div class="conInput center">
-              <div class="name center">
-                특징
-              </div>
-              <input type="text" name="petDetail" required>
             </div>
 
             <div class="conInput center">

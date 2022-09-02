@@ -41,7 +41,7 @@
   padding: 10px;
 }
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent {
- /* margin-bottom: 22px; */
+  margin-bottom: 2px;
   border-bottom: 1px solid #F2EFE9;
   padding-right: 28px;
 }

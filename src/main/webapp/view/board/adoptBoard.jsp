@@ -47,54 +47,61 @@
             <div class="inner wrap">
 
               <div class="infoContent">
-                <div class="name">조회수 :</div> 
-                <div>
-                  ${ b.readCnt }
-                </div>
-              </div>
-
-              <div class="infoContent">
-                <div class="name">이름 :</div>
-                <div>
+                <span class="name">이름 :</span>
+                <span>
                  ${ b.petName }
-                </div>
+                </span>
+              </div>
+
+			  <div class="infoContent">
+                <span class="name">종류 :</span>
+                <span>
+                  ${ b.petType == 1 ? "고양이" : "강아지" }
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">성별 :</div>
-                <div>
+                <span class="name">성별 :</span>
+                <span>
                   ${ b.petGender == 1 ? "남아" : "여아" }
-                </div>
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">특징 :</div>
-                <div>
+                <span class="name">특징 :</span>
+                <span>
                   ${ b.petDetail }
-                </div>
+                </span>
               </div>
-
+              
               <div class="infoContent">
-                <div class="name">중성화 :</div>
-                <div>
-                  ${ b.neuter == 0 ? "미완료" : "완료" }
-                </div>
-              </div>
-
-              <div class="infoContent">
-                <div class="name">접종 :</div>
-                <div>
+                <span class="name">접종 :</span>
+                <span>
                   ${ b.vaccin == 0 ? "미완료" : "완료" }
-                </div>
+                </span>
               </div>
 
               <div class="infoContent">
-                <div class="name">작성일 :</div>
-                <div class="date">
-                 ${b.regDate.substring(0,10)}
-                </div>
+                <span class="name">중성화 :</span>
+                <span>
+                  ${ b.neuter == 0 ? "미완료" : "완료" }
+                </span>
               </div>
 
+              <div class="infoContent">
+                <span class="name">작성일 :</span>
+                <span class="date">
+                 ${b.regDate.substring(0,10)}
+                </span>
+              </div>
+
+              <div class="infoContent">
+                <span class="name">조회수 :</span> 
+                <span>
+                  ${ b.readCnt }
+                </span>
+              </div>
+              
             </div>
           </div>
         </div>

@@ -36,19 +36,19 @@
         <div class="inner">
           <form action="" method="post">
 
-            <div class="infoContent center read">
-              <div class="name">조회수 :</div> 
-              <div>
-                ${ pb.readCnt }
-              </div>
-            </div>
-            
             <div class="infoContent center">
               <div class="name">이름 :</div>
               <div>
                 ${ pb.petName }
               </div>
             </div>
+            
+            <div class="infoContent center">
+              <div class="name">종류 :</div>
+              <div>
+                 ${ pb.petType == 1 ? "고양이" : "강아지" }
+            </div>
+          </div>
             
             <div class="infoContent center">
               <div class="name">성별 :</div>
@@ -85,6 +85,13 @@
             </div>
           </div>
           
+          <div class="infoContent center read">
+            <div class="name">조회수 :</div> 
+            <div>
+               ${ pb.readCnt }
+            </div>
+          </div>
+          
           <div class="infoContent">
             <div class="name">상세설명</div>
             <textarea readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
@@ -93,21 +100,21 @@
           <div class="infoContent center regDate">
             <div class="name">작성일 :</div>
             <div>
-              ${ pb.regDate }
+              ${ pb.regDate.substring(0,10) }
             </div>
           </div>
-          
-          <a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+          <div class="buttons">
+          	<a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}" class="btn">
 				수정 
 			</a>
-			<a href="javascript:confirmDisable()">
+			<a href="javascript:confirmDisable()" class="btn">
 				삭제
 			</a>
-			<a href="${ pageContext.request.contextPath }/board/adoptBoard">
+			<a href="${ pageContext.request.contextPath }/board/adoptBoard" class="btn">
 				목록
 			</a>
-          
-          <input type="submit" class="btn" value="신고">
+          	<input type="submit" class="btn" value="신고">
+          </div>
         </form>
         </div>
       </div>
