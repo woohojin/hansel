@@ -32,7 +32,7 @@
           </a>
         </div>
         
-        <div class="formContent" style="height: 65%;">
+        <div class="formContent" style="height: 67%;">
           <div class="inner">
 
            <div class="conInput center">
@@ -47,6 +47,18 @@
                 반려동물 이름
               </div>
               <input type="text" name="petName">
+            </div>
+            
+            <div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" value="1"> 고양이
+              </label>
             </div>
 
            <div class="conInput explain">

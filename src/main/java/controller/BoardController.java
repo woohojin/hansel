@@ -47,7 +47,7 @@ public class BoardController {
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
-	public String petBoard() throws Exception {
+	public String petBoard(int petType) throws Exception {
 		
 		if(request.getParameter("boardid") != null) {
 			session.setAttribute("boardid", request.getParameter("boardid"));
@@ -58,7 +58,7 @@ public class BoardController {
 		if(boardid == null) {
 			boardid = "1";
 		}
-		
+
 		int limit = 8; // 한 page당 게시물 개수
 		
 		if(request.getParameter("pageNum") != null) {
@@ -70,8 +70,19 @@ public class BoardController {
 		}
 		
 		int pageInt = Integer.parseInt(pageNum);
-		int boardCount = bd.boardCount(boardid);
-		List<PetBoard> list = bd.boardList(pageInt, limit, boardid);
+		int boardCount = 0;
+		
+		if(petType == 0) {
+			List<PetBoard> list = bd.dogBoardList(pageInt, limit, boardid);
+			request.setAttribute("petType", 0);
+			request.setAttribute("list", list);
+			boardCount = bd.dogboardCount(boardid);
+		} else if(petType == 1) {
+			List<PetBoard> list = bd.catBoardList(pageInt, limit, boardid);
+			request.setAttribute("petType", 1);
+			request.setAttribute("list", list);
+			boardCount = bd.catboardCount(boardid);
+		}
 		
 //		pagination 개수
 		int bottomLine = 3;
@@ -102,7 +113,6 @@ public class BoardController {
 		break;
 		}
 		
-		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
 		request.setAttribute("start", start);
@@ -150,6 +160,7 @@ public class BoardController {
 		String msg = "게시물 등록 실패";
 		String url = "/board/petBoardForm";
 		
+		int petType = Integer.parseInt(petboard.getPetType());
 		String boardid = (String) session.getAttribute("boardid");
 		if(boardid == null) boardid = "1";
 		
@@ -161,7 +172,7 @@ public class BoardController {
 		int num = bd.insertBoard(petboard);
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/petBoard";
+			url = "/board/petBoard?petType="+petType;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -490,7 +501,7 @@ public class BoardController {
 		
 		ReviewBoard pb = rb.boardOne(reviewId);
 		
-		request.setAttribute("rb", pb);
+		request.setAttribute("pb", pb);
 		
 		return "board/reviewBoardUpdate";
 	}

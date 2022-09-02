@@ -37,16 +37,23 @@
           <form action="" method="post">
             
             <div class="infoContent center">
+            <div class="name">제목</div>
+            <div>
+              ${ pb.subject }
+            </div>
+          </div>
+            
+            <div class="infoContent center">
               <div class="name">반려동물 이름 :</div>
               <div>
                 ${ pb.petName }
               </div>
             </div>
 
-          <div class="infoContent">
-            <div class="name">제목</div>
-            <div>
-              ${ pb.subject }
+          	<div class="infoContent center">
+              <div class="name">종류 :</div>
+              <div>
+                 ${ pb.petType == 1 ? "고양이" : "강아지" }
             </div>
           </div>
           
@@ -58,21 +65,23 @@
           <div class="infoContent center regDate">
             <div class="name">작성일 :</div>
             <div>
-              ${ pb.regDate }
+              ${ pb.regDate.substring(0, 10) }
             </div>
           </div>
           
-          <a href="${ pageContext.request.contextPath }/board/reviewBoardUpdate?reviewId=${pb.reviewId}">
+          <div class="buttons">
+          	<a href="${ pageContext.request.contextPath }/board/reviewBoardUpdate?reviewId=${pb.reviewId}" class="btn">
 				수정 
 			</a>
-			<a href="javascript:confirmDisable()">
+			<a href="javascript:confirmDisable()" class="btn">
 				삭제
 			</a>
-			<a href="${ pageContext.request.contextPath }/board/reviewBoard">
+			<a href="${ pageContext.request.contextPath }/board/reviewBoard" class="btn">
 				목록
 			</a>
+          	<input type="submit" class="btn" value="신고">
+          </div>
           
-          <input type="submit" class="btn" value="신고">
         </form>
         </div>
       </div>

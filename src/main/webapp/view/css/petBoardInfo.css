@@ -27,6 +27,7 @@
   border-bottom: 1px solid #F2EFE9;
   font-size: 18px;
   letter-spacing: 1px;
+  align-items: inherit;
 }
 .petBoardInfo > .inner .petInfo .inner .infoContent .name {
   font-weight: bold;
@@ -35,7 +36,7 @@
 }
 .petBoardInfo > .inner .petInfo .inner .read {
   position: absolute;
-  top: 0;
+  top: 2px;
   right: 0;
   width: auto;
   font-size: 16px;
@@ -48,12 +49,22 @@
   font-size: 15px;
   margin-bottom: 0;
 }
-.petBoardInfo > .inner .petInfo .btn {
+.petBoardInfo > .inner .petInfo .buttons {
+  display: flex;
+  flex-direction: row;
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 70px;
+  width: auto;
   border: none;
+  align-items: center;
+}
+.petBoardInfo > .inner .petInfo .buttons * {
+	width: 47px;
+	height: 25px;
+	margin-right: 5px;
+	font-size: 13px;
+	user-select: none;
 }
 .petBoardInfo > .inner .petComment {
   padding: 10px;

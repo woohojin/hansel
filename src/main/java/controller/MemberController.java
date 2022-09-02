@@ -208,6 +208,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("memberDelete")
+
 	public String memberDelete(String userId) throws Exception {
 
 		String msg = "회원탈퇴를 실패했습니다";

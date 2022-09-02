@@ -47,7 +47,7 @@
         </div>
         <div class="">
           <h3>반려동물 이름</h3>
-          <input type="text" name="petName" placeholder="반려동물이 없으면 빈칸으로 입력해 주세요">
+          <input type="text" maxlength="10" name="petName" placeholder="반려동물이 없으면 빈칸으로 입력해 주세요">
         </div>
 
         <div class="submit center">

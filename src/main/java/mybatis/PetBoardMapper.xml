@@ -7,6 +7,14 @@
 		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0
 	</select>
 	
+	<select id="dogboardCount" parameterType="String" resultType="int">
+		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 0
+	</select>
+	
+	<select id="catboardCount" parameterType="String" resultType="int">
+		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 1
+	</select>
+	
 	<select id="boardList" parameterType="map" resultType="petBoard">
 		select * from (
 			select rownum rnum, a.* from (
@@ -17,8 +25,28 @@
 		) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="dogBoardList" parameterType="map" resultType="petBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from petboard 
+					where boardid = #{boardid} and postDisable = 0 and petType = 0
+					order by postId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
+	<select id="catBoardList" parameterType="map" resultType="petBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from petboard 
+					where boardid = #{boardid} and postDisable = 0 and petType = 1
+					order by postId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
 	<insert id="insertBoard" parameterType="petBoard">
-		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petGender}, 0, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
+		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petGender}, #{petType}, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
 	</insert>
 	
 	<select id="boardOne" parameterType="int" resultType="petBoard">
@@ -34,7 +62,7 @@
 	</insert>
 	
 	<update id="boardUpdate" parameterType="petBoard">
-		update petboard set tel =  #{tel}, content = #{content}, place = #{place}, petName = #{petName}, petGender = #{petGender}, petDate = #{petDate}, petImg = #{petImg}, petDetail = #{petDetail} where postId = #{postId}
+		update petboard set tel =  #{tel}, content = #{content}, place = #{place}, petName = #{petName}, petGender = #{petGender}, petType=#{petType}, petDate = #{petDate}, petImg = #{petImg}, petDetail = #{petDetail} where postId = #{postId}
 	</update>
 	
 	<update id="boardDisable" parameterType="petBoard">

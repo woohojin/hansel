@@ -44,7 +44,19 @@
               </div>
               <input type="text" name="petName" required>
             </div>
-
+			
+			<div class="conInput center">
+              <div class="name center">
+                종류
+              </div>
+              <label class="center">
+                <input type="radio" name="petType" value="0"> 강아지
+              </label>
+              <label class="center">
+                <input type="radio" name="petType" value="1"> 고양이
+              </label>
+            </div>
+			
             <div class="conInput center">
               <div class="name center">
                 성별
@@ -57,13 +69,20 @@
               </label>
             </div>
 
+			 <div class="conInput center">
+              <div class="name center">
+                특징
+              </div>
+              <input type="text" name="petDetail" required>
+            </div>
+
             <div class="conInput center">
               <div class="name center">
                 ${ bs.boardPlace }
               </div>
               <div class="address">
-              	<input type="text" id="roadAddress" name="place" placeholder="예)서울 관악구" value="">
-              	<input type="button" onclick="execDaumPostcode()" value="주소 검색">
+	              <input type="text" id="roadAddress" style="width: 70%;" name="place" readonly value="${ pb.place }">
+	              <input type="button" onclick="execDaumPostcode()" class="center" style="width: 30%; padding: 0px;" value="주소 검색">
               </div>
             </div>
 
@@ -76,16 +95,9 @@
 
             <div class="conInput center">
               <div class="name center">
-                특징
-              </div>
-              <input type="text" name="petDetail" required>
-            </div>
-
-            <div class="conInput center">
-              <div class="name center">
                 전화번호
               </div>
-              <input type="text" name="tel" required>
+              <input type="number" name="tel" oninput="maxLengthCheck(this)" maxlength="11" placeholder="예) 01012345678" required>
             </div>
 
             <div class="conInput explain">
@@ -105,6 +117,13 @@
   </section>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+	
+function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }    
+}
+	
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
     function execDaumPostcode() {
         new daum.Postcode({
