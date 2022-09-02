@@ -47,7 +47,7 @@ public class BoardController {
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
-	public String petBoard() throws Exception {
+	public String petBoard(int petType) throws Exception {
 		
 		if(request.getParameter("boardid") != null) {
 			session.setAttribute("boardid", request.getParameter("boardid"));
@@ -58,7 +58,7 @@ public class BoardController {
 		if(boardid == null) {
 			boardid = "1";
 		}
-		
+
 		int limit = 8; // 한 page당 게시물 개수
 		
 		if(request.getParameter("pageNum") != null) {
@@ -71,7 +71,16 @@ public class BoardController {
 		
 		int pageInt = Integer.parseInt(pageNum);
 		int boardCount = bd.boardCount(boardid);
-		List<PetBoard> list = bd.boardList(pageInt, limit, boardid);
+		
+		if(petType == 0) {
+			List<PetBoard> list = bd.dogBoardList(pageInt, limit, boardid);
+			request.setAttribute("petType", 0);
+			request.setAttribute("list", list);
+		} else if(petType == 1) {
+			List<PetBoard> list = bd.catBoardList(pageInt, limit, boardid);
+			request.setAttribute("petType", 1);
+			request.setAttribute("list", list);
+		}
 		
 //		pagination 개수
 		int bottomLine = 3;
@@ -102,7 +111,6 @@ public class BoardController {
 		break;
 		}
 		
-		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
 		request.setAttribute("start", start);

@@ -27,6 +27,13 @@
   justify-content: center;
 }
 
+.filter {
+  margin-right: 36px;
+}
+.filter > form > label {
+	margin-right: 10px;
+}
+
 .inner {
   position: relative;
   width: 100%;
@@ -53,7 +60,7 @@ img {
   height: 40px;
   border: 1px solid #000;
   background: #fff;
-  margin-right: 90px;
+  margin-right: 35px;
   border-radius: 20px;
   padding: 0px 13px;
   overflow: hidden;

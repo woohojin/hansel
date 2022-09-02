@@ -17,6 +17,26 @@
 		) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="dogBoardList" parameterType="map" resultType="petBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from petboard 
+					where boardid = #{boardid} and postDisable = 0 and petType = 0
+					order by postId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
+	<select id="catBoardList" parameterType="map" resultType="petBoard">
+		select * from (
+			select rownum rnum, a.* from (
+				select * from petboard 
+					where boardid = #{boardid} and postDisable = 0 and petType = 1
+					order by postId desc
+			) a 
+		) where rnum between #{start} and #{end}
+	</select>
+	
 	<insert id="insertBoard" parameterType="petBoard">
 		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petGender}, #{petType}, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
 	</insert>
