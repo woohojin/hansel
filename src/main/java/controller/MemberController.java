@@ -272,7 +272,7 @@ public class MemberController {
 
 		String msg = "비밀번호가 틀렸습니다 ";
 		String url = "/member/memberPassUpdate";
-
+		
 		Member mem = md.selectOne(userId);
 		if (pwd.equals(mem.getPwd())) {
 			int num = md.pwdUpdateMember(userId, chgpwd);
@@ -290,7 +290,6 @@ public class MemberController {
 		boardSubject.put("boardName", "비밀번호 수정");
 		
 		request.setAttribute("bs", boardSubject);
-
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
