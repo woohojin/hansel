@@ -26,7 +26,7 @@
           <div class="center">
             <h3>주소</h3>
             <div class="address center" style="height: auto;">
-            	<input type="text" id="roadAddress" name="address" placeholder="예)서울 관악구" value="${mem.address }">
+            	<input type="text" id="roadAddress" name="address" readonly placeholder="예)서울 관악구" value="${mem.address }">
           		<input style="height: 30px; margin-left: 3px;" type="button" onclick="execDaumPostcode()" class="btn white" value="주소 검색">
           	</div>
           </div>

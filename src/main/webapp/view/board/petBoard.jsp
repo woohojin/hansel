@@ -77,7 +77,7 @@
                 </span>
               </div>
               
-              <div class="infoContent">
+              <div class="infoContent center">
                 <span class="name">${ bs.boardPlace } :</span>
                 <span class="place">
                   ${ b.place }

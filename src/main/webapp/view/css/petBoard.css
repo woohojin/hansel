@@ -49,6 +49,7 @@
 .petBoard .inner .modContent .modCard .cardInfo .inner .infoContent .place {
 	display: inline-block;
 	width: 173px;
+	height: 100%;
 	font-size: 15px;
 	overflow: hidden;
 	text-overflow: ellipsis;

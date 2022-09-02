@@ -194,6 +194,7 @@ public class MemberController {
 	public String memberDelete() throws Exception {
 		
 		
+		
 		return "member/memberDelete";
 	}
 	
