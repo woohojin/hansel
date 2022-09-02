@@ -267,15 +267,6 @@ public class MemberController {
 	@RequestMapping("memberPassUpdate")
 	public String memberUpdatePass(String userId) throws Exception {
 
-		Member mem = md.selectOne(userId);
-		
-		Map<String, String> boardSubject = new HashMap<String, String>();
-		boardSubject.clear();
-		boardSubject.put("boardName", "회원정보 수정");
-		
-		request.setAttribute("bs", boardSubject);
-		request.setAttribute("mem", mem);
-		
 		return "member/memberPassUpdate";
 	}
 	
