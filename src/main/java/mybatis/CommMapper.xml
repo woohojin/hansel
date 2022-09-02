@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comm">
+	
+	<select id="commCount" parameterType="map" resultType="int">
+		select nvl(count(*), 0) from comm where commId = ${commId} and boardType = ${boardType}
+	</select>
+	
+	<select id="commList" parameterType="map" resultType="comm">
+		select * from comm 
+		where commId = ${commId} and boardType = ${boardType}
+		order by regdate desc
+	</select>
+	
+	<insert id="insertBoard" parameterType="comm">
+		insert into comm values (#{commId}, #{userId}, #{content}, ref_SEQ.nextval, sysdate, #{boardType})
+	</insert>
+	
+	<select id="boardOne" parameterType="int" resultType="petBoard">
+		select * from petboard where postId = #{value}
+	</select>
+	
+	<update id="readCountUp" parameterType="int">
+		update petboard set readcnt = readcnt + 1 where postId = #{value}
+	</update>
+	
+	<insert id="insertReply" parameterType="petBoard">
+		insert into board values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
+	</insert>
+	
+	<update id="boardUpdate" parameterType="petBoard">
+		update petboard set tel =  #{tel}, content = #{content}, place = #{place}, petName = #{petName}, petGender = #{petGender}, petType=#{petType}, petDate = #{petDate}, petImg = #{petImg}, petDetail = #{petDetail} where postId = #{postId}
+	</update>
+	
+	<update id="boardDisable" parameterType="petBoard">
+		update petboard set postDisable = 1 where postId = #{postId}
+	</update>
+	
+	<delete id="boardDelete" parameterType="int">
+		delete from board where num = #{num}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

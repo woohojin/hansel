@@ -64,7 +64,7 @@
             <a class="btn white center" href="javascript:confirmDisable()">
               회원탈퇴
             </a>
-            <a class="btn white center" href="${ pageContext.request.contextPath }/member/pwdUpdate?userId=${mem.userId}">
+            <a class="btn white center" href="${ pageContext.request.contextPath }/member/memberPassUpdate">
               비밀번호 변경
             </a>
           </div>

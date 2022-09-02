@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import model.AdoptBoard;
+import model.Comm;
 import model.PetBoard;
 import model.QBoard;
 import model.ReviewBoard;
 import service.AdoptBoardMybatisDAO;
 import service.BoardMybatisDAO;
+import service.CommMybatisDAO;
 import service.QBoardMybatisDAO;
 import service.ReviewBoardMybatisDAO;
 
@@ -43,6 +45,8 @@ public class BoardController {
 	
 	@Autowired
 	BoardMybatisDAO bd;
+	@Autowired
+	CommMybatisDAO cd;
 	
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
@@ -187,8 +191,11 @@ public class BoardController {
 		String boardid = (String) session.getAttribute("boardid");
 		
 		PetBoard pb = bd.boardOne(postId);
+		
 		bd.readCountUp(postId);
 		
+		List<Comm> commlist = null;
+		int commCount = 0;
 		Map<String, String> boardSubject = new HashMap<String, String>();
 		switch(boardid) {
 		case "1" :
@@ -196,17 +203,23 @@ public class BoardController {
 			boardSubject.put("boardName", "보호중인 동물");
 			boardSubject.put("boardPlace", "발견장소");
 			boardSubject.put("boardDate", "발견날짜");
+			commlist = cd.commList(postId, 1);
+			commCount = cd.commCount(postId, 1);
 		break;
 		case "2" :
 			boardSubject.clear();
 			boardSubject.put("boardName", "찾고있는 동물");
 			boardSubject.put("boardPlace", "실종장소");
 			boardSubject.put("boardDate", "실종날짜");
+			commlist = cd.commList(postId, 2);
+			commCount = cd.commCount(postId, 2);
 		break;
 		}
 		
 		request.setAttribute("bs", boardSubject);
 		request.setAttribute("pb", pb);
+		request.setAttribute("commlist", commlist);
+		request.setAttribute("commCount", commCount);
 		return "board/petBoardInfo";
 	}
 	
@@ -335,7 +348,12 @@ public class BoardController {
 		AdoptBoard pb = ab.boardOne(adoptId);
 		ab.readCountUp(adoptId);
 		
+		List<Comm> commlist = cd.commList(adoptId, 3);
+		int commCount = cd.commCount(adoptId, 3);
+		
 		request.setAttribute("pb", pb);
+		request.setAttribute("commlist", commlist);
+		request.setAttribute("commCount", commCount);
 		
 		return "board/adoptBoardInfo";
 	}
@@ -465,8 +483,12 @@ public class BoardController {
 	public String reviewBoardInfo(int reviewId) throws Exception {
 		
 		ReviewBoard pb = rb.boardOne(reviewId);
+		List<Comm> commlist = cd.commList(reviewId, 4);
+		int commCount = cd.commCount(reviewId, 4);
 		
 		request.setAttribute("pb", pb);
+		request.setAttribute("commlist", commlist);
+		request.setAttribute("commCount", commCount);
 		
 		return "board/reviewBoardInfo";
 	}
@@ -625,8 +647,13 @@ public class BoardController {
 		
 		QBoard QB = qb.boardOne(QId);
 		qb.readCountUp(QId);
+		List<Comm> commlist = cd.commList(QId, 5);
+		int commCount = cd.commCount(QId, 5);
 		
 		request.setAttribute("pb", QB);
+		request.setAttribute("commlist", commlist);
+		request.setAttribute("commCount", commCount);
+		
 		return "board/qaBoardInfo";
 	}
 	
@@ -676,6 +703,37 @@ public class BoardController {
 		request.setAttribute("url", url);
 		
 		return "alert";
+	}
+	
+	@RequestMapping("commentPro")
+	public String commentPro(Comm comm) throws Exception {
+		
+		String msg = "덧글 작성 실패";
+		String url = "/board/petBoard?petType=0";
+		int boardType = comm.getBoardType();
+		int commId = comm.getCommId();
+		
+		int num = cd.insertBoard(comm);
+		if(num>0) {
+			
+			msg = "덧글을 작성하였습니다.";
+			if(boardType == 1 || boardType == 2) {
+				url = "/board/petBoardInfo?postId="+commId;
+			} else if (boardType == 3) {
+				url = "/board/adoptBoardInfo?adoptId="+commId;
+			} else if (boardType == 4) {
+				url = "/board/reviewBoardInfo?reviewId="+commId;
+			} else if (boardType == 5) {
+				url = "/board/QBoardInfo?QId="+commId;
+			}
+			
+		}
+		
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		
+		return "alert";
+		
 	}
 	
 	@RequestMapping("pictureimgForm")
