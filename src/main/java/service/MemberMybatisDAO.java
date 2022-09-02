@@ -39,4 +39,23 @@ public class MemberMybatisDAO {
 		
 	}
 	
+	public int updateMember(Member mem) {
+		int num = session.update(NS+"updateMember", mem);
+		return num;
+		
+	}
+	public int deleteMember(String userId) {
+		int num = session.delete(NS+"deleteMember", userId);
+		return num;
+		
+	}
+	
+	public int pwdUpdateMember(String userId,  String pwd) {
+		Map map = new HashMap();
+		map.put("userId", userId);
+		map.put("pwd", pwd);
+		int num = session.update(NS+"pwdUpdateMember", map);
+		return num;
+		
+	}
 }

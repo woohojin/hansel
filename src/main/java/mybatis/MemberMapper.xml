@@ -16,19 +16,19 @@
 		update hanuser set login=#{login} where userId = #{userId} 
 	</update>
 	
-	<!-- 	<update id="updateMember" parameterType="member">
-		update member set name=#{name}, gender=#{gender}, tel=#{tel}, email=#{email}, picture=#{picture} where id = #{id} 
+	<update id="updateMember" parameterType="member">
+		update hanuser set address=#{address}, email=#{email}, tel=#{tel}, petName=#{petName} where userId = #{userId} 
 	</update>
 	
-	<delete id="deleteMember" parameterType="String">
-		delete from member where id = #{value}
+		 <delete id="deleteMember" parameterType="String">
+		delete from hanuser where userId = #{value}
 	</delete>
 	
 	<update id="pwdUpdateMember" parameterType="map">
-		update member set pwd=#{chgPwd} where id = #{id} 
+		update hanuser set pwd=#{chgPwd} where userId = #{userId} 
 	</update>
 	
-	<select id="memberList" resultType="member">
+		<!--<select id="memberList" resultType="member">
 		select * from member
 	</select> -->
 </mapper>

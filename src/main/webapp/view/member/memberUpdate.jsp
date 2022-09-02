@@ -11,9 +11,9 @@
 <section class="module memberInfo center">
     <div class="inner center">
         <h2 class="subject center">
-          회원정보
+          회원수정
         </h2>
-       
+       <input type="hidden" value="${mem.userId }" name="userId" >
      
           <div class="name center">
             <h3>아이디</h3>

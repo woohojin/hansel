@@ -5,6 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/memberInfo.css">
+
+<script type="text/javascript">
+		const confirmDisable = () => {
+				
+			const con = confirm("게시물을 삭제하시겠습니까??");
+			if(con) {
+				console.log(con);
+				location.href = "${ pageContext.request.contextPath }/member/memberDelete?userId=${mem.userId}";
+				
+				
+			} else {
+				console.log(con);
+				return;
+			}
+			
+		}
+		
+	</script>
 </head>
 <body>
 <section class="module memberInfo center">
