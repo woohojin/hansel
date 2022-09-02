@@ -47,9 +47,7 @@
             <input type="text" name="petName" maxlength="10" value="${mem.petName }">
           </div>
           <div class="box center ">
-
             <input type="submit" class="btn white" value="수정완료">
-            
           </div>
   		
       </div>

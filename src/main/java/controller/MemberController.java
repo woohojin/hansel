@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +47,12 @@ public class MemberController {
 //	로그인 페이지
 	@RequestMapping("signIn")
 	public String signIn() throws Exception {
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "로그인");
+		
+		request.setAttribute("bs", boardSubject);
 
 		return "member/signIn";
 	}
@@ -88,6 +97,12 @@ public class MemberController {
 //	회원가입 페이지
 	@RequestMapping("signUp")
 	public String signUp() throws Exception {
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "회원가입");
+		
+		request.setAttribute("bs", boardSubject);
 
 		return "member/signUp";
 	}
@@ -153,6 +168,12 @@ public class MemberController {
 	@RequestMapping("email")
 	public String sendEmail() throws Exception {
 
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "의견 보내기");
+		
+		request.setAttribute("bs", boardSubject);
+		
 		return "member/email";
 	}
 
@@ -163,6 +184,11 @@ public class MemberController {
 		String userId = (String) session.getAttribute("userId");
 		Member mem = md.selectOne(userId);
 
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "회원정보");
+		
+		request.setAttribute("bs", boardSubject);
 		request.setAttribute("mem", mem);
 
 		return "member/memberInfo";
@@ -172,8 +198,14 @@ public class MemberController {
 	public String memberUpdate(String userId) throws Exception {
 
 		Member mem = md.selectOne(userId);
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "회원정보 수정");
+		
+		request.setAttribute("bs", boardSubject);
 		request.setAttribute("mem", mem);
-
+		
 		return "member/memberUpdate";
 	}
 
@@ -219,6 +251,12 @@ public class MemberController {
 			msg = "회원탈퇴를 완료하였습니다";
 			url = "/member/index";
 		}
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "회원탈퇴");
+		
+		request.setAttribute("bs", boardSubject);
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
@@ -231,17 +269,16 @@ public class MemberController {
 		return "/member/memberPassUpdate";
 	}
 
-	@RequestMapping("memberPassUpdatePro")
-	public String memberPassUpdatePro(String pwd, String chgpwd)  throws Exception {
+	public String memberPassUpdatePro(String pwd, String chgPwd) throws Exception {
 
 		String userId = (String) session.getAttribute("userId");
 
 		String msg = "비밀번호가 틀렸습니다 ";
 		String url = "/member/memberPassUpdate";
-
+		
 		Member mem = md.selectOne(userId);
 		if (pwd.equals(mem.getPwd())) {
-			int num = md.pwdUpdateMember(userId, chgpwd);
+			int num = md.pwdUpdateMember(userId, chgPwd);
 			if (num > 0) {
 				msg = userId + "님의 비밀번호가 수정되었습니다.";
 				url = "/member/memberInfo";
@@ -250,7 +287,12 @@ public class MemberController {
 				url = "/member/memberPassUpdate";
 			}
 		} 
-
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "비밀번호 수정");
+		
+		request.setAttribute("bs", boardSubject);
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 

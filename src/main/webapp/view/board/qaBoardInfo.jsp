@@ -52,7 +52,7 @@
           <div class="infoContent">
             <div class="name">내용</div>
             <div>
-              <textarea readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
+              <textarea class="scrollbar" readonly style="width: 100%; height: 450px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
             </div>
           </div>
           
@@ -87,7 +87,7 @@
             답변 ${ commCount }
           </div>
 
-          <div class="commentCon">
+          <div class="commentCon scrollbar">
 
             <div class="comment center">
               <c:if test="${ commCount == 0 }">

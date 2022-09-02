@@ -47,7 +47,6 @@ public class BoardController {
 	BoardMybatisDAO bd;
 	@Autowired
 	CommMybatisDAO cd;
-	
 
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
@@ -329,6 +328,10 @@ public class BoardController {
 		
 		int boardNum = boardCount - (pageInt-1)*limit;
 		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "입양공고");
+
 		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
@@ -337,6 +340,7 @@ public class BoardController {
 		request.setAttribute("bottomLine", bottomLine);
 		request.setAttribute("maxPage", maxPage);
 		request.setAttribute("pageInt", pageInt);
+		request.setAttribute("bs", boardSubject);
 		
 		return "board/adoptBoard";
 		
@@ -466,6 +470,11 @@ public class BoardController {
 		
 		int boardNum = boardCount - (pageInt-1)*limit;
 		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "입양후기");
+
+		
 		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
@@ -474,6 +483,7 @@ public class BoardController {
 		request.setAttribute("bottomLine", bottomLine);
 		request.setAttribute("maxPage", maxPage);
 		request.setAttribute("pageInt", pageInt);
+		request.setAttribute("bs", boardSubject);
 		
 		return "board/reviewBoard";
 		
@@ -604,6 +614,10 @@ public class BoardController {
 		
 		int boardNum = boardCount - (pageInt-1)*limit;
 		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "Q&A");
+		
 		request.setAttribute("list", list);
 		request.setAttribute("boardCount", boardCount);
 		request.setAttribute("boardNum", boardNum);
@@ -612,6 +626,7 @@ public class BoardController {
 		request.setAttribute("bottomLine", bottomLine);
 		request.setAttribute("maxPage", maxPage);
 		request.setAttribute("pageInt", pageInt);
+		request.setAttribute("bs", boardSubject);
 		
 		return "board/qaBoard";
 		

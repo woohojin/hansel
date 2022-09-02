@@ -101,7 +101,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea name="content">${ pb.content }</textarea>
+              <textarea class="scrollbar" name="content">${ pb.content }</textarea>
             </div>
 
 

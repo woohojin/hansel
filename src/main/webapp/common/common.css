@@ -228,8 +228,25 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.scrollbar::-webkit-scrollbar {
+  background-color: none;
+  width: 5px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #E8CD9B;
+  border-radius: 5px;
+  width: 5px;
+}
 
-
+body::-webkit-scrollbar {
+  background-color: none;
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #E8CD9B;
+  border-radius: 5px;
+  width: 10px;
+}
 
 
 

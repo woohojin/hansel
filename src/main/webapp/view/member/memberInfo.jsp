@@ -9,7 +9,7 @@
 <script type="text/javascript">
 		const confirmDisable = () => {
 				
-			const con = confirm("게시물을 삭제하시겠습니까??");
+			const con = confirm("회원탈퇴 하시겠습니까?");
 			if(con) {
 				console.log(con);
 				location.href = "${ pageContext.request.contextPath }/member/memberDelete?userId=${mem.userId}";

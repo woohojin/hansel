@@ -61,7 +61,7 @@
           
           <div class="infoContent">
             <div class="name">상세설명</div>
-            <textarea readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
+            <textarea class="scrollbar" readonly style="width: 100%; height: 200px; outline: none; border: none; resize: none;">${ pb.content }</textarea>
           </div>
           
           <div class="infoContent center regDate">
@@ -96,7 +96,7 @@
             덧글 ${ commCount }
           </div>
 
-          <div class="commentCon">
+          <div class="commentCon scrollbar">
 
             <div class="comment center">
               <c:if test="${ commCount == 0 }">
