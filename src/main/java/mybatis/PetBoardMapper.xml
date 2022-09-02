@@ -7,6 +7,14 @@
 		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0
 	</select>
 	
+	<select id="dogboardCount" parameterType="String" resultType="int">
+		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 0
+	</select>
+	
+	<select id="catboardCount" parameterType="String" resultType="int">
+		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 1
+	</select>
+	
 	<select id="boardList" parameterType="map" resultType="petBoard">
 		select * from (
 			select rownum rnum, a.* from (

@@ -23,6 +23,14 @@ public class BoardMybatisDAO {
 		int num = session.selectOne(NS+"boardCount", boardid);
 		return num;
 	}
+	public int dogboardCount(String boardid) {
+		int num = session.selectOne(NS+"dogboardCount", boardid);
+		return num;
+	}
+	public int catboardCount(String boardid) {
+		int num = session.selectOne(NS+"catboardCount", boardid);
+		return num;
+	}
 	
 	public List<PetBoard> boardList(int pageInt, int limit, String boardid) {
 		map.clear();
