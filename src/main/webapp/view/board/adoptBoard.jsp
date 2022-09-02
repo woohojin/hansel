@@ -46,49 +46,49 @@
           <div class="cardInfo">
             <div class="inner wrap">
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">조회수 :</div> 
                 <div>
                   ${ b.readCnt }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">이름 :</div>
                 <div>
                  ${ b.petName }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">성별 :</div>
                 <div>
                   ${ b.petGender == 1 ? "남아" : "여아" }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">특징 :</div>
                 <div>
                   ${ b.petDetail }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">중성화 :</div>
                 <div>
                   ${ b.neuter == 0 ? "미완료" : "완료" }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">접종 :</div>
                 <div>
                   ${ b.vaccin == 0 ? "미완료" : "완료" }
                 </div>
               </div>
 
-              <div class="infoContent">
+              <div class="infoContent center">
                 <div class="name">작성일 :</div>
                 <div class="date">
                  ${b.regDate.substring(0,10)}

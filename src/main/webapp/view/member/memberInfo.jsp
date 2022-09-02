@@ -13,44 +13,40 @@
           회원정보
         </h2>
           <div class="name center">
-            <h3>아이디</h3>
+            <h3>아이디 :</h3>
             <span>${sessionScope.userId }</span>
           </div>
           <div class="center">
-            <h3>비밀번호</h3>
-            <input type="password" name="pwd" required>
-          </div>
-          <div class="center">
-            <h3>주소</h3>
+            <h3>주소 :</h3>
             <span class="address">
               ${mem.address }
             </span>
           </div>
           <div class="center">
-            <h3>이메일</h3>
+            <h3>이메일 :</h3>
             <span>
              ${mem.email }
             </span>
           </div>
           <div class="center">
-            <h3>전화번호</h3>
+            <h3>전화번호 :</h3>
             <span>
               ${mem.tel }
             </span>            
           </div>
           <div class="center">
-            <h3>반려동물 이름</h3>
+            <h3>반려동물 이름 :</h3>
             ${mem.petName }
           </div>
-          <div class="box">
+          <div class="box center">
 
-            <a href="${ pageContext.request.contextPath }/board/adoptBoardUpdate?adoptId=${pb.adoptId}">
+            <a class="btn white center" href="${ pageContext.request.contextPath }/member/memberUpdate?userId=${mem.userId}">
               회원수정
             </a>
-            <a href="javascript:confirmDisable()">
+            <a class="btn white center" href="javascript:confirmDisable()">
               회원탈퇴
             </a>
-            <a href="${ pageContext.request.contextPath }/board/adoptBoard">
+            <a class="btn white center" href="${ pageContext.request.contextPath }/member/pwdUpdate?userId=${mem.userId}">
               비밀번호 변경
             </a>
           </div>
