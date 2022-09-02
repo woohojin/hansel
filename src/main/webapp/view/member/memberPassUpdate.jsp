@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/memberInfo.css">
 </head>
 <body>
- <form action="${ pageContext.request.contextPath }/member/memberUpdatePro" method="post">
+ <form action="${ pageContext.request.contextPath }/member/memberPassUpdatePro" method="post">
 <section class="module memberInfo center">
     <div class="inner center">
         <h2 class="subject center">
@@ -15,37 +15,21 @@
         </h2>
        <input type="hidden" value="${mem.userId }" name="userId" >
      
-          <div class="name center">
-            <h3>아이디</h3>
-            <span>${sessionScope.userId }</span>
-          </div>
           <div class="center">
-            <h3>비밀번호</h3>
+            <h3>현재 비밀번호</h3>
             <input type="password" name="pwd" required>
           </div>
+          
           <div class="center">
-            <h3>주소</h3>
-            <div class="address center" style="height: auto;">
-            	<input type="text" id="roadAddress" name="address" readonly placeholder="예)서울 관악구" value="${mem.address }">
-          		<input style="height: 30px; margin-left: 3px;" type="button" onclick="execDaumPostcode()" class="btn white" value="주소 검색">
-          	</div>
+            <h3>바꿀 비밀번호</h3>
+            <input type="password" name="chgPwd" required>
           </div>
+          
           <div class="center">
-            <h3>이메일</h3>
-            <span>
-            	<input type="email" name="email" value="${mem.email }">
-            </span>
+            <h3>비밀번호 확인</h3>
+            <input type="password" name="chgPwd2" required>
           </div>
-          <div class="center">
-            <h3>전화번호</h3>
-            <span>
-            	<input type="number" name="tel" value="${ mem.tel }" oninput="maxLengthCheck(this)" maxlength="11" placeholder="예) 01012345678">
-            </span>            
-          </div>
-          <div class="center">
-            <h3>반려동물 이름</h3>
-            <input type="text" name="petName" maxlength="10" value="${mem.petName }">
-          </div>
+          
           <div class="box center ">
             <input type="submit" class="btn white" value="수정완료">
           </div>

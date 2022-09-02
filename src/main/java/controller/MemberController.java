@@ -258,15 +258,29 @@ public class MemberController {
 		boardSubject.put("boardName", "회원탈퇴");
 		
 		request.setAttribute("bs", boardSubject);
-		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
 		return "alert";
 	}
-
+	
 	@RequestMapping("memberPassUpdate")
-	public String memberPassUpdate(String pwd, String chgpwd) throws Exception {
+	public String memberUpdatePass(String userId) throws Exception {
+
+		Member mem = md.selectOne(userId);
+		
+		Map<String, String> boardSubject = new HashMap<String, String>();
+		boardSubject.clear();
+		boardSubject.put("boardName", "회원정보 수정");
+		
+		request.setAttribute("bs", boardSubject);
+		request.setAttribute("mem", mem);
+		
+		return "member/memberPassUpdate";
+	}
+	
+	@RequestMapping("memberPassUpdatePro")
+	public String memberPassUpdatePro(String pwd, String chgPwd) throws Exception {
 
 		String userId = (String) session.getAttribute("userId");
 
@@ -275,7 +289,7 @@ public class MemberController {
 		
 		Member mem = md.selectOne(userId);
 		if (pwd.equals(mem.getPwd())) {
-			int num = md.pwdUpdateMember(userId, chgpwd);
+			int num = md.pwdUpdateMember(userId, chgPwd);
 			if (num > 0) {
 				msg = userId + "님의 비밀번호가 수정되었습니다.";
 				url = "/member/memberInfo";
