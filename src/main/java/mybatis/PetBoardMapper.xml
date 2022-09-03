@@ -4,7 +4,7 @@
 <mapper namespace="petBoard">
 	
 	<select id="boardCount" parameterType="map" resultType="int">
-		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0
+		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = #{petType}
 	</select>
 
 	<select id="boardList" parameterType="map" resultType="petBoard">

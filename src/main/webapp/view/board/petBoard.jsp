@@ -14,7 +14,7 @@
 	<section class="module petBoard">
     <div class="inner">
       <div class="modHead center">
-        <h2>${ bs.boardName }</h2>
+        <h2>${ bs.boardName } ${ boardCount }</h2>
         <div class="filter center">
           <form class="center">
             <label class="center">
@@ -126,7 +126,7 @@
           <div class="inner center">
             <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}" class="active"</c:if>>&laquo;</a>
             <c:forEach var="p" begin="${ start }" end="${ end }">
-            <a class="active" href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}">${ p }</a>
+            <a class="active" href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}&petType=${petType}">${ p }</a>
             </c:forEach>
             <a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${end + 3}" class="active"</c:if>>&raquo;</a>
           </div>
