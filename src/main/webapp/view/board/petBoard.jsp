@@ -14,7 +14,7 @@
 	<section class="module petBoard">
     <div class="inner">
       <div class="modHead center">
-        <h2>${ bs.boardName } ${ boardCount }</h2>
+        <h2>${ bs.boardName }</h2>
         <div class="filter center">
           <form class="center">
             <label class="center">
