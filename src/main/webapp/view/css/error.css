@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+body{
+	font-family: 'Nanum Gothic', sans-serif;
+}
+
+.main {
+	display: flex;
+	width: 100%;
+	height: 750px;
+	align-items: center;
+	background-image: url("${ pageContext.request.contextPath }/view/images/dog/error.jpg");
+}
+
+.errorText {
+	position: relative;
+	left: 200px;
+}
+.errorText *{
+	font-size: 40px;
+	font-weight: 900;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.449);
+}
+.errorText div{
+	margin-bottom: 50px;
+}

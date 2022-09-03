@@ -75,9 +75,9 @@ public class BoardController {
 		int pageInt = Integer.parseInt(pageNum);
 		int boardCount = 0;
 		
-		boardCount = bd.boardCount(boardid, petType);
-		
 		List<PetBoard> list = bd.boardList(pageInt, limit, boardid, petType);
+		
+		boardCount = bd.boardCount(boardid, petType);
 		
 		if(petType == 0) {
 			request.setAttribute("petType", 0);
