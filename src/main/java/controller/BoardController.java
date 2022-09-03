@@ -75,16 +75,15 @@ public class BoardController {
 		int pageInt = Integer.parseInt(pageNum);
 		int boardCount = 0;
 		
-		List<PetBoard> list = null;
+		boardCount = bd.boardCount(boardid, petType);
+		
+		List<PetBoard> list = bd.boardList(pageInt, limit, boardid, petType);
 		
 		if(petType == 0) {
-			list = bd.dogBoardList(pageInt, limit, boardid);
 			request.setAttribute("petType", 0);
-			boardCount = bd.dogboardCount(boardid);
+			
 		} else if(petType == 1) {
-			list = bd.catBoardList(pageInt, limit, boardid);
 			request.setAttribute("petType", 1);
-			boardCount = bd.catboardCount(boardid);
 		}
 		
 //		pagination 개수

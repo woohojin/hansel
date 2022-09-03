@@ -19,46 +19,24 @@ public class BoardMybatisDAO {
 	private final static String NS = "petBoard.";
 	private static Map map = new HashMap<>();
 	
-	public int boardCount(String boardid) {
-		int num = session.selectOne(NS+"boardCount", boardid);
+	public int boardCount(String boardid, int petType) {
+		map.clear();
+		map.put("boardid", boardid);
+		map.put("petType", petType);
+		int num = session.selectOne(NS+"boardCount", map);
 		return num;
 	}
-	public int dogboardCount(String boardid) {
-		int num = session.selectOne(NS+"dogboardCount", boardid);
-		return num;
-	}
-	public int catboardCount(String boardid) {
-		int num = session.selectOne(NS+"catboardCount", boardid);
-		return num;
-	}
-	
-	public List<PetBoard> boardList(int pageInt, int limit, String boardid) {
+
+	public List<PetBoard> boardList(int pageInt, int limit, String boardid, int petType) {
 		map.clear();
 		map.put("boardid", boardid);
 		map.put("start", (pageInt - 1) * limit + 1);
 		map.put("end", (pageInt * limit));
+		map.put("petType", petType);
 		List<PetBoard> list = session.selectList(NS+"boardList", map);
 		return list;
 	}
-	
-	public List<PetBoard> dogBoardList(int pageInt, int limit, String boardid) {
-		map.clear();
-		map.put("boardid", boardid);
-		map.put("start", (pageInt - 1) * limit + 1);
-		map.put("end", (pageInt * limit));
-		List<PetBoard> list = session.selectList(NS+"dogBoardList", map);
-		return list;
-	}
-	
-	public List<PetBoard> catBoardList(int pageInt, int limit, String boardid) {
-		map.clear();
-		map.put("boardid", boardid);
-		map.put("start", (pageInt - 1) * limit + 1);
-		map.put("end", (pageInt * limit));
-		List<PetBoard> list = session.selectList(NS+"catBoardList", map);
-		return list;
-	}
-	
+
 	public int insertBoard(PetBoard pb) {
 		int num = session.insert(NS+"insertBoard", pb);
 		return num;

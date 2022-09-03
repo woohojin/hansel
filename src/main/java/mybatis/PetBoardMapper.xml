@@ -3,43 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="petBoard">
 	
-	<select id="boardCount" parameterType="String" resultType="int">
+	<select id="boardCount" parameterType="map" resultType="int">
 		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0
 	</select>
-	
-	<select id="dogboardCount" parameterType="String" resultType="int">
-		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 0
-	</select>
-	
-	<select id="catboardCount" parameterType="String" resultType="int">
-		select nvl(count(*), 0) from petboard where boardid = #{boardid} and postDisable = 0 and petType = 1
-	</select>
-	
+
 	<select id="boardList" parameterType="map" resultType="petBoard">
 		select * from (
 			select rownum rnum, a.* from (
 				select * from petboard 
-					where boardid = #{boardid} and postDisable = 0
-					order by postId desc
-			) a 
-		) where rnum between #{start} and #{end}
-	</select>
-	
-	<select id="dogBoardList" parameterType="map" resultType="petBoard">
-		select * from (
-			select rownum rnum, a.* from (
-				select * from petboard 
-					where boardid = #{boardid} and postDisable = 0 and petType = 0
-					order by postId desc
-			) a 
-		) where rnum between #{start} and #{end}
-	</select>
-	
-	<select id="catBoardList" parameterType="map" resultType="petBoard">
-		select * from (
-			select rownum rnum, a.* from (
-				select * from petboard 
-					where boardid = #{boardid} and postDisable = 0 and petType = 1
+					where boardid = #{boardid} and postDisable = 0 and petType = #{petType}
 					order by postId desc
 			) a 
 		) where rnum between #{start} and #{end}
