@@ -29,6 +29,10 @@
 		update reviewBoard set readcnt = readcnt + 1 where reviewId = #{value}
 	</update>
 	
+	<update id="reportCountUp" parameterType="int">
+		update reviewBoard set postreportcnt = postreportcnt + 1 where reviewId = #{value}
+	</update>
+	
 	<insert id="insertReply" parameterType="reviewBoard">
 		insert into reviewBoard values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
 	</insert>

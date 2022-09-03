@@ -8,37 +8,30 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import model.Comm;
 import model.PetBoard;
+import model.Report;
 
 @Component
-public class BoardMybatisDAO {
+public class ReportMybatisDAO {
 	
 	@Autowired
 	SqlSessionTemplate session;
 	
-	private final static String NS = "petBoard.";
+	private final static String NS = "report.";
 	private static Map map = new HashMap<>();
 	
-	public int boardCount(String boardid, int petType) {
+	public List<Comm> commList(int commId, int boardType) {
 		map.clear();
-		map.put("boardid", boardid);
-		map.put("petType", petType);
-		int num = session.selectOne(NS+"boardCount", map);
-		return num;
-	}
-
-	public List<PetBoard> boardList(int pageInt, int limit, String boardid, int petType) {
-		map.clear();
-		map.put("boardid", boardid);
-		map.put("start", (pageInt - 1) * limit + 1);
-		map.put("end", (pageInt * limit));
-		map.put("petType", petType);
-		List<PetBoard> list = session.selectList(NS+"boardList", map);
+		map.put("commId", commId);
+		map.put("boardType", boardType);
+		List<Comm> list = session.selectList(NS+"commList", map);
 		return list;
 	}
 
-	public int insertBoard(PetBoard pb) {
-		int num = session.insert(NS+"insertBoard", pb);
+	
+	public int insertReport(Report report) {
+		int num = session.insert(NS+"insertReport", report);
 		return num;
 	}
 	
@@ -50,9 +43,6 @@ public class BoardMybatisDAO {
 	
 	public void readCountUp(int postId) {
 		session.update(NS+"readCountUp", postId);
-	}
-	public void reportCountUp(int postId) {
-		session.update(NS+"reportCountUp", postId);
 	}
 	/*
 	public int insertReply(Board board) {

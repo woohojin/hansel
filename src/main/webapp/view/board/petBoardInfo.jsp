@@ -23,6 +23,13 @@
 		}
 		
 	</script>
+	
+	<script type="text/javascript">
+		function win_report(reportType) {
+			const op = "width=500, height=400, left=50, top=150";
+			open("${pageContext.request.contextPath}/board/reportForm?reportId=${pb.postId}&boardType=${ sessionScope.boardid eq 1 ? 1 : 2 }&reportType="+reportType, "", op);
+		}
+	</script>
 
 <link rel="stylesheet" href="${ pageContext.request.contextPath }/view/css/petBoardInfo.css">
 </head>
@@ -37,9 +44,6 @@
 
       <div class="petInfo">
         <div class="inner">
-          <form action="" method="post">
-
-            
             
             <div class="infoContent center">
               <div class="name">이름 :</div>
@@ -120,9 +124,9 @@
 		   <a href="${ pageContext.request.contextPath }/board/petBoard?boardid=${sessionScope.boardid}&petType=${pb.petType}" class="btn">
 				목록
 			</a>
-          	<input type="submit" value="신고" class="btn">
+          	<a href="javascript:win_report(1)" class="btn">신고</a>
           </div>
-        </form>
+        
         </div>
       </div>
 
@@ -150,7 +154,7 @@
                   ${ b.userId }
                 </div>
                 <textarea style="width: 100%; outline: none; border: none; padding: 10px; resize: none;" readonly class="commentContent">${ b.content }</textarea>
-                <input type="submit" class="btn" value="유저 신고">
+                <a href="javascript:win_report(2)" class="btn">유저신고</a>
               </form>
               </div>
              </c:forEach>

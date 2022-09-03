@@ -23,6 +23,13 @@
 		}
 		
 	</script>
+	
+	<script type="text/javascript">
+		function win_report(reportType) {
+			const op = "width=500, height=400, left=50, top=150";
+			open("${pageContext.request.contextPath}/board/reportForm?reportId=${pb.reviewId}&boardType=4&reportType="+reportType, "", op);
+		}
+	</script>
 
 </head>
 <body>
@@ -83,7 +90,7 @@
 			<a href="${ pageContext.request.contextPath }/board/reviewBoard" class="btn">
 				목록
 			</a>
-          	<input type="submit" class="btn" value="신고">
+          	<a href="javascript:win_report(1)" class="btn">신고</a>
           </div>
           
         </form>
@@ -111,7 +118,7 @@
                   ${ b.userId }
                 </div>
                 <textarea style="width: 100%; outline: none; border: none; padding: 10px; resize: none;" readonly class="commentContent">${ b.content }</textarea>
-                <input type="submit" class="btn" value="유저 신고">
+                <a href="javascript:win_report(2)" class="btn">유저신고</a>
               </form>
              </c:forEach>
               </c:if>

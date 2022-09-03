@@ -11,6 +11,7 @@
 		<typeAlias type="model.QBoard" alias="QBoard" />
 		<typeAlias type="model.ReviewBoard" alias="reviewBoard" />
 		<typeAlias type="model.Comm" alias="comm" />
+		<typeAlias type="model.Report" alias="report" />
 	</typeAliases>
 	
 	<mappers><!-- sql 구문 -->
@@ -20,6 +21,7 @@
 		<mapper resource="mybatis/QBoardMapper.xml"/>
 		<mapper resource="mybatis/ReviewBoardMapper.xml"/>
 		<mapper resource="mybatis/CommMapper.xml"/>
+		<mapper resource="mybatis/ReportMapper.xml"/>
 	</mappers>
 	
 </configuration>

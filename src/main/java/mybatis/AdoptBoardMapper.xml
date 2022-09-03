@@ -29,6 +29,10 @@
 		update adoptBoard set readcnt = readcnt + 1 where adoptId = #{value}
 	</update>
 	
+	<update id="reportCountUp" parameterType="int">
+		update adoptBoard set postreportcnt = postreportcnt + 1 where adoptId = #{value}
+	</update>
+	
 	<insert id="insertReply" parameterType="adoptBoard">
 		insert into adoptBoard values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
 	</insert>
