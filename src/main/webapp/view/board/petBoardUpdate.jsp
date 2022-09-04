@@ -39,7 +39,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" maxlength="10" name="petName" value="${ pb.petName }">
+              <input type="text" maxlength="10" name="petName" value="${ pb.petName }" required>
             </div>
             
             <div class="conInput center">
@@ -47,10 +47,10 @@
                 종류
               </div>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0"> 강아지
+                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0" required> 강아지
               </label>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1"> 고양이
+                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1" required> 고양이
               </label>
             </div>
 
@@ -59,10 +59,10 @@
                 성별
               </div>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 1 ? "checked" : "" } value="1"> 수컷
+                <input type="radio" name="petGender" ${ pb.petGender == 1 ? "checked" : "" } value="1" required> 수컷
               </label>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2"> 암컷
+                <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2" required> 암컷
               </label>
             </div>
             
@@ -70,7 +70,7 @@
               <div class="name center">
                 특징
               </div>
-              <input type="text" name="petDetail" value="${ pb.petDetail }">
+              <input type="text" name="petDetail" value="${ pb.petDetail }" required>
             </div>
 
             <div class="conInput center">
@@ -78,7 +78,7 @@
                 ${ bs.boardPlace }
               </div>
               <div class="address">
-	              <input type="text" id="roadAddress" style="width: 70%;" name="place" readonly value="${ pb.place }">
+	              <input type="text" id="roadAddress" style="width: 70%;" name="place" readonly value="${ pb.place }" required>
 	              <input type="button" onclick="execDaumPostcode()" class="center" style="width: 30%; padding: 0px;" value="주소 검색">
               </div>
             </div>
@@ -87,7 +87,7 @@
               <div class="name center">
                 ${ bs.boardDate }
               </div>
-              <input type="date" value="${ pb.petDate }" name="petDate">
+              <input type="date" value="${ pb.petDate }" name="petDate" required>
             </div>
 
             <div class="conInput center">
@@ -101,7 +101,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea class="scrollbar" name="content">${ pb.content }</textarea>
+              <textarea class="scrollbar" name="content" required>${ pb.content }</textarea>
             </div>
 
 

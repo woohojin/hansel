@@ -39,7 +39,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" maxlength="10" name="petName" value="${ pb.petName }">
+              <input type="text" maxlength="10" name="petName" value="${ pb.petName }" required>
             </div>
 
 			<div class="conInput center">
@@ -47,10 +47,10 @@
                 종류
               </div>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0"> 강아지
+                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0" required> 강아지
               </label>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1"> 고양이
+                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1" required> 고양이
               </label>
             </div>
 
@@ -59,10 +59,10 @@
                 성별
               </div>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 1 ? "checked" : "" } value="1"> 남아
+                <input type="radio" name="petGender" ${ pb.petGender == 1 ? "checked" : "" } value="1" required> 남아
               </label>
               <label class="center">
-                <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2"> 여아
+                <input type="radio" name="petGender" ${ pb.petGender == 2 ? "checked" : "" } value="2" required> 여아
               </label>
             </div>
 
@@ -70,7 +70,7 @@
               <div class="name center">
                 특징
               </div>
-              <input type="text" name="petDetail" value="${ pb.petDetail }">
+              <input type="text" name="petDetail" value="${ pb.petDetail }" required>
             </div>
 
             <div class="conInput center">
@@ -78,10 +78,10 @@
                 중성화
               </div>
               <label class="center">
-                <input type="radio" name="neuter" ${ pb.neuter == 0 ? "checked" : "" } value="0"> 미완료
+                <input type="radio" name="neuter" ${ pb.neuter == 0 ? "checked" : "" } value="0" required> 미완료
               </label>
               <label class="center">
-                <input type="radio" name="neuter" ${ pb.neuter == 1 ? "checked" : "" } value="1"> 완료
+                <input type="radio" name="neuter" ${ pb.neuter == 1 ? "checked" : "" } value="1" required> 완료
               </label>
             </div>
 
@@ -90,10 +90,10 @@
                 예방접종
               </div>
               <label class="center">
-                <input type="radio" name="vaccin" ${ pb.vaccin == 0 ? "checked" : "" } value="0"> 미완료
+                <input type="radio" name="vaccin" ${ pb.vaccin == 0 ? "checked" : "" } value="0" required> 미완료
               </label>
               <label class="center">
-                <input type="radio" name="vaccin" ${ pb.vaccin == 1 ? "checked" : "" } value="1"> 완료
+                <input type="radio" name="vaccin" ${ pb.vaccin == 1 ? "checked" : "" } value="1" required> 완료
               </label>
             </div>
 
@@ -108,7 +108,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea class="scrollbar" name="content">${ pb.content }</textarea>
+              <textarea class="scrollbar" name="content" required>${ pb.content }</textarea>
             </div>
 
 

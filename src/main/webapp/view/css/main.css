@@ -117,6 +117,7 @@
 .choose .box:hover {
   width: 55%;
 }
+
 .choose .box:nth-of-type(1) {
   box-shadow: inset -1px 0px 1px rgba(0, 0, 0, 0.411);
 }
@@ -139,7 +140,6 @@
   transform: translateX(-50%);
   width: 140px;
 }
-
 .review {
   position: relative;
   height: 550px;
@@ -181,7 +181,7 @@
 .review .inner .toLeft.showBtn {
   opacity: 1;
 }
-.review .inner .toLeft:hover {
+.review .inner .toLeft {
   transform: scale(1.1) translateY(-50%);
 }
 .review h2 {

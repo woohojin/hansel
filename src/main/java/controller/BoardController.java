@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +46,7 @@ public class BoardController {
 	BoardMybatisDAO bd;
 	@Autowired
 	CommMybatisDAO cd;
-
+	
 //	보호중인 동물 과 잃어버린 동물의 게시판
 	@RequestMapping("petBoard")
 	public String petBoard(int petType) throws Exception {
@@ -97,7 +96,6 @@ public class BoardController {
 		}
 		
 		int boardNum = boardCount - (pageInt-1)*limit;
-		
 		
 		Map<String, String> boardSubject = new HashMap<String, String>();
 		switch(boardid) {
@@ -305,6 +303,7 @@ public class BoardController {
 		if(request.getParameter("pageNum") != null) {
 			session.setAttribute("pageNum", request.getParameter("pageNum"));
 		}
+		
 		String pageNum = (String) session.getAttribute("pageNum");
 		if(pageNum == null) {
 			pageNum = "1";

@@ -19,7 +19,7 @@
 	<section class="module form">
 	<h2>입양공고 게시물 작성</h2>
 	
-    <form action="${ pageContext.request.contextPath }/board/adoptBoardPro" name="f" method="post">
+    <form onsubmit="return submitLengthCheck(this)" action="${ pageContext.request.contextPath }/board/adoptBoardPro" name="f" method="post">
 
       <div class="inner center">
         
@@ -38,7 +38,7 @@
               <div class="name center">
                 이름
               </div>
-              <input type="text" maxlength="10" name="petName">
+              <input type="text" maxlength="10" name="petName" required>
             </div>
 			
 			<div class="conInput center">
@@ -46,10 +46,10 @@
                 종류
               </div>
               <label class="center">
-                <input type="radio" name="petType" value="0"> 강아지
+                <input type="radio" name="petType" value="0" required> 강아지
               </label>
               <label class="center">
-                <input type="radio" name="petType" value="1"> 고양이
+                <input type="radio" name="petType" value="1" required> 고양이
               </label>
             </div>
 			
@@ -58,10 +58,10 @@
                 성별
               </div>
               <label class="center">
-                <input type="radio" name="petGender" value="1"> 수컷
+                <input type="radio" name="petGender" value="1" required> 수컷
               </label>
               <label class="center">
-                <input type="radio" name="petGender" value="2"> 암컷
+                <input type="radio" name="petGender" value="2" required> 암컷
               </label>
             </div>
 
@@ -69,7 +69,7 @@
               <div class="name center">
                 특징
               </div>
-              <input type="text" name="petDetail">
+              <input type="text" name="petDetail" required>
             </div>
 
             <div class="conInput center">
@@ -77,10 +77,10 @@
                 중성화
               </div>
               <label class="center">
-                <input type="radio" name="neuter" value="0"> 미완료
+                <input type="radio" name="neuter" value="0" required> 미완료
               </label>
               <label class="center">
-                <input type="radio" name="neuter" value="1"> 완료
+                <input type="radio" name="neuter" value="1" required> 완료
               </label>
             </div>
 
@@ -89,10 +89,10 @@
                 예방접종
               </div>
               <label class="center">
-                <input type="radio" name="vaccin" value="0"> 미완료
+                <input type="radio" name="vaccin" value="0" required> 미완료
               </label>
               <label class="center">
-                <input type="radio" name="vaccin" value="1"> 완료
+                <input type="radio" name="vaccin" value="1" required> 완료
               </label>
             </div>
             
@@ -107,7 +107,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea name="content"></textarea>
+              <textarea name="content" required></textarea>
               
             </div>
 
@@ -121,12 +121,24 @@
   </section>
   
   <script>
-  
   function maxLengthCheck(object){
 	    if (object.value.length > object.maxLength){
 	      object.value = object.value.slice(0, object.maxLength);
 	    }    
 	}
+  
+  const submitLengthCheck = (form) => {
+	  const obj = form.tel;
+
+	  if(obj.value.length < 11) {
+		  alert("전화번호 길이를 확인해주세요.") ;
+          obj.focus();
+          
+          return false;
+	  }
+	  
+	  return true;
+  }
   </script>
 
 </body>

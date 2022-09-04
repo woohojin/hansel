@@ -41,14 +41,14 @@
               <div class="name center">
                 제목
               </div>
-              <input type="text" name="subject" value="${ pb.subject }">
+              <input type="text" name="subject" value="${ pb.subject }" required>
             </div>
             
             <div class="conInput center">
               <div class="name center" style="width: 200px;">
                 반려동물 이름
               </div>
-              <input type="text" name="petName" value="${ pb.petName }">
+              <input type="text" name="petName" value="${ pb.petName }" required>
             </div>
             
             <div class="conInput center">
@@ -56,10 +56,10 @@
                 종류
               </div>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0"> 강아지
+                <input type="radio" name="petType" ${ pb.petType == 0 ? "checked" : "" } value="0" required> 강아지
               </label>
               <label class="center">
-                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1"> 고양이
+                <input type="radio" name="petType" ${ pb.petType == 1 ? "checked" : "" } value="1" required> 고양이
               </label>
             </div>
 
@@ -67,7 +67,7 @@
               <div class="name">
                 상세설명
               </div>
-              <textarea class="scrollbar" name="content">${ pb.content }</textarea>
+              <textarea class="scrollbar" name="content" required>${ pb.content }</textarea>
             
             </div>
 

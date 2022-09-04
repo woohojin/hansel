@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/error/")
 public class ErrorController {
 	
 	HttpServletRequest request;
@@ -24,9 +24,9 @@ public class ErrorController {
 	}
 	
 	@RequestMapping("errorRedirect")
-	public String errorRedirect() {
+	public String errorRedirect(){
 
-		String url = "/error";
+		String url = "error";
 		
 		request.setAttribute("url", url);
 		return "errorRedirect";
@@ -34,8 +34,8 @@ public class ErrorController {
 	
 	@RequestMapping("error")
 	public String error() {
-
+		
 		return "error";
 	}
-
+	
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		location.href = "${ pageContext.request.contextPath }${ url }";
+		location.href = "${ pageContext.request.contextPath }/error/${ url }";
 	</script>
 </body>
 </html>
