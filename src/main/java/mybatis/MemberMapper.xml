@@ -16,6 +16,10 @@
 		update hanuser set login=#{login} where userId = #{userId} 
 	</update>
 	
+	<update id="reportCountUp" parameterType="String">
+		update hanuser set userreportcnt = userreportcnt + 1 where userId = #{value}
+	</update>
+	
 	<update id="updateMember" parameterType="member">
 		update hanuser set address=#{address}, email=#{email}, tel=#{tel}, petName=#{petName} where userId = #{userId} 
 	</update>

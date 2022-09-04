@@ -44,8 +44,12 @@ public class ReviewBoardMybatisDAO {
 		return board;
 	}
 	
-	public void readCountUp(int postId) {
-		session.update(NS+"readCountUp", postId);
+	public void readCountUp(int reviewId) {
+		session.update(NS+"readCountUp", reviewId);
+	}
+	
+	public void reportCountUp(int reviewId) {
+		session.update(NS+"reportCountUp", reviewId);
 	}
 	/*
 	public int insertReply(Board board) {

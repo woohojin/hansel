@@ -18,13 +18,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import model.AdoptBoard;
 import model.Comm;
+import model.Member;
 import model.PetBoard;
 import model.QBoard;
+import model.Report;
 import model.ReviewBoard;
 import service.AdoptBoardMybatisDAO;
 import service.BoardMybatisDAO;
 import service.CommMybatisDAO;
+import service.MemberMybatisDAO;
 import service.QBoardMybatisDAO;
+import service.ReportMybatisDAO;
 import service.ReviewBoardMybatisDAO;
 
 @Controller
@@ -775,4 +779,87 @@ public class BoardController {
 	 
 	 }
 	
+	@Autowired
+	ReportMybatisDAO rd;
+	
+	@RequestMapping("reportForm")
+	public String reportForm(int reportId, int boardType, int reportType, String repoUserId) throws Exception {
+		
+		Map<String, Integer> map = new HashMap<>();
+		map.put("reportId", reportId);
+		map.put("boardType", boardType);
+		map.put("reportType", reportType);
+		
+		request.setAttribute("repoUserId", repoUserId);
+		request.setAttribute("reportInfo", map);
+		
+		return "board/reportForm";
+		
+	}
+	
+	@Autowired
+	MemberMybatisDAO md;
+	
+	@RequestMapping("reportPro")
+	public String reportPro(Report report, String repoUserId) throws Exception {
+		
+		String msg = "신고접수를 실패하였습니다.";
+		int boardType = report.getBoardType();
+		int reportType = report.getReportType();
+		int reportId = report.getReportId();
+		
+		int num = rd.insertReport(report);
+		if(num>0) {
+			
+			msg = "신고가 접수 되었습니다.";
+			if(reportType == 1) {
+				
+				if(boardType == 1 || boardType == 2) {
+					bd.reportCountUp(reportId);
+				} else if (boardType == 3) {
+					ab.reportCountUp(reportId);
+				} else if (boardType == 4) {
+					rb.reportCountUp(reportId);
+				}
+				
+			} else if(reportType == 2) {
+				md.reportCountUp(repoUserId);
+			}
+			
+		}
+		
+		request.setAttribute("msg", msg);
+		
+		return "reportAlert";
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

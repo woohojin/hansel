@@ -46,6 +46,12 @@ public class AdoptBoardMybatisDAO {
 	public void readCountUp(int adoptId) {
 		session.update(NS+"readCountUp", adoptId);
 	}
+	
+	public void reportCountUp(int adoptId) {
+		session.update(NS+"reportCountUp", adoptId);
+	}
+	
+	
 	/*
 	public int insertReply(Board board) {
 		int num = session.insert(NS+"insertReply", board);

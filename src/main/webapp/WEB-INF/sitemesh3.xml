@@ -7,5 +7,7 @@
 	
 	<mapping path="*/pictureimgForm" exclude="true" />
 	<mapping path="*/pictureimgPro" exclude="true" />
+	<mapping path="*/reportForm" exclude="true" />
+	<mapping path="*/reportPro" exclude="true" />
 	
 </sitemesh>	
