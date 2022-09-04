@@ -784,13 +784,14 @@ public class BoardController {
 	ReportMybatisDAO rd;
 	
 	@RequestMapping("reportForm")
-	public String reportForm(int reportId, int boardType, int reportType) throws Exception {
+	public String reportForm(int reportId, int boardType, int reportType, String repoUserId) throws Exception {
 		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("reportId", reportId);
 		map.put("boardType", boardType);
 		map.put("reportType", reportType);
 		
+		request.setAttribute("repoUserId", repoUserId);
 		request.setAttribute("reportInfo", map);
 		
 		return "board/reportForm";
@@ -801,7 +802,7 @@ public class BoardController {
 	MemberMybatisDAO md;
 	
 	@RequestMapping("reportPro")
-	public String reportPro(Report report) throws Exception {
+	public String reportPro(Report report, String repoUserId) throws Exception {
 		
 		String msg = "신고접수를 실패하였습니다.";
 		int boardType = report.getBoardType();
@@ -822,6 +823,8 @@ public class BoardController {
 					rb.reportCountUp(reportId);
 				}
 				
+			} else if(reportType == 2) {
+				md.reportCountUp(repoUserId);
 			}
 			
 		}

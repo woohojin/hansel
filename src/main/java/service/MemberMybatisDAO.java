@@ -39,8 +39,8 @@ public class MemberMybatisDAO {
 		
 	}
 	
-	public void reportCountUp(int userId) {
-		session.update(NS+"reportCountUp", userId);
+	public void reportCountUp(String repoUerId) {
+		session.update(NS+"reportCountUp", repoUerId);
 	}
 	
 	public int updateMember(Member mem) {

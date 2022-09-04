@@ -16,6 +16,8 @@
 		<input type="hidden" name="boardType" value="${ reportInfo.boardType }"/>
 		<input type="hidden" name="reportType" value="${ reportInfo.reportType }"/>
 		<input type="hidden" name="userId" value="${ sessionScope.userId }"/>
+		<input type="hidden" name="repoUserId" value="${ repoUserId }"/>
+		
 		<div class="w3-container">
 			<h2>신고이유</h2>
 			<textarea name="reportText" style="resize: none; width: 300px; height: 200px;"></textarea>

@@ -25,9 +25,9 @@
 	</script>
 	
 	<script type="text/javascript">
-		function win_report(reportType) {
+		function win_report(reportType, reportId, repoUserId) {
 			const op = "width=500, height=400, left=50, top=150";
-			open("${pageContext.request.contextPath}/board/reportForm?reportId=${pb.reviewId}&boardType=4&reportType="+reportType, "", op);
+			open("${pageContext.request.contextPath}/board/reportForm?reportId="+reportId+"&boardType=4&reportType="+reportType+"&repoUserId="+repoUserId, "", op);
 		}
 	</script>
 
@@ -90,7 +90,7 @@
 			<a href="${ pageContext.request.contextPath }/board/reviewBoard" class="btn">
 				목록
 			</a>
-          	<a href="javascript:win_report(1)" class="btn">신고</a>
+          	<a href="javascript:win_report(1, ${ pb.reviewId }, null)" class="btn">신고</a>
           </div>
           
         </form>
@@ -118,7 +118,7 @@
                   ${ b.userId }
                 </div>
                 <textarea style="width: 100%; outline: none; border: none; padding: 10px; resize: none;" readonly class="commentContent">${ b.content }</textarea>
-                <a href="javascript:win_report(2)" class="btn">유저신고</a>
+                <a href="javascript:win_report(2, ${ b.ref }, '${ b.userId }')" class="btn">유저신고</a>
               </form>
              </c:forEach>
               </c:if>
