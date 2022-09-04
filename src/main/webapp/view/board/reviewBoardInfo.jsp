@@ -90,7 +90,12 @@
 			<a href="${ pageContext.request.contextPath }/board/reviewBoard" class="btn">
 				목록
 			</a>
-          	<a href="javascript:win_report(1, ${ pb.reviewId }, null)" class="btn">신고</a>
+			<c:if test="${ sessionScope.userId != null }">
+			<c:if test="${ sessionScope.userId != pb.userId }">
+          		<a href="javascript:win_report(1, ${ pb.reviewId }, null)" class="btn">신고</a>
+          	</c:if>
+          	</c:if>
+          	
           </div>
           
         </form>
@@ -118,7 +123,11 @@
                   ${ b.userId }
                 </div>
                 <textarea style="width: 100%; outline: none; border: none; padding: 10px; resize: none;" readonly class="commentContent">${ b.content }</textarea>
-                <a href="javascript:win_report(2, ${ b.ref }, '${ b.userId }')" class="btn">유저신고</a>
+                <c:if test="${ sessionScope.userId != null }">
+                	<c:if test="${ sessionScope.userId != b.userId }">
+                		<a href="javascript:win_report(2, ${ b.ref }, '${ b.userId }')" class="btn">유저신고</a>
+                	</c:if>
+                </c:if>
               </form>
              </c:forEach>
               </c:if>

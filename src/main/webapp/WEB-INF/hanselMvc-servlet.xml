@@ -70,6 +70,7 @@
    			<mvc:mapping path="/board/adoptBoardForm" />
    			<mvc:mapping path="/board/reviewBoardForm" />
    			<mvc:mapping path="/board/QBoardForm" />
+   			<mvc:mapping path="/board/reportForm" />
    			
    			<mvc:mapping path="/board/petBoardUpdate" />
    			<mvc:mapping path="/board/adoptBoardUpdate" />
