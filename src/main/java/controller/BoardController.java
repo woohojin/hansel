@@ -281,7 +281,7 @@ public class BoardController {
 		int num = bd.boardDisable(postId);
 		if(num>0) {
 			msg = "게시물을 삭제하였습니다.";
-			url = "/board/petBoard";
+			url = "/board/petBoard?petType=0";
 		}
 		
 		request.setAttribute("msg", msg);
@@ -295,7 +295,7 @@ public class BoardController {
 	
 //	유기, 실종동물 입양
 	@RequestMapping("adoptBoard")
-	public String adoptBoard() throws Exception {
+	public String adoptBoard(int petType) throws Exception {
 		
 		if(request.getParameter("boardid") != null) {
 			session.setAttribute("boardid", request.getParameter("boardid"));
@@ -314,8 +314,17 @@ public class BoardController {
 		}
 		
 		int pageInt = Integer.parseInt(pageNum);
-		int boardCount = ab.boardCount();
-		List<AdoptBoard> list = ab.boardList(pageInt, limit);
+		int boardCount = ab.boardCount(petType);
+		List<AdoptBoard> list = ab.boardList(pageInt, limit, petType);
+		
+
+		if(petType == 0) {
+			request.setAttribute("petType", 0);
+			
+		} else if(petType == 1) {
+			request.setAttribute("petType", 1);
+		}
+		
 		
 //		pagination 개수
 		int bottomLine = 3;
@@ -375,13 +384,13 @@ public class BoardController {
 		String url = "/board/adoptBoardForm";
 		
 		String userId = (String) session.getAttribute("userId");
-		
+		int petType = Integer.parseInt(adoptBoard.getPetType());
 		adoptBoard.setUserId(userId);
 		
 		int num = ab.insertBoard(adoptBoard);
 		if(num>0) {
 			msg = "게시물을 등록하였습니다.";
-			url = "/board/adoptBoard";
+			url = "/board/adoptBoard?petType="+petType;
 		}
 		
 		request.setAttribute("msg", msg);
@@ -429,7 +438,7 @@ public class BoardController {
 		int num = ab.boardDisable(adoptId);
 		if(num>0) {
 			msg = "게시물을 삭제하였습니다.";
-			url = "/board/adoptBoard";
+			url = "/board/adoptBoard?petType=0";
 		}
 		
 		request.setAttribute("msg", msg);

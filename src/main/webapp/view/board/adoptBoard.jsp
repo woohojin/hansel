@@ -16,6 +16,12 @@
       <div class="modHead center">
         <h2>입양공고</h2>
         <div class="box center">
+        <label class="center">
+         	  <input id="petTypeDog"type="radio" name="petType" ${ petType == 0 ? "checked" : "" } onchange="redirect(this)" value="0"> 강아지
+            </label>
+            <label class="center">
+          	  <input id="petTypeCat"type="radio" name="petType" ${ petType == 1 ? "checked" : "" } onchange="redirect(this)" value="1"> 고양이
+            </label>
           <div class="searchBox center">
             <input type="text">
             <div class="searchIcon">
@@ -118,15 +124,19 @@
 
       <div class="modPage center">
           <div class="inner center">
-            <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${start-3}" class="active"</c:if>>&laquo;</a>
+            <a <c:if test="${ start >= 3}" >href="${ pageContext.request.contextPath }/board/adoptBoard?pageNum=${start-3}" class="active"</c:if>>&laquo;</a>
             <c:forEach var="p" begin="${ start }" end="${ end }">
-            <a class="active" href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${p}">${ p }</a>
+            <a class="active" href="${ pageContext.request.contextPath }/board/adoptBoard?pageNum=${p}&petType=${petType}">${ p }</a>
             </c:forEach>
-            <a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/petBoard?boardid=${ sessionScope.boardid }&pageNum=${end + 3}" class="active"</c:if>>&raquo;</a>
+            <a <c:if test="${ end < maxPage }">href="${ pageContext.request.contextPath }/board/adoptBoard?pageNum=${end + 3}" class="active"</c:if>>&raquo;</a>
           </div>
         </div>
     </div>
   </section>
-  
+  <script>
+	function redirect(type) {
+		window.location.href = '${pageContext.request.contextPath}/board/adoptBoard?petType=' + type.value;
+	}
+  </script>
 </body>
 </html>

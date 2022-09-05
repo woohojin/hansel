@@ -11,7 +11,7 @@
 <script type="text/javascript">
 		const confirmDisable = () => {
 				
-			const con = confirm("회원을 탈퇴하시겠습니까??");
+			const con = confirm("게시물을 삭제하시겠습니까??");
 			if(con) {
 				console.log(con);
 				location.href = "${ pageContext.request.contextPath }/board/adoptBoardDelete?adoptId=${pb.adoptId}";
@@ -121,7 +121,7 @@
 				삭제
 			</a>
 			</c:if>
-			<a href="${ pageContext.request.contextPath }/board/adoptBoard" class="btn">
+			<a href="${ pageContext.request.contextPath }/board/adoptBoard?petType=${pb.petType}" class="btn">
 				목록
 			</a>
 			<c:if test="${ sessionScope.userId != null }">

@@ -29,7 +29,7 @@
 	</delete>
 	
 	<update id="pwdUpdateMember" parameterType="map">
-		update hanuser set pwd=#{chgpwd} where userId = #{userId} 
+		update hanuser set pwd=#{chgPwd} where userId = #{userId} 
 	</update>
 	
 		<!--<select id="memberList" resultType="member">

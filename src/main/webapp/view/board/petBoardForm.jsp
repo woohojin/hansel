@@ -23,7 +23,7 @@
 	
 	<h2>${ bs.boardName } 게시물 작성</h2>
 	
-    <form action="${ pageContext.request.contextPath }/board/petBoardPro" name="f" method="post">
+    <form onsubmit="return submitLengthCheck(this)" action="${ pageContext.request.contextPath }/board/petBoardPro" name="f" method="post">
 
       <div class="inner center">
         
@@ -122,6 +122,19 @@ function maxLengthCheck(object){
     if (object.value.length > object.maxLength){
       object.value = object.value.slice(0, object.maxLength);
     }    
+}
+
+const submitLengthCheck = (form) => {
+  const obj = form.tel;
+
+  if(obj.value.length < 11) {
+	  alert("전화번호 길이를 확인해주세요.") ;
+      obj.focus();
+      
+      return false;
+  }
+  
+  return true;
 }
 	
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
