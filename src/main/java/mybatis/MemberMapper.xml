@@ -49,6 +49,7 @@
 		<!--<select id="memberList" resultType="member">
 		select * from member
 	</select> -->
+
 </mapper>
 
 
