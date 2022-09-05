@@ -73,6 +73,7 @@ public class MemberController {
 //				mem.setLogin(1);
 //				md.updateLogin(mem);
 				session.setAttribute("userId", userId);
+				session.setAttribute("userType", mem.getUserType());
 				if (autoLogin != null) {
 					Cookie cookie = new Cookie("userId", userId);
 					cookie.setMaxAge(60 * 60 * 24 * 30);

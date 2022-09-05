@@ -1,6 +1,7 @@
 package service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import model.Member;
+import model.PetBoard;
 
 @Component
 public class MemberMybatisDAO {
@@ -25,10 +27,26 @@ public class MemberMybatisDAO {
 		
 	}
 	
+	public List<Member> memberList(int userType) {
+		List<Member> list = session.selectList(NS+"memberList", userType);
+		return list;
+	}
+	
 	public Member selectOne(String userId) {
 		
 		Member mem = session.selectOne(NS+"selectOne", userId);
 		return mem;
+		
+	}
+	
+	public int updateAuth(String userId, int userType) {
+		
+		map.clear();
+		map.put("userId", userId);
+		map.put("userType", userType);
+		
+		int num = session.update(NS+"updateAuth", map);
+		return num;
 		
 	}
 	
