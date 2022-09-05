@@ -270,16 +270,18 @@ public class MemberController {
 		return "/member/memberPassUpdate";
 	}
 
-	public String memberPassUpdatePro(String pwd, String chgPwd) throws Exception {
+	@RequestMapping("memberPassUpdatePro")
+	public String memberPassUpdatePro(String pwd, String chgpwd) throws Exception {
 
 		String userId = (String) session.getAttribute("userId");
 
 		String msg = "비밀번호가 틀렸습니다 ";
 		String url = "/member/memberPassUpdate";
+		System.out.println(chgpwd);
 		
 		Member mem = md.selectOne(userId);
 		if (pwd.equals(mem.getPwd())) {
-			int num = md.pwdUpdateMember(userId, chgPwd);
+			int num = md.pwdUpdateMember(userId, chgpwd);
 			if (num > 0) {
 				msg = userId + "님의 비밀번호가 수정되었습니다.";
 				url = "/member/memberInfo";
