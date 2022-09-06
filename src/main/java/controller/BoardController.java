@@ -756,7 +756,7 @@ public class BoardController {
 	}
 
 	@RequestMapping("commentDelete")
-	public String commentDelete(Comm comm) throws Exception {
+	public String commentDelete(int ref) throws Exception {
 
 		String msg = "";
 		String url = "";
