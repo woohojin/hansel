@@ -26,16 +26,16 @@
         
         <div class="inneremail">
           <h3>신규 비밀번호</h3>
-          <input type="password" name="pwdOk" required>
+          <input type="password" name="chgPwd" required>
         </div>
         
         <div class="inneremail">
           <h3>신규 비밀번호 확인</h3>
-          <input type="password" name="chgpwd" required>
+          <input type="password" name="pwdOk" required>
         </div>
          
         <div class="submit center">
-          <input type="submit" value="로그인">
+          <input type="submit" value="비밀번호 변경">
         </div>
       </form>
     </div>
@@ -46,7 +46,7 @@ const inputCheck = (form) => {
 		alert("비밀번호를 입력하세요.");
 		form.pwd.focus();
 		return false;
-	} else if (form.chgpwd.value != form.pwdOk.value) {
+	} else if (form.chgPwd.value != form.pwdOk.value) {
 		alert("변경 비밀번호 와 재입력 비밀번호가 일치하지 않습니다.");
 		form.pwdOk.value = "";
 		form.pwdOk.focus();

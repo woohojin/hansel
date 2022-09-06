@@ -30,7 +30,7 @@
 	        <li>찾고있는 동물</li>
 	      </a>
 	
-		  <a href="${ pageContext.request.contextPath }/board/adoptBoard">
+		  <a href="${ pageContext.request.contextPath }/board/adoptBoard?petType=0">
 	        <li>입양공고</li>
 	      </a>
 	      

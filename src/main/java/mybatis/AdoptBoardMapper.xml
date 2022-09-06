@@ -3,15 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adoptBoard">
 	
-	<select id="boardCount" resultType="int">
-		select nvl(count(*), 0) from adoptBoard where postDisable = 0
+	<select id="boardCount" resultType="int" >
+		select nvl(count(*), 0) from adoptBoard where postDisable = 0 and petType=#{petType}
 	</select>
 	
 	<select id="boardList" parameterType="map" resultType="adoptBoard">
 		select * from (
 			select rownum rnum, a.* from (
 				select * from adoptBoard 
-					where postDisable = 0
+					where postDisable = 0 and petType = #{petType}
 					order by adoptId desc
 			) a 
 		) where rnum between #{start} and #{end}
