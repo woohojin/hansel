@@ -17,6 +17,12 @@
 		) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="userBoard" parameterType="map" resultType="petBoard">
+		select * from petboard 
+		where boardid = #{boardid} and userId = #{userId}
+		order by postId desc
+	</select>
+	
 	<insert id="insertBoard" parameterType="petBoard">
 		insert into petboard values (postId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content}, #{place}, to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petGender}, #{petType}, #{petDate}, #{petImg}, #{petDetail}, 0, #{boardId})
 	</insert>

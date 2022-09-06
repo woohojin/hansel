@@ -17,6 +17,12 @@
 		) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="userBoard" parameterType="String" resultType="reviewBoard">
+		select * from reviewBoard 
+		where userId = #{userId}
+		order by reviewId desc
+	</select>
+	
 	<insert id="insertBoard" parameterType="reviewBoard">
 		insert into reviewBoard values (reviewId_seq.nextval, 0, 0, 0, #{userId}, #{subject},  #{content},  to_char(sysdate, 'yyyy-mm-dd'), #{petName}, #{petType}, #{petImg})
 	</insert>

@@ -13,6 +13,12 @@
 		order by regdate desc
 	</select>
 	
+	<select id="commUser" parameterType="String" resultType="comm">
+		select * from comm 
+		where userId = #{userId}
+		order by regdate desc
+	</select>
+	
 	<insert id="insertBoard" parameterType="comm">
 		insert into comm values (#{commId}, #{userId}, #{content}, ref_SEQ.nextval, sysdate, #{boardType})
 	</insert>

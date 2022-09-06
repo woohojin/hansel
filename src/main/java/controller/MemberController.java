@@ -41,6 +41,8 @@ public class MemberController {
 //	메인 페이지
 	@RequestMapping("index")
 	public String index() throws Exception {
+		session.setAttribute("adminPage", false);
+		
 		return "index";
 	}
 

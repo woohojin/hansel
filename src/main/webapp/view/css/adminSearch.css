@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.search {
+  height: 700px;
+  padding: 30px;
+}
+.search h2 {
+  font-size: 25px;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+}
+.search h2 .searchBox {
+  width: 300px;
+}
+.search h2 .searchBox input {
+  height: 100%;
+  width: 90%;
+}
+.search h2 .searchBox .searchIcon {
+  width: 10%;
+  height: 100%;
+  padding: 5px;
+}
+.search h2 .searchBox .searchIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.search h2 .searchBox .searchIcon svg path {
+  width: 100%;
+  height: 100%;
+}
+.search .userContent {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+.search .userContent .userInfo {
+  width: 33.333%;
+  height: 100%;
+  border: 1px solid #000;
+}
+.search .userContent .userInfo ul {
+  width: 100%;
+  height: calc(100% - 50px);
+  padding: 10px;
+}
+.search .userContent .userInfo ul li {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+.search .userContent .userInfo ul li .btn {
+  height: 70%;
+  width: 80px;
+  margin-right: 9px;
+}
+.search .userContent .userInfo.userComm ul {
+  overflow-y: scroll;
+}
+.search .userContent .userInfo.userComm ul li {
+  display: block;
+  height: 80px;
+}
+.search .userContent .userInfo.userComm ul li .name {
+  font-weight: bold;
+  height: 35%;
+  justify-content: space-between;
+}
+.search .userContent .userInfo.userComm ul li .name .btn {
+  height: 100%;
+  width: 50px;
+}
+.search .userContent .userInfo.userComm ul li textarea {
+  width: 50%;
+  height: 65%;
+  resize: none;
+  padding: 5px;
+  outline: none;
+}
+.search .userContent .userInfo.userPost h2 .box {
+  height: 100%;
+}
+.search .userContent .userInfo.userPost h2 .box .btn {
+  width: 50px;
+  height: 60%;
+  font-size: 18px;
+  margin-right: 5px;
+}
+.search .userContent .userInfo.userPost ul {
+  overflow-y: scroll;
+}
+.search .userContent .userInfo.userPost ul li {
+  justify-content: space-between;
+}
+.search .userContent .userInfo.userPost ul li .btn {
+  width: 110px;
+  height: 70%;
+}

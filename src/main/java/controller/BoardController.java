@@ -754,49 +754,38 @@ public class BoardController {
 	@RequestMapping("commentDelete")
 	public String commentDelete(int ref) throws Exception {
 		
-		String msg = "";
+		String msg = "댓글 삭제에 실패하였습니다.";
 		String url = "";
-		
-		System.out.println(ref + "ref");
 		
 		Comm comm = cd.boardOne(ref);
 		
-		System.out.println(comm);
-		
 		int boardType = comm.getBoardType();
 		int commId = comm.getCommId();
-		
 		int num = cd.boardDelete(ref);
 		
-		if(num == 0) {
-			  if(boardType == 1 || boardType == 2) {
-			  	  msg = "댓글 삭제에 실패하였습니다.";
-			  	  url = "/board/petBoardInfo?postId="+commId;
-			  } else if (boardType == 3) {
-				  msg = "댓글 삭제에 실패하였습니다.";
-				  url = "/board/adoptBoardInfo?adoptId="+commId;
-			  } else if (boardType == 4) {
-				  msg = "댓글 삭제에 실패하였습니다";
-				  url = "/board/reviewBoardInfo?reviewId="+commId;
-			  } else if (boardType == 5) {
-				  msg = "댓글 삭제에 실패하였습니다";
-				  url = "/board/QBoardInfo?QId="+commId;
-			  }
-			} else if(num != 0) {
-				  if(boardType == 1 || boardType == 2) {
-				  	  msg = "댓글을 삭제했습니다.";
-				  	  url = "/board/petBoardInfo?postId="+commId;
-				  } else if (boardType == 3) {
-					  msg = "댓글을 삭제했습니다.";
-					  url = "/board/adoptBoardInfo?adoptId="+commId;
-				  } else if (boardType == 4) {
-					  msg = "댓글을 삭제했습니다.";
-					  url = "/board/reviewBoardInfo?reviewId="+commId;
-				  } else if (boardType == 5) {
-					  msg = "댓글을 삭제했습니다.";
-					  url = "/board/QBoardInfo?QId="+commId;
-				  }
-				} 
+		if(boardType == 1 || boardType == 2) {
+			url = "/board/petBoardInfo?postId="+commId;
+		} else if (boardType == 3) {
+			url = "/board/adoptBoardInfo?adoptId="+commId;
+		} else if (boardType == 4) {
+			url = "/board/reviewBoardInfo?reviewId="+commId;
+		} else if (boardType == 5) {
+			url = "/board/QBoardInfo?QId="+commId;
+		}
+		
+		if(num > 0) {
+			msg = "댓글을 삭제했습니다.";
+			
+			if(boardType == 1 || boardType == 2) {
+			  	url = "/board/petBoardInfo?postId="+commId;
+			} else if (boardType == 3) {
+				url = "/board/adoptBoardInfo?adoptId="+commId;
+			} else if (boardType == 4) {
+				url = "/board/reviewBoardInfo?reviewId="+commId;
+			} else if (boardType == 5) {
+				url = "/board/QBoardInfo?QId="+commId;
+			}
+		}
 		
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);

@@ -35,6 +35,11 @@ public class CommMybatisDAO {
 		List<Comm> list = session.selectList(NS+"commList", map);
 		return list;
 	}
+	
+	public List<Comm> commUser(String userId) {
+		List<Comm> list = session.selectList(NS+"commUser", userId);
+		return list;
+	}
 
 	
 	public int insertBoard(Comm comm) {

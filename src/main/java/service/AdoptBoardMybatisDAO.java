@@ -32,6 +32,11 @@ public class AdoptBoardMybatisDAO {
 		return list;
 	}
 	
+	public List<AdoptBoard> userBoard(String userId) {
+		List<AdoptBoard> list = session.selectList(NS+"userBoard", userId);
+		return list;
+	}
+	
 	public int insertBoard(AdoptBoard pb) {
 		int num = session.insert(NS+"insertBoard", pb);
 		return num;

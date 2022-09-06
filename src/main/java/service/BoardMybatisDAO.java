@@ -36,6 +36,14 @@ public class BoardMybatisDAO {
 		List<PetBoard> list = session.selectList(NS+"boardList", map);
 		return list;
 	}
+	
+	public List<PetBoard> userBoard(String boardid, String userId) {
+		map.clear();
+		map.put("boardid", boardid);
+		map.put("userId", userId);
+		List<PetBoard> list = session.selectList(NS+"userBoard", map);
+		return list;
+	}
 
 	public int insertBoard(PetBoard pb) {
 		int num = session.insert(NS+"insertBoard", pb);

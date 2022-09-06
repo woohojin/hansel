@@ -33,6 +33,11 @@ public class ReviewBoardMybatisDAO {
 		return list;
 	}
 	
+	public List<ReviewBoard> userBoard(String userId) {
+		List<ReviewBoard> list = session.selectList(NS+"userBoard", userId);
+		return list;
+	}
+	
 	public int insertBoard(ReviewBoard pb) {
 		int num = session.insert(NS+"insertBoard", pb);
 		return num;

@@ -17,6 +17,12 @@
 		) where rnum between #{start} and #{end}
 	</select>
 	
+	<select id="userBoard" parameterType="String" resultType="adoptBoard">
+		select * from adoptBoard 
+		where userId = #{userId}
+		order by adoptId desc
+	</select>
+	
 	<insert id="insertBoard" parameterType="adoptBoard">
 		insert into adoptBoard values (adoptId_seq.nextval, 0, 0, 0, #{userId}, #{tel}, #{content},  to_char(sysdate, 'yyyy-mm-dd'), #{petDetail}, #{petName}, #{petGender}, #{petType}, #{petImg}, #{vaccin}, #{neuter}, 0)
 	</insert>

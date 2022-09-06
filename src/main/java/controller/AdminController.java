@@ -11,8 +11,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import model.AdoptBoard;
+import model.Comm;
 import model.Member;
+import model.PetBoard;
+import model.ReviewBoard;
+import service.AdoptBoardMybatisDAO;
+import service.BoardMybatisDAO;
+import service.CommMybatisDAO;
 import service.MemberMybatisDAO;
+import service.ReviewBoardMybatisDAO;
 
 @Controller
 @RequestMapping("/admin/")
@@ -31,24 +39,47 @@ public class AdminController {
 	
 	@Autowired
 	MemberMybatisDAO md;
+	@Autowired
+	CommMybatisDAO cd;
+	@Autowired
+	BoardMybatisDAO pd;
+	@Autowired
+	AdoptBoardMybatisDAO ad;
+	@Autowired
+	ReviewBoardMybatisDAO rd;
+	
 	
 	@RequestMapping("adminUser")
-	public String adminUser() throws Exception {
+	public String adminUser(String userType) throws Exception {
 		
-		List<Member> normal = md.memberList(0);
-		List<Member> admin = md.memberList(2);
+		if(userType.equals("normal")) {
+			List<Member> normal = md.memberList(0);
+			request.setAttribute("memList", normal);
+		} else {
+			List<Member> admin = md.memberList(2);
+			request.setAttribute("memList", admin);
+		}
 		
-		request.setAttribute("normal", normal);
-		request.setAttribute("admin", admin);
+		request.setAttribute("userType", userType);
+		session.setAttribute("adminPage", true);
 		
 		return "admin/adminUser";
+		
 	}
 	
 	@RequestMapping("updateAuth")
 	public String updateAuth(String userId, int userType) throws Exception {
 		
 		String msg = "권한 없데이트를 실패했습니다.";
-		String url = "/admin/adminUser";
+		
+		String str = "";
+		if(userType == 0) {
+			str = "normal";
+		} else if (userType == 2) {
+			str = "admin";
+		}
+		
+		String url = "/admin/adminUser?userType="+str;
 		
 		int num = md.updateAuth(userId, userType);
 		
@@ -63,10 +94,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping("deleteUser")
-	public String deleteUser(String userId) throws Exception {
+	public String deleteUser(String userId, int userType) throws Exception {
+		
+		String str = "";
+		if(userType == 0) {
+			str = "normal";
+		} else if (userType == 2) {
+			str = "admin";
+		}
 		
 		String msg = "회원삭제 를 실패했습니다.";
-		String url = "/admin/adminUser";
+		String url = "/admin/adminUser?userType="+str;
 		
 		int num = md.deleteMember(userId);
 		
@@ -86,4 +124,49 @@ public class AdminController {
 		return "admin/adminReport";
 	}
 	
+	@RequestMapping("adminSearch")
+	public String adminSearch(String userId, int boardType) throws Exception {
+		
+		Member mem = md.selectOne(userId);
+		List<Comm> comm = cd.commUser(userId);
+		
+		if(boardType == 1) {
+			List<PetBoard> petboard = pd.userBoard("1", userId);
+			request.setAttribute("board", petboard);
+		} else if (boardType == 2) {
+			List<PetBoard> petboard = pd.userBoard("2", userId);
+			request.setAttribute("board", petboard);
+		} else if (boardType == 3) {
+			List<AdoptBoard> adoptboard = ad.userBoard(userId);
+			request.setAttribute("board", adoptboard);
+		} else if (boardType == 4) {
+			List<ReviewBoard> reviewboard = rd.userBoard(userId);
+			request.setAttribute("board", reviewboard);
+		} 
+		request.setAttribute("boardType", boardType);
+		request.setAttribute("mem", mem);
+		request.setAttribute("comm", comm);
+		
+		return "admin/adminSearch";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
