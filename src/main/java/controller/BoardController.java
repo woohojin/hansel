@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import model.AdoptBoard;
 import model.Comm;
-import model.Member;
 import model.PetBoard;
 import model.QBoard;
 import model.Report;
@@ -216,7 +215,9 @@ public class BoardController {
 			commCount = cd.commCount(postId, 2);
 			break;
 		}
-
+		
+		
+		request.setAttribute("postId", postId);
 		request.setAttribute("bs", boardSubject);
 		request.setAttribute("pb", pb);
 		request.setAttribute("commlist", commlist);
@@ -297,11 +298,6 @@ public class BoardController {
 //	유기, 실종동물 입양
 	@RequestMapping("adoptBoard")
 	public String adoptBoard(int petType) throws Exception {
-
-		if (request.getParameter("boardid") != null) {
-			session.setAttribute("boardid", request.getParameter("boardid"));
-			session.setAttribute("pageNum", "1");
-		}
 
 		int limit = 8; // 한 page당 게시물 개수
 
@@ -730,9 +726,11 @@ public class BoardController {
 
 		String msg = "덧글 작성 실패";
 		String url = "/board/petBoard?petType=0";
+		
 		int boardType = comm.getBoardType();
 		int commId = comm.getCommId();
-
+		int ref = comm.getRef();
+		
 		int num = cd.insertBoard(comm);
 		if (num > 0) {
 
@@ -748,7 +746,8 @@ public class BoardController {
 			}
 
 		}
-
+		
+		request.setAttribute("ref", ref);
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
 
@@ -760,18 +759,52 @@ public class BoardController {
 	public String commentDelete(Comm comm) throws Exception {
 
 		String msg = "";
-
-		int ref = comm.getRef();
-
+		String url = "";
+		
+		System.out.println(ref + "ref");
+		
+		Comm comm = cd.boardOne(ref);
+		
+		System.out.println(comm);
+		
+		int boardType = comm.getBoardType();
+		int commId = comm.getCommId();
+		
 		int num = cd.boardDelete(ref);
-		if (num > 0) {
-
-			msg = "덧글을 삭제하였습니다.";
-
-		}
-
+		
+		if(num == 0) {
+			  if(boardType == 1 || boardType == 2) {
+			  	  msg = "댓글 삭제에 실패하였습니다.";
+			  	  url = "/board/petBoardInfo?postId="+commId;
+			  } else if (boardType == 3) {
+				  msg = "댓글 삭제에 실패하였습니다.";
+				  url = "/board/adoptBoardInfo?adoptId="+commId;
+			  } else if (boardType == 4) {
+				  msg = "댓글 삭제에 실패하였습니다";
+				  url = "/board/reviewBoardInfo?reviewId="+commId;
+			  } else if (boardType == 5) {
+				  msg = "댓글 삭제에 실패하였습니다";
+				  url = "/board/QBoardInfo?QId="+commId;
+			  }
+			} else if(num != 0) {
+				  if(boardType == 1 || boardType == 2) {
+				  	  msg = "댓글을 삭제했습니다.";
+				  	  url = "/board/petBoardInfo?postId="+commId;
+				  } else if (boardType == 3) {
+					  msg = "댓글을 삭제했습니다.";
+					  url = "/board/adoptBoardInfo?adoptId="+commId;
+				  } else if (boardType == 4) {
+					  msg = "댓글을 삭제했습니다.";
+					  url = "/board/reviewBoardInfo?reviewId="+commId;
+				  } else if (boardType == 5) {
+					  msg = "댓글을 삭제했습니다.";
+					  url = "/board/QBoardInfo?QId="+commId;
+				  }
+				} 
+		
 		request.setAttribute("msg", msg);
-
+		request.setAttribute("url", url);
+		
 		return "alert";
 
 	}

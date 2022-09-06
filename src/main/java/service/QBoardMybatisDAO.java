@@ -17,7 +17,7 @@ public class QBoardMybatisDAO {
 	SqlSessionTemplate session;
 	
 	private final static String NS = "QBoard.";
-	private static Map map = new HashMap<>();
+	private static Map<Object, Object> map = new HashMap<>();
 	
 	public int boardCount() {
 		int num = session.selectOne(NS+"boardCount");
@@ -31,7 +31,7 @@ public class QBoardMybatisDAO {
 		List<QBoard> list = session.selectList(NS+"boardList", map);
 		return list;
 	}
-	
+		
 	public int insertBoard(QBoard qb) {
 		int num = session.insert(NS+"insertBoard", qb);
 		return num;

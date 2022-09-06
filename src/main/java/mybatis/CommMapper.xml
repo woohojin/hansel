@@ -17,28 +17,28 @@
 		insert into comm values (#{commId}, #{userId}, #{content}, ref_SEQ.nextval, sysdate, #{boardType})
 	</insert>
 	
-	<select id="boardOne" parameterType="int" resultType="petBoard">
-		select * from petboard where postId = #{value}
+	<select id="boardOne" parameterType="int" resultType="comm">
+		select * from comm where ref = #{value}
 	</select>
 	
 	<update id="readCountUp" parameterType="int">
 		update petboard set readcnt = readcnt + 1 where postId = #{value}
 	</update>
 	
-	<insert id="insertReply" parameterType="petBoard">
+	<insert id="insertReply" parameterType="comm">
 		insert into board values (boardseq.nextval, #{name}, #{pass}, #{subject}, #{content}, #{file1}, sysdate, 0, #{ref}, #{reflevel}, #{refstep}, #{boardid})
 	</insert>
 	
-	<update id="boardUpdate" parameterType="petBoard">
+	<update id="boardUpdate" parameterType="comm">
 		update petboard set tel =  #{tel}, content = #{content}, place = #{place}, petName = #{petName}, petGender = #{petGender}, petType=#{petType}, petDate = #{petDate}, petImg = #{petImg}, petDetail = #{petDetail} where postId = #{postId}
 	</update>
 	
-	<update id="boardDisable" parameterType="petBoard">
+	<update id="boardDisable" parameterType="comm">
 		update petboard set postDisable = 1 where postId = #{postId}
 	</update>
 	
-	<delete id="boardDelete" parameterType="int">
-		delete from comm where  ref = #{ref}
+	<delete id="boardDelete" parameterType="comm">
+		delete from comm where ref = #{ref}
 	</delete>
 </mapper>
 

@@ -42,10 +42,10 @@ public class CommMybatisDAO {
 		return num;
 	}
 	
-	public PetBoard boardOne(int num) {
-		PetBoard board = session.selectOne(NS+"boardOne", num);
+	public Comm boardOne(int ref) {
+		Comm comm = session.selectOne(NS+"boardOne", ref);
 		
-		return board;
+		return comm;
 	}
 	
 	public void readCountUp(int postId) {
@@ -68,11 +68,9 @@ public class CommMybatisDAO {
 		return num;
 	}
 
-	
 	public int boardDelete(int ref) {
-		int m = session.delete(NS+"boardDelete", ref);
-		return m;
+		int num = session.delete(NS+"boardDelete", ref);
+		return num;
 	}
-	
 	
 }

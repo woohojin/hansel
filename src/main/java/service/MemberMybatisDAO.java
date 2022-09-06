@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import model.Member;
-import model.PetBoard;
-
+	
 @Component
 public class MemberMybatisDAO {
 	
@@ -80,4 +79,6 @@ public class MemberMybatisDAO {
 		return num;
 		
 	}
+		
+	
 }
