@@ -13,8 +13,13 @@
  <% 
  	Cookie[] cookies = request.getCookies();
   	String cookieUserId = getCookieValue(cookies, "userId");
+  	String cookieUserType = getCookieValue(cookies, "userType");
   	
   	if(cookieUserId != null) {
   		 session.setAttribute("userId", cookieUserId);
+  	}
+  	
+  	if(cookieUserType != null) {
+  		session.setAttribute("userType", cookieUserType);
   	}
   %>

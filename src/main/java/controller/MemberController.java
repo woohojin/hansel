@@ -62,14 +62,14 @@ public class MemberController {
 	@RequestMapping("signInPro")
 	public String signInPro(String userId, String pwd, String autoLogin) throws Exception {
 
-		String msg = "";
+		String msg = "유효하지 않은 회원입니다.";
 		String url = "/member/signIn";
 
-//		로그인할 유저를 입력한 아이디로 가져옴
+//		로그인할 유저를 입력한 아이디로 가져옴	
 		Member mem = md.selectOne(userId);
 //		유저의 유무 확인
 		if (mem != null) {
-
+			String userType = Integer.toString(mem.getUserType());
 //			현재 입력한 비밀번호와 db에 있는 비밀번호 비교
 			if (pwd.equals(mem.getPwd())) {
 //				mem.setLogin(1);
@@ -77,23 +77,27 @@ public class MemberController {
 				session.setAttribute("userId", userId);
 				session.setAttribute("userType", mem.getUserType());
 				if (autoLogin != null) {
-					Cookie cookie = new Cookie("userId", userId);
-					cookie.setMaxAge(60 * 60 * 24 * 30);
-					cookie.setPath("/");
-					response.addCookie(cookie);
+					Cookie cookie1 = new Cookie("userId", userId);
+					cookie1.setMaxAge(60 * 60 * 24 * 30);
+					cookie1.setPath("/");
+					response.addCookie(cookie1);
+					
+					if(userType.equals("2")) {
+						Cookie cookie2 = new Cookie("userType", userType);
+						cookie2.setMaxAge(60 * 60 * 24 * 30);
+						cookie2.setPath("/");
+						response.addCookie(cookie2);
+					}
 				}
 				msg = mem.getUserId() + "님이 로그인 하였습니다.";
 				url = "/member/index";
 			} else {
 				msg = "비밀번호가 틀립니다.";
 			}
-
-		} else {
-			msg = "유효하지 않은 회원입니다.";
 		}
-
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
+		
 		return "alert";
 	}
 
@@ -148,13 +152,19 @@ public class MemberController {
 
 		String userId = (String) session.getAttribute("userId");
 		Member mem = md.selectOne(userId);
+		String userType = Integer.toString(mem.getUserType());
 //		mem.setLogin(0);
 //		md.updateLogin(mem);
 
-		Cookie cookie = new Cookie("userId", userId);
-		cookie.setMaxAge(0);
-		cookie.setPath("/");
-		response.addCookie(cookie);
+		Cookie cookie1 = new Cookie("userId", userId);
+		cookie1.setMaxAge(0);
+		cookie1.setPath("/");
+		response.addCookie(cookie1);
+		
+		Cookie cookie2 = new Cookie("userType", userType);
+		cookie2.setMaxAge(0);
+		cookie2.setPath("/");
+		response.addCookie(cookie2);
 
 		session.invalidate();
 
