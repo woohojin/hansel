@@ -162,6 +162,9 @@
                 	<c:if test="${ sessionScope.userId != b.userId }">
                 		<a href="javascript:win_report(2, ${ b.ref }, '${ b.userId }')" class="btn">유저신고</a>
                 	</c:if>
+                	<c:if test="${ sessionScope.userId == b.userId }">
+                		<a href="" class="btn">삭제</a>
+                	</c:if>
                 </c:if>
               </form>
               </div>

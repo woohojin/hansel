@@ -38,7 +38,7 @@
 	</update>
 	
 	<delete id="boardDelete" parameterType="int">
-		delete from board where num = #{num}
+		delete from comm where  ref = #{ref}
 	</delete>
 </mapper>
 

@@ -57,6 +57,14 @@
     </c:if>
     
     <c:if test="${sessionScope.userId != null}">
+    	<c:if test="${sessionScope.userType == 2}">
+    		<a href="${ pageContext.request.contextPath }/admin/adminUser">
+        		<li>유저관리</li>
+      		</a>
+      		<a href="${ pageContext.request.contextPath }/admin/adminReport">
+        		<li>신고관리</li>
+      		</a>
+    	</c:if>
       <a href="${ pageContext.request.contextPath }/member/memberInfo">
         <li>내정보</li>
       </a>

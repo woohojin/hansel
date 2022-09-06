@@ -81,7 +81,8 @@
    		</mvc:interceptor>
    		
    		<mvc:interceptor>
-   			<mvc:mapping path="/member/admin" />
+   			<mvc:mapping path="/admin/adminUser" />
+   			<mvc:mapping path="/admin/adminReport" />
    			<bean class="service.AdminInterceptor"/>
    		</mvc:interceptor>
    		

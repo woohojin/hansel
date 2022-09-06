@@ -12,6 +12,20 @@
 		select * from hanuser where userId = #{value}
 	</select>
 	
+<!-- 	<select id="userCount" resultType="int" parameterType="int">
+		select nvl(count(*),0) from hanuser where userType = #{value}
+	</select> -->
+	
+	<select id="memberList" parameterType="int" resultType="member">
+		select * from hanuser 
+		where userType = #{userType}
+		
+	</select>
+	
+	<update id="updateAuth" parameterType="map">
+		update hanuser set userType=#{userType} where userId = #{userId} 
+	</update>
+	
 	<update id="updateLogin" parameterType="member">
 		update hanuser set login=#{login} where userId = #{userId} 
 	</update>
@@ -29,7 +43,7 @@
 	</delete>
 	
 	<update id="pwdUpdateMember" parameterType="map">
-		update hanuser set pwd=#{chgPwd} where userId = #{userId} 
+		update hanuser set pwd = #{pwd} where userId = #{userId} 
 	</update>
 	
 		<!--<select id="memberList" resultType="member">

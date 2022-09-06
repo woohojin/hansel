@@ -13,9 +13,9 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		HttpSession session = request.getSession();
-		String auth = (String) session.getAttribute("userId");
+		int auth = (int) session.getAttribute("userType");
 		
-		if(auth == null || !auth.equals("admin")) {
+		if(auth != 2) {
 			response.sendRedirect(request.getContextPath() + "/member/signIn?id=fobidden");
 			return false;
 		} else {

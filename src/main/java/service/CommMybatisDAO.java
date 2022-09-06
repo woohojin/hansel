@@ -68,11 +68,11 @@ public class CommMybatisDAO {
 		return num;
 	}
 
-	/*
-	public int boardDelete(int num) {
-		int m = session.insert(NS+"boardDelete", num);
+	
+	public int boardDelete(int ref) {
+		int m = session.delete(NS+"boardDelete", ref);
 		return m;
 	}
-	*/
+	
 	
 }

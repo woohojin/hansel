@@ -73,6 +73,7 @@ public class MemberController {
 //				mem.setLogin(1);
 //				md.updateLogin(mem);
 				session.setAttribute("userId", userId);
+				session.setAttribute("userType", mem.getUserType());
 				if (autoLogin != null) {
 					Cookie cookie = new Cookie("userId", userId);
 					cookie.setMaxAge(60 * 60 * 24 * 30);
@@ -268,17 +269,21 @@ public class MemberController {
 		
 		return "/member/memberPassUpdate";
 	}
+
+
 	@RequestMapping("memberPassUpdatePro")
-	public String memberPassUpdatePro(String pwd, String chgPwd) throws Exception {
+	public String memberPassUpdatePro(String pwd, String chgpwd) throws Exception {
+
 
 		String userId = (String) session.getAttribute("userId");
 
 		String msg = "비밀번호가 틀렸습니다 ";
 		String url = "/member/memberPassUpdate";
+		System.out.println(chgpwd);
 		
 		Member mem = md.selectOne(userId);
 		if (pwd.equals(mem.getPwd())) {
-			int num = md.pwdUpdateMember(userId, chgPwd);
+			int num = md.pwdUpdateMember(userId, chgpwd);
 			if (num > 0) {
 				msg = userId + "님의 비밀번호가 수정되었습니다.";
 				url = "/member/index";
