@@ -2,11 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kic</groupId>
-  <artifactId>hanselMvc</artifactId>
+  <artifactId>hanselCrumb</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>hanselMvc Maven Webapp</name>
+  <name>hanselCrumb Maven Webapp</name>
   <url>http://maven.apache.org</url>
+  
   
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,7 +86,13 @@
 	    <artifactId>commons-digester</artifactId>
 	    <version>2.1</version>
 	</dependency>   
-	
+	<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
+	<dependency>
+    	<groupId>commons-dbcp</groupId>
+    	<artifactId>commons-dbcp</artifactId>
+    	<version>1.4</version>
+	</dependency>
+
 	<!-- Connection Pool 관련 설정 -->
 	<dependency>
 	    <groupId>com.mchange</groupId>
@@ -116,8 +123,9 @@
 	</dependency>
     
   </dependencies>
+  
   <build>
-    <finalName>springMvc</finalName>
+    <finalName>hanselCrumb</finalName>
     <plugins>
     
     	<plugin>
