@@ -2,13 +2,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.kic</groupId>
-  <artifactId>hanselCrumb</artifactId>
+  <artifactId>hanselMvc</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>hanselCrumb Maven Webapp</name>
+  <name>hanselMvc Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
-  
+
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.3.30.RELEASE</spring.version>
@@ -16,23 +15,23 @@
 		<spring.version2>5.2.19.RELEASE</spring.version2>
 		<spring.version3>4.3.30.RELEASE</spring.version3>
   </properties>
-  
+
   <dependencies>
-  
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    
+
     <!-- https://mvnrepository.com/artifact/org.sitemesh/sitemesh -->
 	<dependency>
 	    <groupId>org.sitemesh</groupId>
 	    <artifactId>sitemesh</artifactId>
 	    <version>3.0.1</version>
 	</dependency>
-  	
+
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
@@ -49,27 +48,27 @@
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
-	
+
 	<!-- spring db 설정 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-jdbc</artifactId>
 	    <version>${spring.version}</version>
 	</dependency>
-	
+
 	<dependency> 
 		<groupId>oracle</groupId>
 		<artifactId>ojdbc11</artifactId>
 		<version>11</version>
 	</dependency>
-	
+
 	<!-- jstl 설정-->
 	<dependency>
 	    <groupId>jstl</groupId>
 	    <artifactId>jstl</artifactId>
 	    <version>1.2</version>
 	</dependency> 
-	
+
 	<!-- 파일 업로드 설정 -->
 	<dependency>
 	    <groupId>commons-fileupload</groupId>
@@ -86,12 +85,6 @@
 	    <artifactId>commons-digester</artifactId>
 	    <version>2.1</version>
 	</dependency>   
-	<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
-	<dependency>
-    	<groupId>commons-dbcp</groupId>
-    	<artifactId>commons-dbcp</artifactId>
-    	<version>1.4</version>
-	</dependency>
 
 	<!-- Connection Pool 관련 설정 -->
 	<dependency>
@@ -99,7 +92,7 @@
 		<artifactId>c3p0</artifactId>
 		<version>0.9.5.3</version>
 	</dependency>
-	
+
 	<!-- MyBatis 관련 설정-->
 	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 	<dependency>
@@ -113,7 +106,7 @@
 	    <artifactId>mybatis-spring</artifactId>
 	    <version>1.3.2</version>
 	</dependency> 
-	
+
 	<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
 	<dependency>
 	    <groupId>org.aspectj</groupId>
@@ -121,18 +114,17 @@
 	    <version>1.8.0</version>
 	    <scope>runtime</scope>
 	</dependency>
-    
+
   </dependencies>
-  
   <build>
-    <finalName>hanselCrumb</finalName>
+    <finalName>springMvc</finalName>
     <plugins>
-    
+
     	<plugin>
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.2</version>
         </plugin> 
-    	
+
     </plugins>
   </build>
 </project>
